@@ -1,0 +1,65 @@
+<div class="container search-background">
+    <div class="row justify-content-center">
+        <div class="col-md-6 adv-search-toggle">
+            <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapsableBox" aria-expanded="false" aria-controls="collapsableBox">
+                Advanced Search
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 adv-search-box collapse" id="collapsableBox">
+            <div class="form-group">
+                <label for="inputTitle">Title</label>
+                <input type="text" class="form-control" id="inputTitle" name="inputTitle" [(ngModel)]="searchData.title">
+            </div>
+            <div class="form-row" *ngFor="let rows of metadataList | slice:0:(metadataList?.length/2); let i=index">
+                <div class="form-group col-md-6" *ngFor="let metadata of metadataList| slice:(2*i):(2*i+2)">
+                    <label>{{metadata.name}}</label>
+                    <ng-select
+                        class="custom"
+                        [items]="metadata.metadata"
+                        [multiple]="true"
+                        [closeOnSelect]="false"
+                        [hideSelected]="true"
+                        [clearable]	="false"
+                        (add) = "addMeta($event)"
+                        (remove) = "removeMeta($event)">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-sm-3">
+                    <label>Published Date</label>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label>Min</label>
+                    <select class="form-control" [(ngModel)]="searchData.min_date">
+                        <option [value]=""></option>
+                        <option *ngFor="let year of years" [value]="year">{{year | date:'yyyy'}}</option>
+                    </select>                </div>
+                <div class="form-group col-sm-3">
+                    <label>Max</label>
+                    <select class="form-control"[(ngModel)]="searchData.max_date">
+                        <option [value]=""></option>
+                        <option *ngFor="let year of years" [value]="year">{{year | date:'yyyy'}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <p style="height: 8px;"></p>
+                    <button class="btn btn-block adv-search-btn" type="button" (click)="searchAdvanced()">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="assets/images/banners/banner_search.jpg">
+</div>
+<app-search-box [hideLink]="true"></app-search-box>
+<div class="container">
+    <div class="row">       
+        <div class="col-md-12 col-margin">
+            <app-content-list id="contentElement" [contentList]="contentList"></app-content-list>
+        </div>
+    </div>
+</div>

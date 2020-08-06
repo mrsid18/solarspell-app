@@ -1,0 +1,43 @@
+<div class="banner-div">
+    <img class="banner-style" src="/assets/{{parentFolder.banner}}">
+</div>
+<app-breadcrumb></app-breadcrumb>
+<app-search-box [hideLink]="false"></app-search-box>
+<div class="row"> 
+    <div class="col-md-3 meta-col"> 
+        <div *ngIf="content.title" class="wrapper">
+            <p i18n ="file tilte@@fileTitle" class="lbl">Title</p>
+            <p class="value">{{content.title}}</p>
+        </div>
+        <div *ngIf="content.description" class="wrapper">
+            <p i18n ="file description@@fileDescription" class="lbl">Description</p>
+            <p class="value">{{content.description}}</p>
+        </div>
+        <div *ngIf="content.file_size" class="wrapper">
+            <p i18n="file size@@fileSize" class="lbl">File Size</p>
+            <p class="value">{{content.file_size | fileSize}}</p>
+        </div>         
+        <div class="wrapper" *ngFor= "let meta of metadataList">
+            <p i18n class="lbl">{meta.name, select, Keywords {Keywords} Subject {Subject} Creator {Creator} Language {Language} Resource Type {Resource Type}}</p>
+            <p class="value">{{meta.value}}</p>
+        </div>
+        <div *ngIf="content.published_date" class="wrapper">
+            <p i18n="year published@@yearPublished" class="lbl">Year Published</p>
+            <p class="value">{{content.published_date | date : "yyyy"}}</p>
+        </div> 
+        <div *ngIf="content.copyright" class="wrapper">
+            <p i18n="Copyright@@copyright" class="lbl">Copyright</p>
+            <p class="value">{{content.copyright}}</p>
+        </div> 
+        <div *ngIf="content.rights_statement" class="wrapper">
+            <p i18n="Rights Statement" class="lbl">Rights Statement</p>
+            <p class="value">{{content.rights_statement}}</p>
+        </div> 
+    </div>
+    <div class="col-md-9 file-col">
+        <iframe
+        frameBorder="0" 
+        [src]="fileURL"
+        allowfullscreen="allowfullscreen"></iframe>
+    </div>
+</div>

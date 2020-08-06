@@ -1,0 +1,11 @@
+<div class="sb-div">
+<div class="main">
+  <!-- Actual search box -->
+  <div class="form-group has-search">
+    <span class="fa fa-search form-control-search" (click)="search()"></span>
+    <input type="text" class="form-control" [(ngModel)]="searchString" (keyup.enter)="search()" placeholder="Search">
+    <p [hidden] = "hideLink" routerLink="/search-list" class="adv-srch">Advanced Search</p>
+  </div>
+</div>
+</div>
+

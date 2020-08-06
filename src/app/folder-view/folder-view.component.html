@@ -1,0 +1,25 @@
+<div class="banner-div" id="topPage">
+    <img object-fit="cover" class="banner-style" src="/assets/{{parentFolder.banner}}">
+</div>
+<app-search-box [hideLink]="false"></app-search-box>
+<app-breadcrumb></app-breadcrumb>
+<div class="row"> 
+    <div class="col-md-3"> 
+        <ul class="nav flex-column nav-style">
+            <li *ngFor="let folder of mainFolders" class="nav-item"  [ngClass]="{'link-active' : activeFolderId == folder.id}">
+                <a class="nav-link" [routerLink]="['/content',parentFolder.id,folder.id]">{{folder.folder_name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-7 col-style">
+        <div class="row" *ngFor="let rows of folderList | slice:0:(folderList?.length/3); let i=index">
+            <div class="col-lg-4" *ngFor="let folder of folderList| slice:(3*i):(3*i+3)">
+              <p class="btn btn-block folder-btn" [routerLink]="['/content',parentFolder.id, folder.id]">
+                <span class="folder-icon"></span>
+                {{folder.folder_name}}
+              </p>
+            </div>
+        </div>
+        <app-content-list [contentList]="contentList"></app-content-list>
+    </div>
+</div>

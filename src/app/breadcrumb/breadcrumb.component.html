@@ -1,0 +1,10 @@
+<div class="bc-div">
+    <ul class="breadcrumb">
+        <li>
+            <img class="home-icon" routerLink ="/home" src="assets/images/static/home.png">
+        </li>
+        <li *ngFor="let bc of breadcrumbList; let i=index">
+            <a [routerLink] ="i == 0 ?['/content',bc.id] : ['/content',breadcrumbList[0].id,bc.id]">{{bc.name}}</a>
+        </li>
+      </ul>
+</div>

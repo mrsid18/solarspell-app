@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+body {
+    background-color: #F2F2F2 !important;
+   }
+
+ table {
+   border-style: none;
+   width: 100%;
+ }
+.ng-select.custom.ng-select-multiple .ng-select-container .ng-value-container .ng-value .ng-value-icon {
+   display: inline !important;
+}

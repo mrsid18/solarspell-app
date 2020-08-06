@@ -1,0 +1,17 @@
+<p *ngIf=!contentList.length class="no-records-message">No Records Found</p>
+<table *ngIf="contentList.length" class="table table-hover table-style">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col" sortable="title" (sort)="onSort($event)">Title</th>
+        <th scope="col" sortable="file_size" (sort)="onSort($event)">Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let content of contentList" [routerLink]="['/file-view',content.id]"> 
+        <td><img src="{{getFileExtension(content.file_name)}}"></td>
+        <td>{{content.title}}</td>
+        <td>{{content.file_size | fileSize}}</td>
+      </tr>
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+
+.table-style{
+    background-color: #FFFFFF;
+}
+.table-style td{
+    vertical-align: middle;
+}
+.table-style tr{
+    cursor: pointer;
+}
+.table-style img{
+    height: 2rem;
+}
+.col-style{
+    margin: 3em;
+}
+.no-records-message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}

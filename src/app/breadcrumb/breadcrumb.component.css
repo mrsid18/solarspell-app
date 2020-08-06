@@ -1,0 +1,46 @@
+.bc-div{
+    width:100%;
+    background-color: #FFF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 1;
+    position: relative;
+}
+ul.breadcrumb {
+    list-style: none;
+    background-color: #FFF;
+    width: fit-content;
+    margin:0 auto;
+  }
+  
+  /* Display list items side by side */
+  ul.breadcrumb li {
+    display: inline;
+    font-size: 1em;
+    font-weight: bold;
+  }
+  
+  /* Add a slash symbol (/) before/behind each list item */
+  ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: grey;
+    content: ">";
+  }
+  
+  /* Add a color to all links inside the list */
+  ul.breadcrumb li a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  /* Add a color on mouse-over */
+  ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .home-icon {
+    height: 18px;
+    width: 18px;
+    margin-bottom: 3px;
+    cursor: pointer;
+  }
