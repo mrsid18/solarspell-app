@@ -27,7 +27,7 @@ ul.breadcrumb {
   }
   
   /* Add a color to all links inside the list */
-  ul.breadcrumb li a {
+  ul.breadcrumb li a, ul.breadcrumb li span {
     color: #000;
     text-decoration: none;
   }
@@ -44,3 +44,9 @@ ul.breadcrumb {
     margin-bottom: 3px;
     cursor: pointer;
   }
+  .clickable{
+    cursor: pointer;
+    color:#FFF;
+    margin: 0px;
+    text-decoration: none
+}

@@ -33,7 +33,7 @@ export class BreadcrumbService {
         let params = new HttpParams();
         params = params.append('id', id);
         params = params.append('isFolder', isFolder ? '1' : '0');
-        return this.http.get('http://localhost/backend/get_full_path', {params});
+        return this.http.get('http://localhost/backend/get_full_path.php', {params});
     }
 
     getBreadcrumbList() {

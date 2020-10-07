@@ -8,10 +8,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let content of contentList" [routerLink]="['/file-view',content.id]"> 
+      <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 10, currentPage: page }" [routerLink]="['/file-view',content.id]"> 
         <td><img src="{{getFileExtension(content.file_name)}}"></td>
         <td>{{content.title}}</td>
         <td>{{content.file_size | fileSize}}</td>
       </tr>
     </tbody>
 </table>
+<div *ngIf="contentList.length" class="has-text-centered">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

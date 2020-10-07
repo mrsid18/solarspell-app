@@ -1,8 +1,7 @@
 .banner-div{
-    background-color: white;
+    background-color: var(--spell-secondary-white);
     margin: 0px;
     padding: 0px;
-
 }
 
 .banner-style{
@@ -24,6 +23,20 @@
     max-height:100%; 
 }
 
+.banner{
+    height: 400px;
+    background-image: url(/assets/images/banners/banner.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*
+ mobile screen size*/
+@media screen and (min-width:200px) and (max-width: 576px) {
+    .banner {
+      height: 200px;
+  }
+}
 .cat-container {
     background: #F2F2F2;
     margin-bottom: 20px;
@@ -34,4 +47,7 @@
 }
 .folder-img{
     margin-top: 20px;
+    max-width: 400px;
+    max-height: 400px;
+
 }

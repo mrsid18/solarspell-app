@@ -1,11 +1,22 @@
-<div class="sb-div">
-<div class="main">
-  <!-- Actual search box -->
-  <div class="form-group has-search">
-    <span class="fa fa-search form-control-search" (click)="search()"></span>
-    <input type="text" class="form-control" [(ngModel)]="searchString" (keyup.enter)="search()" placeholder="Search">
+<div class="container-blue">	
+	<div class="p-3">
+		<div class="form-row no-gutters justify-content-center ">
+			<div class="input-group mb-4 col-12 col-md-6 col-lg-4">
+				<div class="input-group-prepend">
+					<button class="searchBtn btn btn-light " id="basic-addon2" (click)="search()">
+					<i class="fa fa-search"></i></button>
+				</div>
+        <input class="searchBar form-control" 
+        type="text" 
+        placeholder="Search" 
+        aria-label="Search" 
+        [(ngModel)]="searchString" 
+        (keyup.enter)="search()" 
+        placeholder="Search">
+      </div>
+    </div>
+    <div style="text-align: center;">
     <p [hidden] = "hideLink" routerLink="/search-list" class="adv-srch">Advanced Search</p>
-  </div>
-</div>
-</div>
-
+    </div>
+	</div>		
+	</div>

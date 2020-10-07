@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { SearchListComponent } from './search-list/search-list.component';
 import { ContentListComponent } from './content-list/content-list.component';
 import { SortableHeader } from './sortable-util';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +29,16 @@ import { SortableHeader } from './sortable-util';
     SearchBoxComponent,
     SearchListComponent,
     ContentListComponent,
-    SortableHeader
+    SortableHeader,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

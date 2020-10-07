@@ -1,0 +1,56 @@
+
+body{
+margin:0;
+}
+
+.aboutus h1, .aboutus h2, .aboutus h3 {
+text-align: center;
+padding-bottom: 1%;
+margin-top: 20px;
+}
+.aboutus {
+color: var(--spell-secondary-black);
+}
+
+.aboutus video{
+object-fit: fill;
+
+}
+.ourMission{
+background-color: var(--spell-primary-gold);
+color: var(--spell-secondary-black);
+}
+
+/* mobile screen size*/
+@media screen and (min-width:200px) and (max-width: 576px) {
+.aboutus {
+text-align: justify;
+}
+}
+
+/* tablet screen size*/
+@media screen and (min-width: 577px) {
+.aboutus, .aboutus h2, .aboutus h1, .aboutus h3 {
+text-align: left;
+}
+.aboutus p, .aboutus h3, .aboutus h3{
+    padding-left: 2%;
+    padding-right: 3%;
+}
+.aboutus video{
+    margin-left: 2%;
+}
+}
+
+/* computer screen size*/
+@media screen and (min-width: 992px) {
+.aboutus {
+    text-align: left;
+}
+
+.ourMission{
+padding-top: 4%;
+padding-left: 2%;
+padding-right: 3.5%;
+}
+}

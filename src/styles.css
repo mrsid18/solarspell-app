@@ -1,9 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+:root {
+  /* ASU Brand colors Colors */
+  --spell-primary-blue: #0083E0;
+  --spell-primary-gold: #ffc627;
+  --spell-secondary-maroon: #8c1d40;
+  --spell-secondary-orange: #ff7f32;
+  --spell-secondary-green: #78be20;
+  --spell-secondary-grey: #5c6670;
+  --spell-secondary-black: #000000;
+  --spell-secondary-white: #ffffff;
+}
+@font-face{
+  font-family:Roboto;
+  src:url("/assets/static/Roboto-Regular.ttf")
+}
+* {
+  font-family: 'Roboto', 'Helvetica' , 'sans-serif';
+}
 body {
     background-color: #F2F2F2 !important;
    }
-
  table {
    border-style: none;
    width: 100%;

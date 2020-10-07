@@ -1,50 +1,15 @@
-.sb-div{
-    width:100%;
-    background-color:#2DA5F0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    z-index: 1;
-    position: relative;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.btn-search{
-    border-radius:0px 20px 20px 0px;
-    background-color:#D3D3D3;
-    font-weight: 500;
-}
 
-.main {
-    margin: 0 auto;
-    width: 30%;
-}
-
-/* Bootstrap 4 text input with search icon */
-
-.has-search {
-    text-align: center;
-}
-.has-search .form-control {
-    padding-left: 2.375rem;
-    border-radius:20px 20px 20px 20px;
-}
-
-.has-search .form-control-search {
-    position: absolute;
-    z-index: 3;
-    display: block;
-    width: 2.375rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    color: #aaa;
-    cursor: pointer;
-}
 .adv-srch{
     cursor: pointer;
     color:#FFF;
-    font-weight: 600;
-    padding-top: 4px;
+    margin: 0px;
     text-decoration: underline;
+}
+.searchBar, .searchBtn{
+    border-radius: 17px;
+    background-color: #fff;
+    border-color: #fff
+}
+.container-blue{
+    background-color: var(--spell-primary-blue);
 }

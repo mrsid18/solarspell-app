@@ -9,7 +9,7 @@ import { SortableHeader, SortEvent, compare } from '../sortable-util';
 export class ContentListComponent implements OnInit {
   @Input() contentList:[];
   @ViewChildren(SortableHeader) headers: QueryList<SortableHeader>;
-
+  page: number = 1;
   constructor() { }
 
   ngOnInit(): void {
@@ -19,11 +19,13 @@ export class ContentListComponent implements OnInit {
     let ext = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length) || fileName;
     switch (ext){
       case 'mp4':
-        return 'assets/images/static/mp4.png';
+        return '/assets/static/mp4.png';
       case 'pdf':
-        return 'assets/images/static/file.png';
+        return '/assets/static/file.png';
+      case 'mp3':
+        return '/assets/static/mp3.png';
       default:
-        return 'assets/images/static/file.png';
+        return '/assets/static/file.png';
     }
   }
   onSort({column, direction}: SortEvent) {

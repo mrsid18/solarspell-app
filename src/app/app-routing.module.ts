@@ -5,10 +5,12 @@ import { FolderViewComponent } from './folder-view/folder-view.component';
 import { FolderDataResolveService, FileDataResolveService, SearchDataResolveService } from './services/data.service';
 import { FileViewComponent } from './file-view/file-view.component';
 import { SearchListComponent } from './search-list/search-list.component';
+import { AboutComponent } from './about/about.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'content/:folder_id', component: FolderViewComponent, resolve: { folderData: FolderDataResolveService } },
   { path: 'content/:folder_id/:subfolder_id', component: FolderViewComponent, resolve: { folderData: FolderDataResolveService } },
   { path: 'file-view/:content_id', component: FileViewComponent, resolve: { fileData: FileDataResolveService } },

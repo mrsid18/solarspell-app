@@ -37,7 +37,6 @@ export class FolderViewComponent implements OnInit {
          this.getFolderContent(subfolderId);
          this.breadcrumbService.updateBreadcrumb(subfolderId, true);
     });  
-    //this.scrollToTop(); 
     window.scroll(0,0);
   }
 
@@ -48,9 +47,5 @@ getFolderContent(folderId: number) {
       this.contentList = response.content;
       this.folderList = response.folders;
     });
-  }
-  scrollToTop(){
-    let el = this.topElement.nativeElement.ownerDocument.getElementById('topPage');
-    el.scrollIntoView()
   }
 }

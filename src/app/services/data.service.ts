@@ -14,32 +14,32 @@ export class DataService {
    }
 
    getFolders(): Observable<any> {
-     return this.http.get('http://localhost/backend/folders');
+     return this.http.get('http://localhost/backend/folders.php');
    }
 
    getFolderData(parentId): Observable<any> {
     let params = new HttpParams();
     params = params.append('folder_id', parentId);
-    return this.http.get('http://localhost/backend/folder_get_children', {params});
+    return this.http.get('http://localhost/backend/folder_get_children.php', {params});
   }
 
   getFileData(contentId): Observable<any> {
     let params = new HttpParams();
     params = params.append('id', contentId);
-    return this.http.get('http://localhost/backend/content_get_by_id', {params});
+    return this.http.get('http://localhost/backend/content_get_by_id.php', {params});
   }
 
   getMetadataList(): Observable<any> {
-    return this.http.get('http://localhost/backend/metadata_list_by_type');
+    return this.http.get('http://localhost/backend/metadata_list_by_type.php');
   }
 
   singleSearch(searchString): Observable<any> {
     let params = new HttpParams();
     params = params.append('search_string',searchString);
-    return this.http.get('http://localhost/backend/content_single_search', {params});
+    return this.http.get('http://localhost/backend/content_single_search.php', {params});
   }
   advancedSearch(searchData: SearchData): Observable<any> {
-    return this.http.post('http://localhost/backend/content_advanced_search',searchData);
+    return this.http.post('http://localhost/backend/content_advanced_search.php',searchData);
   }
 }
 
