@@ -1,12 +1,12 @@
-<div class="container-blue">	
+<div class="container-blue bg-primary-dark">	<!--background color class-->
 	<div class="p-3">
 		<div class="form-row no-gutters justify-content-center ">
 			<div class="input-group mb-4 col-12 col-md-6 col-lg-4">
 				<div class="input-group-prepend">
-					<button class="searchBtn btn btn-light" id="basic-addon2" (click)="search()">
-					<i class="fa fa-search"></i></button>
-				</div>
-        <input class="searchBar form-control" 
+					<button class="searchBtn btn btn-light text-white border-white" id="basic-addon2" (click)="search()">
+					<i class="fa fa-search text-primary-dark"></i></button>
+				</div><!--text and border color class-->
+        <input class="searchBar form-control text-white border-white" 
         type="text" 
         aria-label="Search" 
         [(ngModel)]="searchString" 
@@ -14,8 +14,8 @@
         placeholder="Search Resources">
       </div>
     </div>
-    <div style="text-align: center;">
-    <p [hidden] = "hideLink" routerLink="/search-list" class="adv-srch">Advanced Search</p>
+    <div style="text-align: center;"><!--text color class-->
+    <p [hidden] = "hideLink" routerLink="/search-list" class="adv-srch text-white">Advanced Search</p>
     </div>
 	</div>		
 	</div>

@@ -1,13 +1,13 @@
 <div class="container search-background">
     <div class="row justify-content-center">
-        <div class="col-md-6 adv-search-toggle">
-            <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapsableBox" aria-expanded="false" aria-controls="collapsableBox">
+        <div class="col-md-6 adv-search-toggle bg-primary-light"><!--background color class-->
+            <button class="btn bg-primary-light bg-active-primary-light bg-focus-primary-light text-white btn-block" type="button" data-toggle="collapse" data-target="#collapsableBox" aria-expanded="false" aria-controls="collapsableBox">
                 Advanced Search
             </button>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 adv-search-box collapse" id="collapsableBox">
+        <div class="col-md-6 adv-search-box collapse bg-white" id="collapsableBox">
             <div class="form-group">
                 <label for="inputTitle">Title</label>
                 <input type="text" class="form-control" id="inputTitle" name="inputTitle" [(ngModel)]="searchData.title">
@@ -45,8 +45,8 @@
                     </select>
                 </div>
                 <div class="col-sm-3">
-                    <p style="height: 8px;"></p>
-                    <button class="btn btn-block adv-search-btn" type="button" (click)="searchAdvanced()">
+                    <p style="height: 8px;"></p><!--border, background, and text color class-->
+                    <button class="btn-block p-2 border-primary-light font-weight-normal bg-primary-light text-white shadow-none" type="button" (click)="searchAdvanced()">
                         Search
                     </button>
                 </div>

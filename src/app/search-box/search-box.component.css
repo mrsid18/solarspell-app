@@ -1,15 +1,9 @@
 
-.adv-srch{
+.adv-srch{/* replaced text color with class */
     cursor: pointer;
-    color:#FFF;
     margin: 0px;
     text-decoration: underline;
 }
-.searchBar, .searchBtn{
+.searchBar, .searchBtn{/* replaced background and text color with class */
     border-radius: 17px;
-    background-color: #fff;
-    border-color: #fff
-}
-.container-blue{
-    background-color: var(--spell-primary-blue);
 }

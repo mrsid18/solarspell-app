@@ -1,13 +1,11 @@
 .bc-div{
-    width:100%;
-    background-color: #FFF;
+    width:100%;/* replaced background color with class */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 1;
     position: relative;
 }
 ul.breadcrumb {
-    list-style: none;
-    background-color: #FFF;
+    list-style: none;/* replaced background color with class */
     width: fit-content;
     margin:0 auto;
   }
@@ -22,19 +20,16 @@ ul.breadcrumb {
   /* Add a slash symbol (/) before/behind each list item */
   ul.breadcrumb li+li:before {
     padding: 8px;
-    color: grey;
     content: ">";
   }
   
   /* Add a color to all links inside the list */
   ul.breadcrumb li a, ul.breadcrumb li span {
-    color: #000;
     text-decoration: none;
   }
   
   /* Add a color on mouse-over */
   ul.breadcrumb li a:hover {
-    color: #01447e;
     text-decoration: underline;
     cursor: pointer;
   }
@@ -46,7 +41,6 @@ ul.breadcrumb {
   }
   .clickable{
     cursor: pointer;
-    color:#FFF;
     margin: 0px;
     text-decoration: none
 }

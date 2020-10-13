@@ -1,11 +1,5 @@
-.navbar-style, .nav{
-    background: var(--spell-primary-blue);
-}
-.navbar-style .nav-link{
-    color: var(--spell-secondary-white);
-}
-.navbar-style .active{
-    color: var(--spell-primary-gold);
+
+.navbar-style .active{/* replaced background and text color with class */
     font-weight: bold;
 }
 
@@ -16,9 +10,7 @@
 }
 
 /*footer*/
-footer {
-    background-color: var(--spell-secondary-white);
-    color: var(--spell-secondary-black);
+footer {/* replaced background and text color with class */
     padding-top: 3em;
     padding-bottom: 3em;
     font-family: 'Roboto', 'Helvetica' , 'sans-serif'; 
@@ -31,13 +23,8 @@ footer img{ /*solarSPELL & Asu logo*/
     width: 15em;
     padding-bottom: 2em;
 }
-footer a{ /*solarSPELL email*/
-    color: var(--spell-secondary-black);
-}
 footer .button{ /*About Us Button*/
-    background-color: var(--spell-primary-blue);
     border: none;
-    color: var(--spell-secondary-white);
     padding: 1em 2em;
     border-radius: .5em;
     margin-top: 2em;

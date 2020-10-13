@@ -1,12 +1,13 @@
 
-.table-style{
-    background-color: #FFFFFF;
-}
+/* replaced background color with class */
 .table-style td{
     vertical-align: middle;
 }
 .table-style tr{
     cursor: pointer;
+}
+.table-style tr:hover{
+    font-weight: 600;
 }
 .table-style img{
     height: 2rem;

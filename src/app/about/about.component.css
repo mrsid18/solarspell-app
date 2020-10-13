@@ -8,19 +8,10 @@ text-align: center;
 padding-bottom: 1%;
 margin-top: 20px;
 }
-.aboutus {
-color: var(--spell-secondary-black);
-}
-
+/* replaced text color with class */
 .aboutus video{
 object-fit: fill;
-
-}
-.ourMission{
-background-color: var(--spell-primary-gold);
-color: var(--spell-secondary-black);
-}
-
+/* replaced background and text color with class */}
 /* mobile screen size*/
 @media screen and (min-width:200px) and (max-width: 576px) {
 .aboutus {

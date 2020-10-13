@@ -1,5 +1,4 @@
-.banner-div{
-    background-color: var(--spell-secondary-white);
+.banner-div{/* replaced background ith class */
     margin: 0px;
     padding: 0px;
 }
@@ -38,7 +37,6 @@
   }
 }
 .cat-container {
-    background: #F2F2F2;
     margin-bottom: 20px;
 }
 
@@ -49,5 +47,4 @@
     margin-top: 20px;
     max-width: 400px;
     max-height: 400px;
-
 }

@@ -1,5 +1,4 @@
-.banner-div{
-    background-color: white;
+.banner-div{/* replaced background with class */
     margin: 0px;
     padding: 0px;
 
@@ -25,13 +24,11 @@ iframe
     min-height: 750px;
 }
 .meta-col {
-    background-color: #FFF;
     padding-top: 30px;
 }
 .wrapper{
     margin: auto;
     width: 75%;
-    color: #585858	;
 }
 .lbl{
     margin-bottom: 0;

@@ -3,7 +3,7 @@
 </div>-->
 <section class="banner"><!-- banner will go here --></section>
 <app-search-box [hideLink]="false"></app-search-box>
-<div class="container cat-container">
+<div class="container cat-container bg-white"><!--background color class-->
     <div class="row justify-content-center cat-row" *ngFor="let rows of [0,1,2,3]; let i=index">
         <div class="col-md-4 folder-img" *ngFor="let folder of folders| slice:(3*i):(3*i+3)">
             <a [routerLink]="['/content', folder.id]"><img class="logo-style" src="/assets/{{folder.logo}}"/></a>

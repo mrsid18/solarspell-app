@@ -1,12 +1,12 @@
-<div class="bc-div">
-    <ul class="breadcrumb">
+<div class="bc-div bg-white">
+    <ul class="breadcrumb bg-white">
         <li>
             <img class="home-icon" routerLink ="/home" src="/assets/static/home.png">
         </li>
         <li *ngFor="let bc of breadcrumbList; let i=index">
-            <!--make last time unclickable-->
-            <a *ngIf="i != breadcrumbList.length -1" [routerLink] ="i == 0 ?['/content',bc.id] : ['/content',breadcrumbList[0].id,bc.id]">{{bc.name}}</a>
-            <span *ngIf="i == breadcrumbList.length -1" class="unclickable">{{bc.name}}</span> 
+            <!--make last time unclickable--><!--text color class-->
+            <a class="text-black text-hover-primary-dark" *ngIf="i != breadcrumbList.length -1" [routerLink] ="i == 0 ?['/content',bc.id] : ['/content',breadcrumbList[0].id,bc.id]">{{bc.name}}</a><!--text color class-->
+            <span class="text-black" *ngIf="i == breadcrumbList.length -1" class="unclickable">{{bc.name}}</span> 
         </li>
       </ul>
 </div>
