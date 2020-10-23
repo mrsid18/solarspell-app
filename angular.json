@@ -7,7 +7,8 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "fr": "src/locale/messages.fr.xlf"
+          "fr": "src/locale/messages.fr.xlf",
+          "sp": "src/locale/messages.sp.xlf"
         }
       },
       "projectType": "application",
@@ -42,6 +43,9 @@
           "configurations": {
             "fr": {
               "localize": ["fr"]
+            },
+            "sp": {
+              "localize": ["sp"]
             },
             "production": {
               "fileReplacements": [
@@ -84,6 +88,9 @@
             },
             "fr": {
               "browserTarget": "solarspell:build:fr"
+            },
+            "sp": {
+              "browserTarget": "solarspell:build:sp"
             }
           }
         },
