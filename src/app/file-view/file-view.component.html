@@ -1,10 +1,12 @@
-<div class="banner-div bg-white">
-    <img class="banner-style" src="/assets/{{parentFolder.banner}}">
-</div>
 <app-breadcrumb></app-breadcrumb>
 <app-search-box [hideLink]="false"></app-search-box>
 <div class="row"> 
     <div class="col-md-3 meta-col bg-white"> <!--background color class-->
+        <img class="logo-banner img-fluid pl-4 pt-3 pb-3" src="/assets/{{parentFolder.logo}}">
+        <div class="wrapper pb-3"><!--added download button with color class-->
+            <a [href]="fileURL" download><button type="button" class="button bg-primary-dark bg-hover-primary-light w-100 rounded text-white p-2 shadow-none border-primary-dark">
+                <i class="fa fa-download pr-2" aria-hidden="true"></i>Download</button></a>
+        </div>
         <div *ngIf="content.title" class="wrapper text-grey">
             <p i18n ="file tilte@@fileTitle" class="lbl">Title</p>
             <p class="value">{{content.title}}</p>

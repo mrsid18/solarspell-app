@@ -4,14 +4,6 @@
 
 }
 
-.banner-style{
-    height:100%;
-    width:100%;
-    min-width:200px;
-    min-height:100px;
-    max-width:100%;
-    max-height:100%;
-}
 /* replaced background color with class */
 .nav-style .nav-link{/* replaced text color with class */
     text-align: center;

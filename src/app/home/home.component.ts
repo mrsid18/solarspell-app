@@ -3,11 +3,15 @@ import { DataService } from '../services/data.service';
 import { Folder } from '../models/folder';
 import { ActiveService } from '../services/active.service';
 import { Router } from '@angular/router';
+import { variable } from '@angular/compiler/src/output/output_ast';
+
+var math = Math;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
+  
 })
 export class HomeComponent implements OnInit {
   public folders: Array<Folder> = [];
@@ -21,7 +25,18 @@ export class HomeComponent implements OnInit {
   'images/logos/medical_encyclopedia.png',
   'images/logos/wikipedia.png',
 ] ;
+public modules: Array<string> = ['images/logos/math.png',
+  'images/logos/creative_arts.png',
+  'images/logos/environment.png',
+  'images/logos/health_safety.png',
+  'images/logos/language_arts.png',
+  'images/logos/local_topics.png',
+  'images/logos/science.png',
+  'images/logos/medical_encyclopedia.png',
+  'images/logos/wikipedia.png',
+] ;
 public length = 9;
+public  math = Math;
 
   constructor(private dataService: DataService,
               private activeService: ActiveService,
@@ -39,3 +54,4 @@ public length = 9;
     });
   }
 }
+
