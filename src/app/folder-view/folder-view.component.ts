@@ -18,6 +18,8 @@ export class FolderViewComponent implements OnInit {
   public folderList: Array<Folder> = [];
   public mainFolders: Array<Folder> = [];
   public activeFolderId: number;
+  public  math = Math;
+  
   constructor(private dataService: DataService,
               private route: ActivatedRoute,
               private breadcrumbService: BreadcrumbService,
