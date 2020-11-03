@@ -1,10 +1,9 @@
-.banner-div{/* replaced background color with class */
-    margin: 0px;
-    padding: 0px;
 
+/* banner has been removed and replaced with this logo */
+.logo-banner{
+    width: 85%;
 }
 
-/* replaced background color with class */
 .nav-style .nav-link{/* replaced text color with class */
     text-align: center;
     cursor: pointer;

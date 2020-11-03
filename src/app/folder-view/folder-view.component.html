@@ -1,8 +1,9 @@
 <app-search-box [hideLink]="false"></app-search-box>
 <app-breadcrumb></app-breadcrumb>
 <div class="row"> 
-    <div class="col-md-3"> 
-        <img class="logo-banner img-fluid pl-4 pt-3 pb-3" src="/assets/{{parentFolder.logo}}">
+    <div class="bg-sunglow-10 col-md-3 pr-0"> 
+        <!--banner has been removed and replace with this logo-->
+        <img class="logo-banner img-fluid pt-3 pl-5 pb-3" src="/assets/{{parentFolder.logo}}"> 
         <ul class="nav flex-column nav-style bg-white"><!--backgound color class-->
             <li *ngFor="let folder of mainFolders" class="nav-item"  [ngClass]="{'link-active bg-sunglow-50' : activeFolderId == folder.id}"><!--backgound color class-->
                 <!--text color class-->

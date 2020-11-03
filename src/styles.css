@@ -32,6 +32,9 @@ body {
 .bg-sunglow{
   background-color:#FFC627;
 }
+.bg-sunglow-10{
+  background-color:rgba(255, 198, 39, 0.1);
+}
 .bg-sunglow-50{
   background-color:rgba(255, 198, 39, 0.5);
 }

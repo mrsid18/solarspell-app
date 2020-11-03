@@ -10,3 +10,10 @@
         </div>
     </div>
 </div>
+<div class="container cat-container bg-white"><!--background color class-->
+    <div class="row justify-content-center cat-row" *ngFor="let rows of contents | slice:0:(math.ceil(contents.length/3)); let i=index"><!--added math ceiling function-->
+        <div class="col-md-4 folder-img" *ngFor="let content of contents| slice:(3*i):(3*i+3)">
+            <a><img class="logo-style" src="/assets/{{content}}"/></a>
+        </div>
+    </div>
+</div> 
