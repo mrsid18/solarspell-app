@@ -1,10 +1,12 @@
-.banner-div{/* replaced background color with class */
-    margin: 0px;
-    padding: 0px;
 
+/* banner has been removed and replaced with this logo */
+.logo-banner{
+    width: 85%;
+}
+.btn{
+    pointer-events: none;
 }
 
-/* replaced background color with class */
 .nav-style .nav-link{/* replaced text color with class */
     text-align: center;
     cursor: pointer;
@@ -27,9 +29,26 @@
     text-overflow: ellipsis;
 }
 .folder-icon {
-    background: url('/assets/images/static/folder.png');
+    background: url('/assets/static/folder.png');
     float: left;
     height: 32px;
     width: 32px;
     margin-top: -5px;
+}
+@media screen and (min-width:200px) and (max-width: 575px){
+    .row, .nav-style, .nav-item{
+        width:100%;
+        margin: 0;
+    }
+    .logo-banner{
+        width: 70%;
+    }
+    .btn{
+        pointer-events: all;
+    }
+    .btn:focus{
+        box-shadow: 0,0,0, 0;
+        border-bottom: 2px solid #FFC627;
+    }
+    
 }

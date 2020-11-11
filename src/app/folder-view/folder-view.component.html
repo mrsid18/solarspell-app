@@ -1,8 +1,12 @@
 <app-search-box [hideLink]="false"></app-search-box>
 <app-breadcrumb></app-breadcrumb>
 <div class="row"> 
-    <div class="col-md-3"> 
-        <img class="logo-banner img-fluid pl-4 pt-3 pb-3" src="/assets/{{parentFolder.logo}}">
+    <div class="bg-sunglow-10 col-md-3 pl-0 pr-0"> 
+        <!--banner has been removed and replace with this logo-->
+        <button class="btn btn-folder shadow-none" type="button" data-toggle="collapse" data-target="#folderSupportedContent" aria-controls="folderSupportedContent" aria-expanded="false" aria-label="Toggle folders">
+        <img class="logo-banner img-fluid pt-3 pb-3" src="/assets/{{parentFolder.logo}}"> 
+    </button>
+        <div class="collapse d-lg-block" id="folderSupportedContent">
         <ul class="nav flex-column nav-style bg-white"><!--backgound color class-->
             <li *ngFor="let folder of mainFolders" class="nav-item"  [ngClass]="{'link-active bg-sunglow-50' : activeFolderId == folder.id}"><!--backgound color class-->
                 <!--text color class-->
@@ -10,10 +14,11 @@
             </li>
         </ul>
     </div>
+    </div>
     <div class="col-md-7 col-style">
         <div class="row" *ngFor="let rows of folderList | slice:0:(math.ceil(folderList?.length/3)); let i=index"><!--added math ceiling function-->
             <div class="col-lg-4" *ngFor="let folder of folderList| slice:(3*i):(3*i+3)">
-              <p class="btn btn-block folder-btn bg-white" [routerLink]="['/content',parentFolder.id, folder.id]"><!--backgound color class-->
+              <p class="btn btn-block folder-btn border border-primary bg-white" [routerLink]="['/content', parentFolder.id, folder.id]"><!--backgound color class-->
                 <span class="folder-icon"></span>
                 {{folder.folder_name}}
               </p>
