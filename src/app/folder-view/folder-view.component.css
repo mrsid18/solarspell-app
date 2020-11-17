@@ -2,6 +2,8 @@
 /* banner has been removed and replaced with this logo */
 .logo-banner{
     width: 85%;
+    margin-top: 17%;
+    padding-bottom: 1%;
 }
 .btn{
     pointer-events: none;
@@ -41,14 +43,19 @@
         margin: 0;
     }
     .logo-banner{
-        width: 70%;
+        width: 20%;
+        margin-top: 0;
+      
+        padding-top: 1%;
+       
+    }
+    .bg-sunglow-10{
+            background-color:transparent;
     }
     .btn{
         pointer-events: all;
     }
     .btn:focus{
         box-shadow: 0,0,0, 0;
-        border-bottom: 2px solid #FFC627;
     }
-    
 }
