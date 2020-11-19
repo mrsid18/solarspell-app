@@ -16,6 +16,9 @@ var math = Math;
 })
 export class HomeComponent implements OnInit {
   public folders: Array<Folder> = [];
+  public modules: Array<Folder> = [{id:1,folder_name:"http://schools-wikipedia.org/",banner:null,logo:"images/logos/wikipedia.png",parent_id:2},
+  {id:1,folder_name:"/phet",banner:null,logo:"images/logos/phet.png",parent_id:2}
+]
   public logos: Array<string> = ['images/logos/math.png',
   'images/logos/creative_arts.png',
   'images/logos/environment.png',
@@ -26,28 +29,6 @@ export class HomeComponent implements OnInit {
   'images/logos/medical_encyclopedia.png',
   'images/logos/wikipedia.png',
 ] ;
-//test logo array
-public folder_test: Array<string> = ['images/logos/math.png',
-  'images/logos/creative_arts.png',
-  'images/logos/environment.png',
-  'images/logos/health_safety.png',
-  'images/logos/language_arts.png',
-  'images/logos/local_topics.png',
-  'images/logos/science.png',
-] ;
-
-//test module array 
-public modules: Array<string> = ['images/modules/medical_encyclopedia.png',
-  'images/modules/science.png',
-  'images/modules/language_arts.png',
-  'images/modules/local_topics.png',
-  'images/modules/creative_arts.png',
-  'images/modules/environment.png',
-  'images/modules/health_safety.png',
-] ;
-
-//this variable will hold the folder_test and module array
-public contents: Array<string> = [];
 
 //this variable holds Math
 public  math = Math;
@@ -59,14 +40,13 @@ public  math = Math;
 
   ngOnInit(): void {
     this.getFolders();
-    //this code combines folder_test and modules
-    this.contents= this.folder_test.concat(this.modules);
   }
 
   getFolders() {
     this.dataService.getFolders()
     .subscribe( response  => {
       this.folders = response;
+      this.folders = this.folders.concat(this.modules);
     });
   }
 }

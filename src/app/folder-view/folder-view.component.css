@@ -3,9 +3,6 @@
 .logo-banner{
     width: 85%;
 }
-.btn{
-    pointer-events: none;
-}
 
 .nav-style .nav-link{/* replaced text color with class */
     text-align: center;
@@ -16,8 +13,16 @@
     width: 100%;    
 }
 
+.folder-logo{
+    display:block;
+    width: 75%;
+    margin: 1rem;
+}
+.folders-btn{
+    display:none;
+}
 .col-style{
-    margin: 3em;
+    margin-top: 3em;
 }
 .folder-btn{
     height: 50px;
@@ -35,20 +40,23 @@
     width: 32px;
     margin-top: -5px;
 }
-@media screen and (min-width:200px) and (max-width: 575px){
+@media screen and (min-width:200px) and (max-width: 991px){
     .row, .nav-style, .nav-item{
         width:100%;
         margin: 0;
     }
-    .logo-banner{
-        width: 70%;
+    .folder-logo{
+        display:none;
     }
-    .btn{
-        pointer-events: all;
+    .folders-btn{
+        display:block;
+        background:#FFC627;
+        color:#000;
+        font-weight: bold;
     }
-    .btn:focus{
-        box-shadow: 0,0,0, 0;
-        border-bottom: 2px solid #FFC627;
-    }
-    
+}
+.no-records-message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
 }

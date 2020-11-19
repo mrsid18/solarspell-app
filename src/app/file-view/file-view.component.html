@@ -19,20 +19,24 @@
             <p class="value">{{content.file_size | fileSize}}</p>
         </div>         
         <div class="wrapper text-grey" *ngFor= "let meta of metadataList">
-            <p i18n class="lbl">{meta.name, select, Keywords {Keywords} Subject {Subject} Creator {Creator} Language {Language} Resource Type {Resource Type}}</p>
+            <p i18n class="lbl">{meta.name, select, Keyword {Keyword} Subject {Subject} Creator {Creator} Language {Language} Resource Type {Resource Type} Audience {Audience}}</p>
             <p class="value">{{meta.value}}</p>
         </div>
         <div *ngIf="content.published_date" class="wrapper text-grey"><!--text color class-->
             <p i18n="year published@@yearPublished" class="lbl">Year Published</p>
             <p class="value">{{content.published_date | date : "yyyy"}}</p>
         </div> 
-        <div *ngIf="content.copyright" class="wrapper text-grey"><!--text color class-->
-            <p i18n="Copyright@@copyright" class="lbl">Copyright</p>
-            <p class="value">{{content.copyright}}</p>
-        </div> 
+        <div *ngIf="content.rights_holder" class="wrapper text-grey"><!--text color class-->
+            <p i18n="Rights Holder@@rightsHolder" class="lbl">Rights Holder</p>
+            <p class="value">{{content.rights_holder}}</p>
+        </div>  
         <div *ngIf="content.rights_statement" class="wrapper text-grey"><!--text color class-->
             <p i18n="Rights Statement" class="lbl">Rights Statement</p>
             <p class="value">{{content.rights_statement}}</p>
+        </div>
+        <div *ngIf="content.copyright_notes" class="wrapper text-grey"><!--text color class-->
+            <p i18n="Copyright@@copyright" class="lbl">Copyright Notes</p>
+            <p class="value">{{content.copyright_notes}}</p>
         </div> 
     </div>
     <div class="col-md-9 file-col">

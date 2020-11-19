@@ -2,32 +2,21 @@
     margin: 0px;
     padding: 0px;
 }
-
-.banner-style{
-    height:100%;
-    width:100%;
-    min-width:200px;
-    min-height:100px;
-    max-width:100%;
-    max-height:100%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.logo-style {
-    height:100%;
-    width:100%;
-    min-width:200px;
-    min-height:10px;
-    max-width:100%;
-    max-height:100%; 
-}
-
 .banner{
-    height: 400px;
-    background-image: url(/assets/images/banners/banner.png);
+    height: 420px;
+    background-image: url(/assets/images/banners/east-africa.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.cat-row{
+    margin-top: 20px;
+}
+.cat-col{
+    text-align:center;
+}
+.logo-img{
+   width:80%;
 }
 /*
  mobile screen size*/
@@ -35,6 +24,12 @@
     .banner {
       height: 200px;
   }
+    .logo-img{
+        width:70%;
+    }
+    .cat-col{
+        margin-top: 20px;
+    }
 }
 .cat-container {
     margin-bottom: 20px;
@@ -42,9 +37,4 @@
 
 .cat-container img{
     cursor: pointer;
-}
-.folder-img{
-    margin-top: 20px;
-    max-width: 400px;
-    max-height: 400px;
 }

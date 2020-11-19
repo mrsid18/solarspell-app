@@ -4,8 +4,9 @@ export class Content {
     description: string;
     file_name: string;
     published_date: string;
-    copyright: string;
+    copyright_notes: string;
     rights_statement: string;
+    rights_holder: string;
     file_size: number;
     folder_id: number;
 }

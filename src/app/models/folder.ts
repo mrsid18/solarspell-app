@@ -1,7 +1,7 @@
 export class Folder {
     public id: number;
-    public folderName: string;
+    public folder_name: string;
     public banner: string;
     public logo: string;
-    public parentId: number;
+    public parent_id: number;
 }

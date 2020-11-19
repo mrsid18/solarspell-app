@@ -1,4 +1,3 @@
-<p *ngIf=!contentList.length class="no-records-message">No Records Found</p>
 <table *ngIf="contentList.length" class="table table-style bg-white"><!--background color class-->
     <thead>
       <tr>
@@ -8,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 10, currentPage: page }" [routerLink]="['/file-view',content.id]" class="bg-hover-sunglow-50"> <!--background hover color class-->
+      <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 25, currentPage: page }" [routerLink]="['/file-view',content.id]" class="bg-hover-sunglow-50"> <!--background hover color class-->
         <td><img src="{{getFileExtension(content.file_name)}}"></td>
         <td>{{content.title}}</td>
         <td>{{content.file_size | fileSize}}</td>
