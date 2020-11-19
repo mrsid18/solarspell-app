@@ -2,6 +2,8 @@
 /* banner has been removed and replaced with this logo */
 .logo-banner{
     width: 85%;
+    margin-top: 17%;
+    padding-bottom: 1%;
 }
 
 .nav-style .nav-link{/* replaced text color with class */

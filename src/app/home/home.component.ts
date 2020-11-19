@@ -26,7 +26,10 @@ export class HomeComponent implements OnInit {
   'images/logos/language_arts.png',
   'images/logos/local_topics.png',
   'images/logos/science.png',
-  'images/logos/medical_encyclopedia.png',
+  'images/logos/social_science.png',
+  'images/logos/phet.png',
+  'images/logos/kaLite.png',
+  'images/logos/reference_tools.png',
   'images/logos/wikipedia.png',
 ] ;
 
