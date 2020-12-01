@@ -16,7 +16,7 @@ export class FolderViewComponent implements OnInit {
   public parentFolder: Folder;
   public contentList: Array<Content> = [];
   public folderList: Array<Folder> = [];
-  public mainFolders: Array<Folder> = [];
+  //removed mainFolders
   public activeFolderId: number;
   public  math = Math;
   
@@ -28,16 +28,14 @@ export class FolderViewComponent implements OnInit {
   ngOnInit() {
     this.route.data
       .subscribe((data) => {
-        this.mainFolders = data.folderData.folders;
+        this.folderList = data.folderData.folders;
         this.parentFolder = data.folderData.parentFolder;
       });
       this.route.params.subscribe(params => {
-        let subfolderId = parseInt(params['subfolder_id']);
-        if (Number.isNaN(subfolderId)) {
-          subfolderId = this.mainFolders[0].id;
-         }
-         this.getFolderContent(subfolderId);
-         this.breadcrumbService.updateBreadcrumb(subfolderId, true);
+        let parentFolderId = parseInt(params['folder_id']);
+         this.getFolderContent(parentFolderId);
+        //removed mainFolders
+         this.breadcrumbService.updateBreadcrumb(parentFolderId, true);
     });  
     window.scroll(0,0);
   }

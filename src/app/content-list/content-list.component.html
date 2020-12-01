@@ -1,13 +1,17 @@
 <table *ngIf="contentList.length" class="table table-style bg-white"><!--background color class-->
     <thead>
       <tr>
+        <!--added index title to list-->
+        <th scope="col">#</th>
         <th scope="col">Type</th>
         <th scope="col" sortable="title" (sort)="onSort($event)">Title</th>
-        <th scope="col" sortable="file_size" (sort)="onSort($event)">Size</th>
+        <th scope="col" sortable="fi`le_size" (sort)="onSort($event)">Size</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 25, currentPage: page }" [routerLink]="['/file-view',content.id]" class="bg-hover-sunglow-50"> <!--background hover color class-->
+      <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 25, currentPage: page } let i=index" [routerLink]="['/file-view',content.id]" class="bg-hover-sunglow-50"> 
+        <!--added index number to list-->
+        <td>{{i+1}}</td>
         <td><img src="{{getFileExtension(content.file_name)}}"></td>
         <td>{{content.title}}</td>
         <td>{{content.file_size | fileSize}}</td>

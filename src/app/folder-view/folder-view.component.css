@@ -17,8 +17,10 @@
 
 .folder-logo{
     display:block;
-    width: 75%;
-    margin: 1rem;
+    width: 95%;
+    margin-top: 2.8rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
 }
 .folders-btn{
     display:none;
@@ -28,6 +30,7 @@
 }
 .folder-btn{
     height: 50px;
+    border-color: #0676D8;
     border-radius: 25px;
     padding-top: 12px;
     font-weight: 500;
@@ -42,23 +45,18 @@
     width: 32px;
     margin-top: -5px;
 }
-@media screen and (min-width:200px) and (max-width: 991px){
-    .row, .nav-style, .nav-item{
-        width:100%;
-        margin: 0;
-    }
-    .folder-logo{
-        display:none;
-    }
-    .folders-btn{
-        display:block;
-        background:#FFC627;
-        color:#000;
-        font-weight: bold;
-    }
+.btn-light:hover{
+    background-color:rgba(255, 198, 39, 0.5);
+    font-weight: 600;
 }
 .no-records-message {
     text-align: center;
     font-size: 18px;
     font-weight: 500;
+}
+@media screen and (min-width:200px) and (max-width: 991px){
+    .row{
+        width:100%;
+        margin: 0;
+    }
 }

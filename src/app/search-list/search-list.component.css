@@ -44,8 +44,10 @@
     font-weight: 500;
 }
 .adv-search-btn{
-  
     font-weight: 500;
+}
+.search-btn:focus{
+    outline: none;
 }
 .no-records-message {
     text-align: center;

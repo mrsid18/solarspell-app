@@ -1,39 +1,15 @@
 <app-search-box [hideLink]="false"></app-search-box>
 <app-breadcrumb></app-breadcrumb>
 <div class="row">
-    <div class="col-lg-3">
-        <div><img class="folder-logo" src="/assets/{{parentFolder.logo}}"></div>
-        <nav class="navbar navbar-expand-lg">
-            <button class="btn btn-block folders-btn" type="button" data-toggle="collapse" data-target="#navbarFolders" aria-controls="navbarFolders" aria-expanded="false" aria-label="Toggle navigation">
-                {{parentFolder.folder_name}} Categories &#9660;	
-            </button>
-            <div class="collapse navbar-collapse" id="navbarFolders">
-                <ul class="nav flex-column nav-style bg-white"><!--backgound color class-->
-                    <li *ngFor="let folder of mainFolders" class="nav-item"  [ngClass]="{'link-active bg-sunglow-50' : activeFolderId == folder.id}"><!--backgound color class-->
-                        <!--text color class-->
-                        <a class="nav-link text-black text-hover-primary-dark" [routerLink]="['/content',parentFolder.id,folder.id]">{{folder.folder_name}}</a>
-                    </li>
-                </ul>
-            </div>
-        </nav> 
-    </div>
-    <!-- <div class="bg-sunglow-10 col-md-3 pl-0 pr-0"> 
-        <button class="btn btn-folder shadow-none" type="button" data-toggle="collapse" data-target="#folderSupportedContent" aria-controls="folderSupportedContent" aria-expanded="false" aria-label="Toggle folders">
-            <img class="logo-banner img-fluid" src="/assets/{{parentFolder.logo}}"> 
-        </button>
-        </div>
-        <div class="collapse d-lg-block" id="folderSupportedContent">
-            <ul class="nav flex-column nav-style bg-white">
-                <li *ngFor="let folder of mainFolders" class="nav-item"  [ngClass]="{'link-active bg-sunglow-50' : activeFolderId == folder.id}">
-                    <a class="nav-link text-black text-hover-primary-dark" [routerLink]="['/content',parentFolder.id,folder.id]">{{folder.folder_name}}</a>
-                </li>
-            </ul>
-        </div>
-    </div> -->
-    <div class="col-lg-7 col-style">
+    <div class="col-lg-2">
+        <div class="d-none d-lg-block"><img class="folder-logo" src="/assets/{{parentFolder.logo}}"></div>
+    </div><!--removed logo nav functionality-->
+    <div class="col-lg-9 col-style">
         <div class="row" *ngFor="let rows of folderList | slice:0:(math.ceil(folderList?.length/3)); let i=index"><!--added math ceiling function-->
             <div class="col-lg-4" *ngFor="let folder of folderList| slice:(3*i):(3*i+3)">
-              <p class="btn btn-block folder-btn border-primary bg-white" [routerLink]="['/content', parentFolder.id, folder.id]"><!--backgound color class-->
+                
+              <p class="btn btn-light border-primary-dark bg-hover-sunglow-50 btn-block folder-btn" [routerLink]="['/content', folder.id]">
+                <!--removed parentFolder.id since mainFolders no longer in use-->
                 <span class="folder-icon"></span>
                 {{folder.folder_name}}
               </p>

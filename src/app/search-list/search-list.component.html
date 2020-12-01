@@ -29,25 +29,25 @@
                 </div>
             </div>
             <div class="form-row justify-content-center">
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-12"><!--full column-->
                     <label>Published Date</label>
                 </div>
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-4"><!--under the published date label-->
                     <label>Min</label>
                     <select class="form-control" [(ngModel)]="searchData.min_date">
                         <option [value]=""></option>
                         <option *ngFor="let year of dropyears" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
                     </select>                </div>
-                <div class="form-group col-sm-3">
+                <div class="form-group col-sm-4">
                     <label>Max</label>
                     <select class="form-control"[(ngModel)]="searchData.max_date">
                         <option [value]=""></option>
                         <option *ngFor="let year of dropyears" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
                     </select>
                 </div>
-                <div class="col-sm-3">
-                    <p style="height: 8px;"></p><!--border, background, and text color class-->
-                    <button class="btn-block p-2 border-primary-light font-weight-normal bg-primary-light text-white shadow-none" type="button" (click)="searchAdvanced()">
+                <div class="col-sm-4">
+                    <p style="height: 5px;"></p><!--made the search button more consistent-->
+                    <button class="search-btn btn-block p-2 border-primary-light font-weight-normal bg-primary-light text-white shadow-none bg-hover-primary-dark rounded" type="button" (click)="searchAdvanced()">
                         Search
                     </button>
                 </div>
