@@ -2,13 +2,16 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" routerLink="home">
-                <img src="/assets/images/logos/logo_small.png" class="logo-responsive">
+                <img src="/assets/images/logos/logo_full.png" class="logo-responsive">
             </a>
+            <span class="text-white">
+                <p class="title" routerLink="home"></p>
+            </span> 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link text-white" [routerLink]="['/home']" routerLinkActive="active">Home</a>
                     </li>
@@ -18,24 +21,10 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" [routerLink]="['/about']" routerLinkActive="active">About us</a>
                     </li>                    
-                </ul>
-                <span class="navbar-text">
-                    <a href="#">EN</a> |  <a href="#">FR</a> 
-                </span>
+                </ul>              
             </div>
         </nav>
     </div>
 </div>
 <router-outlet></router-outlet>
-<footer class="bg-white text-black">
-    <img src="/assets/static/SolarSpell_Primary_tsp.png" alt="SolarSPELL logo">
-    <img src="/assets/static/asu-logo-black.png" alt="Arizona State University Black logo">
-    <br>
-    <a [routerLink]="['/about']" class="bg-primary-dark text-white"><button type="button" class="button border-primary-dark bg-primary-dark bg-hover-primary-light rounded text-white shadow-none">About Us</button></a>
-    <section id="footerText"><!--made the button consistent with the other buttons on the site-->
-      <p>SolarSPELL (Solar Powered Educational Learning Library) works to build internet-ready
-        skills and improve educational opportunities around the world.</p>
-      <br>
-      <p>Contact us at <a href="mailto:team@solarspell.org" class="text-black">team@solarspell.org</a></p>
-    </section>
-</footer>
+<app-footer></app-footer>

@@ -16,6 +16,7 @@ export class FolderViewComponent implements OnInit {
   public parentFolder: Folder;
   public contentList: Array<Content> = [];
   public folderList: Array<Folder> = [];
+  public logo: string;
   //removed mainFolders
   public activeFolderId: number;
   public  math = Math;
@@ -30,6 +31,7 @@ export class FolderViewComponent implements OnInit {
       .subscribe((data) => {
         this.folderList = data.folderData.folders;
         this.parentFolder = data.folderData.parentFolder;
+        this.logo = data.folderData.logo;
       });
       this.route.params.subscribe(params => {
         let parentFolderId = parseInt(params['folder_id']);

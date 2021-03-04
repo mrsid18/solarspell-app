@@ -12,9 +12,12 @@ import { ActiveService } from '../services/active.service';
 })
 export class SearchListComponent implements OnInit {
   public contentList :Array<Content> = [];
+  public searchString: String = ""; // the search string/keyword passed through the router for search
   public metadataList = [];
   public selectedMeta = [];
   public searchData: SearchData;
+  public expandAdvanced: boolean;
+  public  math = Math;
   dropyears: Array<Date> = [];
   years = ["1-1-1970","1-1-1971","1-1-1972","1-1-1973","1-1-1974","1-1-1975","1-1-1976","1-1-1977","1-1-1978","1-1-1979",
   "1-1-1980","1-1-1981","1-1-1982","1-1-1983","1-1-1984","1-1-1985","1-1-1986","1-1-1987","1-1-1988","1-1-1989",
@@ -35,11 +38,14 @@ export class SearchListComponent implements OnInit {
     this.route.data
       .subscribe((data) => {
         if(data.searchResult){
-          this.contentList = data.searchResult;
+          this.contentList = data.searchResult.contentList;
+          this.searchString = data.searchResult.searchString;
           this.scrollToTable();
+          this.expandAdvanced = false;
         }
         else {
           this.contentList = [];
+          this.expandAdvanced = true;
         }
       });
     this.getMetadataList();
@@ -74,26 +80,21 @@ export class SearchListComponent implements OnInit {
   }
   addMeta($event)
   {
-    this.searchData.metadata.push($event);
+    this.selectedMeta.push($event);
   }
   removeMeta($event)
   {
-    const index = this.searchData.metadata.indexOf($event.value, 0);
-    this.searchData.metadata.splice(index,1);
+    const index = this.selectedMeta.indexOf($event.value, 0);
+    this.selectedMeta.splice(index,1);
   }
   searchAdvanced()
   {
+    let meta_ids = this.selectedMeta.map(metadata => metadata.id);
+    this.searchData.metadata = meta_ids;
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
       this.contentList = response;
       this.scrollToTable();
-    });
-  }
-  searchSingle(searchString:string)
-  {
-    this.dataService.singleSearch(searchString)
-    .subscribe( response  => {
-      this.contentList = response;
     });
   }
   scrollToTable(){

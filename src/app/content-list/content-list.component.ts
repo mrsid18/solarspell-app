@@ -33,7 +33,7 @@ export class ContentListComponent implements OnInit {
     // resetting other headers
     this.headers.forEach(header => {
       if (header.sortable !== column) {
-        header.direction = '';
+        header.direction = 'desc';
       }
     });
 

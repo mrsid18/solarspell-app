@@ -8,14 +8,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 adv-search-box collapse bg-white show" id="collapsableBox">
+        <div class="col-md-6 adv-search-box collapse bg-white" [ngClass]="{'show':expandAdvanced}" id="collapsableBox">
             <div class="form-group">
                 <label for="inputTitle">Title</label>
                 <input type="text" class="form-control" id="inputTitle" name="inputTitle" [(ngModel)]="searchData.title">
             </div>
-            <div class="form-row" *ngFor="let rows of metadataList | slice:0:(metadataList?.length/2); let i=index">
+            <div class="form-row" *ngFor="let rows of metadataList | slice:0:(math.ceil((metadataList?.length/2))); let i=index">
                 <div class="form-group col-md-6" *ngFor="let metadata of metadataList| slice:(2*i):(2*i+2)">
-                    <label>{{metadata.name}}</label>
+                   <label>{{metadata.name}}</label>
                     <ng-select
                         class="custom"
                         [items]="metadata.metadata"
@@ -23,6 +23,8 @@
                         [closeOnSelect]="false"
                         [hideSelected]="true"
                         [clearable]	="false"
+                        bindLabel = "meta_name"
+                        bindValue = "id"
                         (add) = "addMeta($event)"
                         (remove) = "removeMeta($event)">
                     </ng-select>
@@ -59,8 +61,9 @@
 <div class="container">
     <div class="row">       
         <div class="col-md-12 col-margin">
+            <h5 id="contentElement" >Displaying Results for: "{{searchString}}"</h5>
             <p *ngIf="!contentList.length" class="no-records-message">No Items Found</p>
-            <app-content-list id="contentElement" [contentList]="contentList"></app-content-list>
+            <app-content-list [contentList]="contentList"></app-content-list>
         </div>
     </div>
 </div>

@@ -1,0 +1,59 @@
+/*footer*/
+footer {/* replaced background and text color with class */
+    padding-top: 3em;
+    padding-bottom: 3em;
+    font-family: 'Roboto', 'Helvetica' , 'sans-serif'; 
+    text-align: center;
+    font-size: 14px;
+    z-index: 4;
+    font-weight: 500;
+}
+footer img{ /*solarSPELL & Asu logo*/
+    width: 15em;
+    padding-bottom: 2em;
+}
+footer .button{ /*About Us Button*/
+    padding: 1em 2em;
+    border-radius: .5em;
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+footer .button:focus{
+    outline: none;
+}
+#footerText{
+    padding-top: 3em;
+    margin: 0;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+}
+/*phone*/
+@media (max-width: 576px){
+footer p{
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+    text-align: center;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+}
+/*tablet*/
+@media (min-width: 577px) and (max-width: 991px){
+footer p{
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 50%;
+}
+}
+/*desktop*/
+@media (min-width: 992px){
+    footer p{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+}

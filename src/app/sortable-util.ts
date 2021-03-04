@@ -2,9 +2,9 @@ import { Content } from './models/content';
 import { Directive, Input, EventEmitter, Output } from '@angular/core';
 
 export type SortColumn = keyof Content | '';
-export type SortDirection = 'asc' | 'desc' | '';
-export const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': '', '': 'asc' };
-export const compare = (v1, v2) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
+export type SortDirection = 'asc' | 'desc';
+export const rotate: {[key: string]: SortDirection} = { 'asc': 'desc','desc': 'asc'};
+export const compare = (v1, v2) => v1.localeCompare(v2);
 
 export interface SortEvent {
   column: SortColumn;
@@ -22,7 +22,7 @@ export interface SortEvent {
 export class SortableHeader {
 
   @Input() sortable: SortColumn = '';
-  @Input() direction: SortDirection = '';
+  @Input() direction: SortDirection = 'asc';
   @Output() sort = new EventEmitter<SortEvent>();
 
   rotate() {

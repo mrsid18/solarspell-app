@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -17,6 +17,8 @@ import { SearchListComponent } from './search-list/search-list.component';
 import { ContentListComponent } from './content-list/content-list.component';
 import { SortableHeader } from './sortable-util';
 import { AboutComponent } from './about/about.component';
+import { ConfigService } from './services/config.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { AboutComponent } from './about/about.component';
     SearchListComponent,
     ContentListComponent,
     SortableHeader,
-    AboutComponent
+    AboutComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,18 @@ import { AboutComponent } from './about/about.component';
     NgSelectModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        return () => {
+          return configService.loadAppConfig();
+        };
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

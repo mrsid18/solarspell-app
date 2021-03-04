@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 import { ActiveService } from '../services/active.service';
-import { SearchData } from '../models/search-data';
 
 @Component({
   selector: 'app-search-box',
@@ -22,7 +21,12 @@ export class SearchBoxComponent implements OnInit {
   
   search(){
     if (this.searchString.trim() != ''){
-      this.router.navigate(['/search-list', this.searchString.toLocaleLowerCase()]);
+      // remove fts special characters
+      let searchString_cleaned = this.searchString.replace(".", " ")
+      .replace("?", " ")
+      .replace(",", " ")
+      .replace("!", " ");
+      this.router.navigate(['/search-list', searchString_cleaned]);
     }
   }
 }
