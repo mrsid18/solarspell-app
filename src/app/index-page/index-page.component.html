@@ -1,0 +1,10 @@
+<div class="container tree-title bg-sunglow-50">
+    <p class="title-padding text-black">SolarSPELL Library Index</p>
+</div>
+<div class="container bg-white tree-container tree-background">
+    <tree-root [nodes]="tree"
+        (activate)="navigate($event)">
+    </tree-root>
+    <img src="/assets/images/banners/banner_search.jpg">
+</div>
+

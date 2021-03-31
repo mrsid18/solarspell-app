@@ -19,6 +19,8 @@ import { SortableHeader } from './sortable-util';
 import { AboutComponent } from './about/about.component';
 import { ConfigService } from './services/config.service';
 import { FooterComponent } from './footer/footer.component';
+import { IndexPageComponent } from './index-page/index-page.component';
+import { TreeModule } from '@circlon/angular-tree-component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { FooterComponent } from './footer/footer.component';
     ContentListComponent,
     SortableHeader,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    IndexPageComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     FormsModule,
     NgSelectModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    TreeModule
   ],
   providers: [
     {

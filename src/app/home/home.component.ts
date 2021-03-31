@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Folder } from '../models/folder';
-import { ActiveService } from '../services/active.service';
-import { Router } from '@angular/router';
-import { variable } from '@angular/compiler/src/output/output_ast';
-import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 
 var math = Math;
 
@@ -44,10 +40,7 @@ export class HomeComponent implements OnInit {
 //this variable holds Math
 public  math = Math;
 
-  constructor(private dataService: DataService,
-              private activeService: ActiveService,
-              private router: Router
-    ) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     this.getFolders();

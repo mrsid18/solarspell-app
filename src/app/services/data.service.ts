@@ -21,6 +21,10 @@ export class DataService {
      return this.http.get(this.apiUrl.concat('folder_get_all.php',""));
    }
 
+   getFolderTree(): Observable<any> {
+    return this.http.get(this.apiUrl.concat('folder_get_tree.php',""));
+  }
+
    getFolderData(parentId): Observable<any> {
     let params = new HttpParams();
     params = params.append('folder_id', parentId);
