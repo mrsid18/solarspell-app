@@ -2,7 +2,7 @@
 <app-breadcrumb></app-breadcrumb>
 <div class="row">
     <div class="col-lg-2">
-        <div class="d-none d-lg-block"><img class="folder-logo" src="/assets/{{logo}}"></div>
+        <div class="d-none d-lg-block"><img class="folder-logo" src="assets/{{logo}}"></div>
     </div><!--removed logo nav functionality-->
     <div class="col-lg-9 col-style">
         <div class="row" *ngFor="let rows of folderList | slice:0:(math.ceil(folderList?.length/3)); let i=index"><!--added math ceiling function-->

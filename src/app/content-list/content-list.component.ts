@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, QueryList, ViewChildren, OnChanges } from '@angular/core';
 import { SortableHeader, SortEvent, compare } from '../sortable-util';
 
 @Component({
@@ -6,26 +6,33 @@ import { SortableHeader, SortEvent, compare } from '../sortable-util';
   templateUrl: './content-list.component.html',
   styleUrls: ['./content-list.component.css']
 })
-export class ContentListComponent implements OnInit {
+export class ContentListComponent implements OnInit, OnChanges {
   @Input() contentList:[];
-  @ViewChildren(SortableHeader) headers: QueryList<SortableHeader>;
   page: number = 1;
+  @ViewChildren(SortableHeader) headers: QueryList<SortableHeader>;
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit():void {
   }
+
+   
+  ngOnChanges():void {
+    //to make sure pagination starts from 1 when switching to a different folder  
+    this.page =1;
+  }
+
   getFileExtension(fileName:string) : string
   {
     let ext = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length) || fileName;
     switch (ext){
       case 'mp4':
-        return '/assets/static/mp4.png';
+        return 'assets/static/mp4.png';
       case 'pdf':
-        return '/assets/static/file.png';
+        return 'assets/static/file.png';
       case 'mp3':
-        return '/assets/static/mp3.png';
+        return 'assets/static/mp3.png';
       default:
-        return '/assets/static/file.png';
+        return 'assets/static/file.png';
     }
   }
   onSort({column, direction}: SortEvent) {

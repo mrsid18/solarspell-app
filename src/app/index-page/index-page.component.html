@@ -1,10 +1,12 @@
-<div class="container tree-title bg-sunglow-50">
-    <p class="title-padding text-black">SolarSPELL Library Index</p>
+<div class="container info-section bg-sunglow-50">
+    <p class="title-style text-black">SolarSPELL Library Index</p>
+    <p class="info-style"> This index provides an overview of all folders and subfolders available on the SolarSPELL library. 
+        Click on the <span class="plus-button"></span> to see the topics available within each main subject area. You can also click on the 
+    folder title to view its contents.</p>
 </div>
 <div class="container bg-white tree-container tree-background">
-    <tree-root [nodes]="tree"
-        (activate)="navigate($event)">
+    <tree-root [nodes]="tree" (activate)="navigate($event)" [ngClass]="'expand-tree'">
     </tree-root>
-    <img src="/assets/images/banners/banner_search.jpg">
+    <img src="assets/images/banners/banner_search.jpg">
 </div>
 

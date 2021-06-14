@@ -21,11 +21,14 @@
                         [items]="metadata.metadata"
                         [multiple]="true"
                         [closeOnSelect]="false"
+                        [clearSearchOnAdd] = "true"
                         [hideSelected]="true"
                         [clearable]	="false"
                         bindLabel = "meta_name"
                         bindValue = "id"
+                        [appendTo]="'body'"
                         (add) = "addMeta($event)"
+                        [searchFn]="startsWithSearchFn"
                         (remove) = "removeMeta($event)">
                     </ng-select>
                 </div>
@@ -56,12 +59,12 @@
             </div>
         </div>
     </div>
-    <img src="/assets/images/banners/banner_search.jpg">
+    <img src="assets/images/banners/banner_search.jpg">
 </div>
 <div class="container">
     <div class="row">       
         <div class="col-md-12 col-margin">
-            <h5 id="contentElement" >Displaying Results for: "{{searchString}}"</h5>
+            <h5 *ngIf="searchString.length" id="contentElement" >Displaying Results for: "{{searchString}}"</h5>
             <p *ngIf="!contentList.length" class="no-records-message">No Items Found</p>
             <app-content-list [contentList]="contentList"></app-content-list>
         </div>

@@ -2,15 +2,19 @@
     margin-top: 15px; 
     margin-bottom: 50px;
 }
-.tree-title{
+.info-section{
     text-align: center;
     margin-top: 25px;
-    font-weight: bold;
-    font-size: 24px;
 }
-.title-padding{
+.title-style{
     padding-top: 15px;
     padding-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.info-style{
+    font-size: 18px;
+    font-weight: bold;
 }
 .tree-background  img {
     position: absolute;
@@ -20,4 +24,35 @@
     height: auto;
     opacity: 0.4;
     z-index: -1;
+}
+
+.plus-button  {
+    width: 13px;
+    height: 13px;
+    border: 1px solid #23527c;
+    position: relative;
+    margin-top: 5px;
+    display: inline-block;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.plus-button::after {
+    content: "";
+    display: inline-block;
+    height: 7px;
+    border-left: 1px solid #23527c;
+    position: absolute;
+    top: 2px;
+    left: 5px;
+}
+
+.plus-button::before{
+    content: "";
+    display: inline-block;
+    width: 7px;
+    border-top: 1px solid #23527c;
+    position: absolute;
+    top: 5px;
+    left: 2px;
 }

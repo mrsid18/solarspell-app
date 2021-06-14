@@ -11,7 +11,7 @@
             <p class="value">{{content.description}}</p>
         </div>       
         <div class="wrapper text-grey" *ngFor= "let meta of metadataList">
-            <p i18n class="lbl">{meta.name, select, Language {Language} Subject {Subject} Resource Type {Resource Type} Audience {Audience} Keywords {Keywords} Creator or Author {Creator or Author} Rights Holder {Rights Holder} }</p>
+            <p i18n class="lbl">{meta.name, select, Language {Language} Subject {Subject} Resource Type {Resource Type}  Format {Format} Audience {Audience} Keywords {Keywords} Creator {Creator} Rights Holder {Rights Holder}}</p>
             <p *ngIf = "meta.name !== 'Keywords'" class="value">{{meta.value}}</p>
             <p *ngIf = "meta.name == 'Keywords'">
                 <span class="value" *ngFor="let k of meta.value.split(', ')">

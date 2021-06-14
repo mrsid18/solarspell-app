@@ -17,7 +17,6 @@ export class FolderViewComponent implements OnInit {
   public contentList: Array<Content> = [];
   public folderList: Array<Folder> = [];
   public logo: string;
-  //removed mainFolders
   public activeFolderId: number;
   public  math = Math;
   
@@ -38,7 +37,7 @@ export class FolderViewComponent implements OnInit {
          this.getFolderContent(parentFolderId);
         //removed mainFolders
          this.breadcrumbService.updateBreadcrumb(parentFolderId, true);
-    });  
+    });
     window.scroll(0,0);
   }
 

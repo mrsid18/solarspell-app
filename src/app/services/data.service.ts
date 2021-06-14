@@ -21,6 +21,9 @@ export class DataService {
      return this.http.get(this.apiUrl.concat('folder_get_all.php',""));
    }
 
+   getModules(): Observable<any> {
+    return this.http.get(this.apiUrl.concat('module_get_all.php',""));
+  }
    getFolderTree(): Observable<any> {
     return this.http.get(this.apiUrl.concat('folder_get_tree.php',""));
   }

@@ -46,6 +46,7 @@ export class SearchListComponent implements OnInit {
         else {
           this.contentList = [];
           this.expandAdvanced = true;
+          this.searchString = "";
         }
       });
     this.getMetadataList();
@@ -94,9 +95,13 @@ export class SearchListComponent implements OnInit {
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
       this.contentList = response;
+      this.searchString = "";
       this.scrollToTable();
     });
   }
+  startsWithSearchFn(item, metadata) {
+    return metadata.meta_name.toLowerCase().startsWith(item.toLowerCase());
+}
   scrollToTable(){
     let el = this.tableElement.nativeElement.ownerDocument.getElementById('contentElement');
     el.scrollIntoView()

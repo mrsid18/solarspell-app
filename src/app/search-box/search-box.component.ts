@@ -26,6 +26,10 @@ export class SearchBoxComponent implements OnInit {
       .replace("?", " ")
       .replace(",", " ")
       .replace("!", " ");
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      }
+      this.router.onSameUrlNavigation = 'reload';
       this.router.navigate(['/search-list', searchString_cleaned]);
     }
   }
