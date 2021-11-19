@@ -4,6 +4,10 @@
     margin: 0px;
     text-decoration: underline;
 }
-.searchBar, .searchBtn{/* replaced background and text color with class */
+.searchBar{/* replaced background and text color with class */
     border-radius: 17px;
+}
+.searchBtn{
+    border-top-right-radius: 17px !important;
+    border-bottom-right-radius: 17px !important;
 }

@@ -13,6 +13,7 @@ var math = Math;
 export class HomeComponent implements OnInit {
   public folders: Array<Folder> = [];
   public modules: Array<Folder> = [];
+  public ltp: Folder;
  
 
 //this variable holds Math
@@ -28,7 +29,9 @@ public  math = Math;
   getFolders() {
     this.dataService.getFolders()
     .subscribe( response  => {
-      this.folders = response;
+      let all_folders = response;
+      this.ltp = all_folders.find( ({ folder_name }) => folder_name === 'Learning Through Play' );
+      this.folders = all_folders.filter(item => item.folder_name !== 'Learning Through Play');
     });
   }
 

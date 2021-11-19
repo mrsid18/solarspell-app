@@ -26,13 +26,13 @@ export class ContentListComponent implements OnInit, OnChanges {
     let ext = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length) || fileName;
     switch (ext){
       case 'mp4':
-        return 'assets/static/mp4.png';
+        return '/assets/static/mp4.png';
       case 'pdf':
-        return 'assets/static/file.png';
+        return '/assets/static/file.png';
       case 'mp3':
-        return 'assets/static/mp3.png';
+        return '/assets/static/mp3.png';
       default:
-        return 'assets/static/file.png';
+        return '/assets/static/file.png';
     }
   }
   onSort({column, direction}: SortEvent) {

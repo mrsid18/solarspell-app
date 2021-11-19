@@ -65,11 +65,11 @@ export class SearchListComponent implements OnInit {
     let ext = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length) || fileName;
     switch (ext){
       case 'mp4':
-        return 'assets/images/static/mp4.png';
+        return '/assets/static/mp4.png';
       case 'pdf':
-        return 'assets/images/static/file.png';
+        return '/assets/static/file.png';
       default:
-        return 'assets/images/static/file.png';
+        return '/assets/static/file.png';
     }
   }
 

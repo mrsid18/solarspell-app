@@ -38,7 +38,7 @@ export class FileViewComponent implements OnInit {
 
   searchKeyword(name){
     if (name.trim() != ''){
-      this.router.navigate(['/search-list/keyword', name.toLowerCase()]);
+      this.router.navigate(['/search-list/keyword', name]);
     }
   }
 }
