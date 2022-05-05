@@ -1,0 +1,33 @@
+<!--<div class="banner-div">
+    <img class="banner-style" src='/assets/images/banners/banner.jpg'>
+</div>-->
+<section class="banner"><!-- banner will go here --></section>
+<app-search-box [hideLink]="false"></app-search-box>
+<div class="container cat-container"><!--background color class-->
+    <div class="cat-title">
+        <p class="text-white bg-primary-dark">General Education Topics</p>
+    </div>
+    <div class="row justify-content-center cat-row" *ngFor="let rows of folders | slice:0:(math.ceil((folders.length)/3)); let i=index"><!--added math ceiling function-->
+        <div class="col-md-4 cat-col" *ngFor="let folder of folders| slice:(3*i):(3*i+3)">
+            <a [routerLink]="['/content', folder.id]"><img class="logo-img img-responsive" src="/assets/{{folder.logo}}"/></a>
+        </div>
+    </div>
+    <div class="cat-title">
+        <p class="text-white bg-primary-dark">Learning Modules</p>
+    </div>
+    <div class="row justify-content-center cat-row" *ngFor="let rows of modules | slice:0:(math.ceil((modules.length + 1)/3)); let i=index"><!--added math ceiling function-->
+        <div *ngIf = "i === 0" class="col-md-4 cat-col">
+            <a [routerLink]="['/content', ebp.id]"><img class="logo-img img-responsive" src="/assets/{{ebp.logo}}"/></a>
+        </div>
+        <ng-container *ngIf="i === 0">
+            <div class="col-md-4 cat-col" *ngFor="let module of modules| slice:(3*i):(3*i+2)">
+                <a [href]="module.module_name" ><img class="logo-img img-responsive" src="/assets/{{module.logo}}"/></a>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="i == 1 || i == 2">
+            <div class="col-md-4 cat-col" *ngFor="let module of modules| slice:(3*i-1):(3*i+2)">
+                <a [href]="module.module_name" ><img class="logo-img img-responsive" src="/assets/{{module.logo}}"/></a>
+            </div>
+        </ng-container>
+    </div>
+</div>

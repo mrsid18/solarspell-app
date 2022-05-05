@@ -21,6 +21,14 @@ import { ConfigService } from './services/config.service';
 import { FooterComponent } from './footer/footer.component';
 import { IndexPageComponent } from './index-page/index-page.component';
 import { TreeModule } from '@circlon/angular-tree-component';
+import { FileUnitPipe } from './file-unit.pipe';
+
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import localeES from '@angular/common/locales/es';
+import localeAr from '@angular/common/locales/ar';
+
+registerLocaleData(localeFr, localeES);
 
 @NgModule({
   declarations: [
@@ -36,7 +44,8 @@ import { TreeModule } from '@circlon/angular-tree-component';
     SortableHeader,
     AboutComponent,
     FooterComponent,
-    IndexPageComponent
+    IndexPageComponent,
+    FileUnitPipe
   ],
   imports: [
     BrowserModule,

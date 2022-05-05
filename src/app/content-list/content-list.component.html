@@ -3,9 +3,9 @@
       <tr>
         <!--added index title to list-->
         <th scope="col">#</th>
-        <th scope="col">Type</th>
-        <th scope="col" sortable="title" (sort)="onSort($event)">Title</th>
-        <th scope="col" sortable="file_size" (sort)="onSort($event)">Size</th>
+        <th i18n="tableType@@tableType" scope="col">Type</th>
+        <th i18n="tableTitle@@tableTitle" scope="col" sortable="title" (sort)="onSort($event)">Title</th>
+        <th i18n="tableSize@@tableSize" scope="col" sortable="file_size" (sort)="onSort($event)">Size</th>
       </tr>
     </thead>
     <tbody>
@@ -14,10 +14,16 @@
         <td>{{i+1+((page-1)*25)}}</td>
         <td><img src="{{getFileExtension(content.file_name)}}"></td>
         <td> <div innerHTML="{{content.title}}"></div></td>
-        <td>{{content.file_size | fileSize}}</td>
+        <td>
+          <span>{{content.file_size | fileSize }} </span>
+          <span i18n>{content.file_size | fileUnit , select, MB {MB} KB {KB}}</span>
+        </td>
       </tr>
     </tbody>
 </table>
 <div *ngIf="contentList.length" class="has-text-centered">
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <pagination-controls 
+  (pageChange)="page = $event"
+  previousLabel="Previous"
+  nextLabel="Next"></pagination-controls>
 </div>

@@ -2,7 +2,7 @@
 <div class="container search-background">
     <div class="row justify-content-center">
         <div class="col-md-6 adv-search-toggle bg-primary-light"><!--background color class-->
-            <button class="btn bg-primary-light bg-active-primary-light bg-focus-primary-light text-white btn-block" type="button" data-toggle="collapse" data-target="#collapsableBox" aria-expanded="false" aria-controls="collapsableBox">
+            <button i18n="advancedsearchbtn@@advancedsearchbtn" class="btn bg-primary-light bg-active-primary-light bg-focus-primary-light text-white btn-block" type="button" data-toggle="collapse" data-target="#collapsableBox" aria-expanded="false" aria-controls="collapsableBox">
                 Advanced Search
             </button>
         </div>
@@ -10,12 +10,12 @@
     <div class="row">
         <div class="col-md-6 adv-search-box collapse bg-white" [ngClass]="{'show':expandAdvanced}" id="collapsableBox">
             <div class="form-group">
-                <label for="inputTitle">Title</label>
+                <label i18n="searchtitle@@searchtitle" for="inputTitle">Title</label>
                 <input type="text" class="form-control" id="inputTitle" name="inputTitle" [(ngModel)]="searchData.title">
             </div>
             <div class="form-row" *ngFor="let rows of metadataList | slice:0:(math.ceil((metadataList?.length/2))); let i=index">
                 <div class="form-group col-md-6" *ngFor="let metadata of metadataList| slice:(2*i):(2*i+2)">
-                   <label>{{metadata.name}}</label>
+                    <label i18n class="lbl">{metadata.name, select, Language {Language} Subject {Subject} Resource Type {Resource Type}  Format {Format} Audience {Audience} Keywords {Keywords} Creator {Creator} Rights Holder {Rights Holder}}</label>
                     <ng-select
                         class="custom"
                         [items]="metadata.metadata"
@@ -35,16 +35,17 @@
             </div>
             <div class="form-row justify-content-center">
                 <div class="form-group col-sm-12"><!--full column-->
-                    <label>Published Date</label>
+                    <label i18n="searchYearPublished@@searchYearPublished" >Year Published</label>
                 </div>
                 <div class="form-group col-sm-4"><!--under the published date label-->
-                    <label>Min</label>
+                    <label i18n="searchMin@@searchMin">Min</label>
                     <select class="form-control" [(ngModel)]="searchData.min_date">
                         <option [value]=""></option>
                         <option *ngFor="let year of dropyears" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
-                    </select>                </div>
+                    </select>
+                </div>
                 <div class="form-group col-sm-4">
-                    <label>Max</label>
+                    <label i18n="searchMax@@searchMax">Max</label>
                     <select class="form-control"[(ngModel)]="searchData.max_date">
                         <option [value]=""></option>
                         <option *ngFor="let year of dropyears" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
@@ -52,7 +53,7 @@
                 </div>
                 <div class="col-sm-4">
                     <p style="height: 5px;"></p><!--made the search button more consistent-->
-                    <button class="search-btn btn-block p-2 border-primary-light font-weight-normal bg-primary-light text-white shadow-none bg-hover-primary-dark rounded" type="button" (click)="searchAdvanced()">
+                    <button i18n="searchSearchBtn@@searchSearchBtn" class="search-btn btn-block p-2 border-primary-light font-weight-normal bg-primary-light text-white shadow-none bg-hover-primary-dark rounded" type="button" (click)="searchAdvanced()">
                         Search
                     </button>
                 </div>
@@ -64,8 +65,8 @@
 <div class="container">
     <div class="row">       
         <div class="col-md-12 col-margin">
-            <h5 *ngIf="searchString.length" id="contentElement" >Displaying Results for: "{{searchString}}"</h5>
-            <p *ngIf="!contentList.length" class="no-records-message">No Items Found</p>
+            <p><span i18n="searchSearchBtn@@searchSearchBtn" *ngIf="searchString.length" id="contentElement" >Displaying Results for: </span><span *ngIf="searchString.length">"{{searchString}}"</span></p>
+            <p i18n="noitemsfoundmsg2@@noitemsfoundmsg2" *ngIf="!contentList.length" class="no-records-message">No Items Found</p>
             <app-content-list [contentList]="contentList"></app-content-list>
         </div>
     </div>

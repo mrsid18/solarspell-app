@@ -8,7 +8,8 @@
         "sourceLocale": "en-US",
         "locales": {
           "fr": "src/locale/messages.fr.xlf",
-          "sp": "src/locale/messages.sp.xlf"
+          "es": "src/locale/messages.es.xlf",
+          "ar": "src/locale/messages.ar.xlf"
         }
       },
       "projectType": "application",
@@ -44,8 +45,11 @@
             "fr": {
               "localize": ["fr"]
             },
-            "sp": {
-              "localize": ["sp"]
+            "es": {
+              "localize": ["es"]
+            },
+            "ar": {
+              "localize": ["ar"]
             },
             "production": {
               "fileReplacements": [
@@ -89,8 +93,11 @@
             "fr": {
               "browserTarget": "solarspell:build:fr"
             },
-            "sp": {
-              "browserTarget": "solarspell:build:sp"
+            "es": {
+              "browserTarget": "solarspell:build:es"
+            },
+            "ar": {
+              "browserTarget": "solarspell:build:ar"
             }
           }
         },

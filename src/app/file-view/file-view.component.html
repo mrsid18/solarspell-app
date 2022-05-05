@@ -3,11 +3,11 @@
 <div class="row"> <!--banner has been removed-->
     <div class="col-md-3 meta-col bg-white order-last"> <!--background color class-->
         <div *ngIf="content.title" class="wrapper text-grey">
-            <p i18n ="file tilte@@fileTitle" class="lbl">Title</p>
+            <p i18n ="fileTilte@@fileTitle" class="lbl">Title</p>
             <p class="value">{{content.title}}</p>
         </div>
         <div *ngIf="content.description" class="wrapper text-grey">
-            <p i18n ="file description@@fileDescription" class="lbl">Description</p>
+            <p i18n ="fileDescription@@fileDescription" class="lbl">Description</p>
             <p class="value">{{content.description}}</p>
         </div>       
         <div class="wrapper text-grey" *ngFor= "let meta of metadataList">
@@ -20,23 +20,22 @@
             </p>
         </div>
         <div *ngIf="content.rights_statement" class="wrapper text-grey"><!--text color class-->
-            <p i18n="Rights Statement" class="lbl">Rights Statement</p>
+            <p i18n="RightsStatement@@RightsStatement" class="lbl">Rights Statement</p>
             <p class="value">{{content.rights_statement}}</p>
         </div>
-        <!--<div *ngIf="content.copyright_notes" class="wrapper text-grey">
-            <p i18n="Copyright@@copyright" class="lbl">Copyright Notes</p>
-            <p class="value">{{content.copyright_notes}}</p>
-        </div>-->
         <div *ngIf="content.published_date" class="wrapper text-grey"><!--text color class-->
-            <p i18n="year published@@yearPublished" class="lbl">Date of Publication</p>
+            <p i18n="yearPublished@@yearPublished" class="lbl">Year of Publication</p>
             <p class="value">{{content.published_date | date : "yyyy"}}</p>
         </div> 
         <div *ngIf="content.file_size" class="wrapper text-grey"><!--text color class-->
-            <p i18n="file size@@fileSize" class="lbl">File Size</p>
-            <p class="value">{{content.file_size | fileSize}}</p>
+            <p i18n="fileSize@@fileSize" class="lbl">File Size</p>
+            <p class="value">
+                <span>{{content.file_size | fileSize }} </span>
+                <span i18n>{content.file_size | fileUnit , select, MB {MB} KB {KB}}</span>
+            </p>
         </div>   
         <div class="wrapper pb-3"><!--added download button with color class-->
-            <a [href]="fileURL" download><button type="button" class="button bg-primary-dark bg-hover-primary-light w-100 rounded text-white p-2 shadow-none border-primary-dark">
+            <a [href]="fileURL" download><button i18n="download@@download" type="button" class="button bg-primary-dark bg-hover-primary-light w-100 rounded text-white p-2 shadow-none border-primary-dark">
                 <i class="fa fa-download pr-2" aria-hidden="true"></i>Download</button></a>
         </div>
     </div>

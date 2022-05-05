@@ -7,7 +7,7 @@
         aria-label="Search" 
         [(ngModel)]="searchString" 
         (keyup.enter)="search()" 
-        placeholder="Search Resources">
+        placeholder="Search resources...">
         <div class="input-group-prepend">
 					<button class="searchBtn btn btn-light text-white border-white" id="basic-addon2" (click)="search()">
 					<i class="fa fa-search text-primary-dark"></i></button>
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div style="text-align: center;"><!--text color class-->
-    <p [hidden] = "hideLink" routerLink="/search-list" class="adv-srch text-white">Advanced Search</p>
+    <p i18n="advancedsearchlbl@@advancedsearchlbl" [hidden] = "hideLink" routerLink="/search-list" class="adv-srch text-white">Advanced Search</p>
     </div>
 	</div>		
 	</div>

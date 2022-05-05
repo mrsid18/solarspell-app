@@ -11,11 +11,11 @@
               <p class="btn btn-light border-primary-dark bg-hover-sunglow-50 btn-block folder-btn" [routerLink]="['/content', folder.id]">
                 <!--removed parentFolder.id since mainFolders no longer in use-->
                 <span class="folder-icon"></span>
-                {{folder.folder_name}}
+                {{folder.folder_name.split(' | ')[1] == null ? folder.folder_name : folder.folder_name.split(' | ')[1]}}
               </p>
             </div>
         </div>
-        <p *ngIf="!contentList.length && !folderList.length" class="no-records-message">No Items Found</p>
+        <p i18n="noitemsfoundmsg@@noitemsfoundmsg" *ngIf="!contentList.length && !folderList.length" class="no-records-message">No Items Found</p>
         <app-content-list [contentList]="contentList"></app-content-list>
     </div>
 </div>

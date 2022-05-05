@@ -5,8 +5,8 @@
         </li>
         <li *ngFor="let bc of breadcrumbList; let i=index">
             <!--make last time unclickable--><!--text color class-->
-            <a class="text-black text-hover-primary-dark" *ngIf="i != breadcrumbList.length -1" [routerLink] ="i == 0 ?['/content',bc.id] : ['/content',bc.id]">{{bc.name}}</a><!--removed breadcrumbList[0].id since it was for the mainFolders id which is no longer in use-->
-            <span class="text-black" *ngIf="i == breadcrumbList.length -1" class="unclickable">{{bc.name}}</span> 
+            <a class="text-black text-hover-primary-dark" *ngIf="i != breadcrumbList.length -1" [routerLink] ="i == 0 ?['/content',bc.id] : ['/content',bc.id]">{{bc.name.split(' | ')[1] == null ? bc.name : bc.name.split(' | ')[1] }}</a><!--removed breadcrumbList[0].id since it was for the mainFolders id which is no longer in use-->
+            <span class="text-black" *ngIf="i == breadcrumbList.length -1" class="unclickable">{{bc.name.split(' | ')[1] == null ? bc.name : bc.name.split(' | ')[1]}}</span> 
         </li>
       </ul>
 </div>
