@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/backendi/',
-  contentUrl: 'http://localhost/content/',
+  apiUrl: 'http://localhost/backend/',
+  contentUrl: 'http://www.solarcubed.org/dev-content-ea/',
 };
 
 /*
