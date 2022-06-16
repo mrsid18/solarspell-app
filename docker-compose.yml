@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  php:
+    container_name: solarspell-server
+    image: php:8.0-apache
+    restart: "on-failure"
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/var/www/html/backend
+    ports:
+      - "80:80"
+  
+  angular_app:
+    container_name: solarspell-app
+    build: .
+    command: sh -c "npm start"
+    working_dir: /home/node/app
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./:/home/node/app
+      - node_modules:/home/node/app/node_modules
+  
+volumes:
+  node_modules:
+
+
+
