@@ -20,7 +20,7 @@
                         class="custom"
                         [items]="metadata.metadata"
                         [multiple]="true"
-                        [closeOnSelect]="false"
+                        [closeOnSelect]="true"
                         [clearSearchOnAdd] = "true"
                         [hideSelected]="true"
                         [clearable]	="false"
@@ -48,7 +48,7 @@
                     <label i18n="searchMax@@searchMax">Max</label>
                     <select class="form-control"[(ngModel)]="searchData.max_date">
                         <option [value]=""></option>
-                        <option *ngFor="let year of dropyears" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
+                        <option *ngFor="let year of dropyears.reverse()" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
                     </select>
                 </div>
                 <div class="col-sm-4">

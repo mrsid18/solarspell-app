@@ -17,7 +17,7 @@ export class SearchListComponent implements OnInit {
   public selectedMeta = [];
   public searchData: SearchData;
   public expandAdvanced: boolean;
-  public  math = Math;
+  public math = Math;
   dropyears: Array<Date> = [];
   years = ["1-1-1970","1-1-1971","1-1-1972","1-1-1973","1-1-1974","1-1-1975","1-1-1976","1-1-1977","1-1-1978","1-1-1979",
   "1-1-1980","1-1-1981","1-1-1982","1-1-1983","1-1-1984","1-1-1985","1-1-1986","1-1-1987","1-1-1988","1-1-1989",
@@ -34,7 +34,6 @@ export class SearchListComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.getYears();
     this.route.data
       .subscribe((data) => {
         if(data.searchResult){
@@ -50,14 +49,7 @@ export class SearchListComponent implements OnInit {
         }
       });
     this.getMetadataList();
-  }
-
-  getYears(){
-    let current = new Date().getFullYear();
-    let min = 1970;
-    for( let i:number = current; i>=min; i--){
-      this.dropyears.push(new Date(i,0,1));
-    }
+    this.searchAdvanced();
   }
 
   getFileExtension(fileName:string) : string
@@ -96,6 +88,7 @@ export class SearchListComponent implements OnInit {
     .subscribe( response  => {
       this.contentList = response;
       this.searchString = "";
+      this.dropyears = Array.from(new Set(this.contentList.map(content => content.published_date))).map(year => new Date(year)).sort((a,b) => a-b);
       this.scrollToTable();
     });
   }
@@ -103,7 +96,7 @@ export class SearchListComponent implements OnInit {
     return metadata.meta_name.toLowerCase().startsWith(item.toLowerCase());
 }
   scrollToTable(){
-    let el = this.tableElement.nativeElement.ownerDocument.getElementById('contentElement');
-    el.scrollIntoView()
+    let el = this.tableElement.nativeElement;
+    el.scrollIntoView({behavior: 'smooth', block: 'center'});
   }
 }
