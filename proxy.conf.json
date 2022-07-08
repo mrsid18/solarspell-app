@@ -1,0 +1,8 @@
+{
+    "/east-africa/*": {
+      "target": "http://www.solarcubed.org",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

@@ -14,7 +14,7 @@
                 <input type="text" class="form-control" id="inputTitle" name="inputTitle" [(ngModel)]="searchData.title">
             </div>
             <div class="form-row" *ngFor="let rows of metadataList | slice:0:(math.ceil((metadataList?.length/2))); let i=index">
-                <div class="form-group col-md-6" *ngFor="let metadata of metadataList| slice:(2*i):(2*i+2)">
+                <div class="form-group col-md-6" *ngFor="let metadata of metadataList | slice:(2*i):(2*i+2); let j = index">
                     <label i18n class="lbl">{metadata.name, select, Language {Language} Subject {Subject} Resource Type {Resource Type}  Format {Format} Audience {Audience} Keywords {Keywords} Creator {Creator} Rights Holder {Rights Holder}}</label>
                     <ng-select
                         class="custom"
@@ -27,9 +27,9 @@
                         bindLabel = "meta_name"
                         bindValue = "id"
                         [appendTo]="'body'"
-                        (add) = "addMeta($event)"
                         [searchFn]="startsWithSearchFn"
-                        (remove) = "removeMeta($event)">
+                        [(ngModel)] = "metaTracker[i * 2 + j]"
+                        >
                     </ng-select>
                 </div>
             </div>

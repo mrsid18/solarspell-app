@@ -27,6 +27,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import localeES from '@angular/common/locales/es';
 import localeAr from '@angular/common/locales/ar';
+import { ModuleComponent } from './module/module.component';
 
 registerLocaleData(localeFr, localeES);
 
@@ -45,7 +46,8 @@ registerLocaleData(localeFr, localeES);
     AboutComponent,
     FooterComponent,
     IndexPageComponent,
-    FileUnitPipe
+    FileUnitPipe,
+    ModuleComponent
   ],
   imports: [
     BrowserModule,
