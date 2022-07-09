@@ -10,6 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ModuleComponent implements OnInit {
 
+  //Configurable: Change this to be the path where the modules are located at. If on root directory, should be equal to '/'
+  modulePath = '/';
+
   constructor(private location: Location, private sanitizer: DomSanitizer, private route: ActivatedRoute) {
   }
 
@@ -28,24 +31,24 @@ export class ModuleComponent implements OnInit {
     }
 
     //Add path to host url
-    this.address = this.sanitizer.bypassSecurityTrustResourceUrl('/east-africa/' + path);
+    this.address = this.sanitizer.bypassSecurityTrustResourceUrl(this.modulePath + path);
 
     //Hide content below iframe to remove extra scrollbar
     document.body.style.overflow = "hidden";
     document.body.style.position = "fixed";
 
-    const NAVBAR_SIZE = 66;
+    const navbarSize = 66;
 
     //Set iframe height based on window height - size of navbar
-    this.iframeHeight = window.innerHeight - NAVBAR_SIZE;
+    this.iframeHeight = window.innerHeight - navbarSize;
     
     //Update iframe height when window is resized or window orientation changes
     window.addEventListener('resize', () => {
-      this.iframeHeight = window.innerHeight - NAVBAR_SIZE;
+      this.iframeHeight = window.innerHeight - navbarSize;
     });
 
     window.addEventListener('orientationchange', () => {
-      this.iframeHeight = window.innerHeight - NAVBAR_SIZE;
+      this.iframeHeight = window.innerHeight - navbarSize;
     });
   }
 
@@ -61,8 +64,8 @@ export class ModuleComponent implements OnInit {
       //Get path from iframe
       var path = this.iframe.nativeElement.contentWindow.location.pathname;
 
-      //Remove "/east-africa/" from path
-      path = path.slice('/east-africa/'.length, path.length);
+      //Remove modulePath from path
+      path = path.slice(this.modulePath.length, path.length);
 
       //Normalize path to remove '/' from end
       path = this.location.normalize(path);

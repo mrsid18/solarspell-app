@@ -5,6 +5,10 @@ import { SearchData } from '../models/search-data';
 import { Content } from '../models/content';
 import { ActiveService } from '../services/active.service';
 
+//*****************************************
+//Comment about 10 dropdown limitation
+//*****************************************
+
 @Component({
   selector: 'app-search-list',
   templateUrl: './search-list.component.html',
@@ -107,11 +111,8 @@ export class SearchListComponent implements OnInit {
             this.metaTracker[meta[0]] = [];
           }
 
-          //If statement technically not necessary. Could be used to increase stability? Prevents duplicate metadata, which breaks search
-          //if(!this.metaTracker[meta[0]].includes(parseInt(meta.slice(1)))) {
-            //Add metadata to corresponding metaTracker
-            this.metaTracker[meta[0]].push(parseInt(meta.slice(1)));
-          //}
+          //Add metadata to corresponding metaTracker
+          this.metaTracker[meta[0]].push(parseInt(meta.slice(1)));
         }
       }
 
