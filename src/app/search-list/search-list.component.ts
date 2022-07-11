@@ -43,6 +43,12 @@ export class SearchListComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    //Get years to display in dropdown
+    this.dataService.advancedSearch(this.searchData)
+    .subscribe( response  => {
+      this.dropyears = Array.from(new Set(response.map(content => content.published_date))).map(year => new Date(year as string)).sort((a,b) => a.getFullYear()-b.getFullYear());
+    });
+    
     this.route.data.subscribe((data) => {
       if(data.searchResult){
         this.contentList = data.searchResult.contentList;
@@ -199,7 +205,6 @@ export class SearchListComponent implements OnInit {
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
       this.contentList = response;
-      this.dropyears = Array.from(new Set(this.contentList.map(content => content.published_date))).map(year => new Date(year)).sort((a,b) => a-b);
       this.scrollToTable();
     });
   }
