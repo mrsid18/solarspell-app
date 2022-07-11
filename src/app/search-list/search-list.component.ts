@@ -43,7 +43,6 @@ export class SearchListComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getYears();
     this.route.data.subscribe((data) => {
       if(data.searchResult){
         this.contentList = data.searchResult.contentList;
@@ -123,14 +122,6 @@ export class SearchListComponent implements OnInit {
     });
   }
 
-  getYears() {
-    let current = new Date().getFullYear();
-    let min = 1970;
-    for( let i:number = current; i>=min; i--){
-      this.dropyears.push(new Date(i,0,1));
-    }
-  }
-
   getFileExtension(fileName:string) : string {
     let ext = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length) || fileName;
     switch (ext){
@@ -208,16 +199,16 @@ export class SearchListComponent implements OnInit {
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
       this.contentList = response;
+      this.dropyears = Array.from(new Set(this.contentList.map(content => content.published_date))).map(year => new Date(year)).sort((a,b) => a-b);
       this.scrollToTable();
     });
   }
 
   startsWithSearchFn(item, metadata) {
     return metadata.meta_name.toLowerCase().startsWith(item.toLowerCase());
-  }
-
-  scrollToTable() {
-    let el = this.tableElement.nativeElement.ownerDocument.getElementById('contentElement');
-    el.scrollIntoView()
+}
+  scrollToTable(){
+    let el = this.tableElement.nativeElement;
+    el.scrollIntoView({behavior: 'smooth', block: 'center'});
   }
 }
