@@ -17,7 +17,9 @@
     </div>
     <div class="row justify-content-center cat-row" *ngFor="let rows of modules | slice:0:(math.ceil(modules.length/3)); let i=index"><!--added math ceiling function-->
         <div class="col-md-4 cat-col" *ngFor="let module of modules| slice:(3*i):(3*i+3)">
-            <a [href]="module.module_name" ><img class="logo-img img-responsive" src="assets/{{module.logo}}"/></a>
+            <ng-container *ngIf="module.module_name.slice(0,4) == 'http'; then other_port else same_port"></ng-container>
+            <ng-template #other_port><a [href]="module.module_name" target="_blank" rel="noopener noreferrer"><img class="logo-img img-responsive" src="assets/{{module.logo}}"/></a></ng-template>
+            <ng-template #same_port><a [routerLink]="'/module/' + module.module_name" ><img class="logo-img img-responsive" src="assets/{{module.logo}}"/></a></ng-template>
         </div>
     </div>
 </div>

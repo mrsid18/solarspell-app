@@ -29,7 +29,10 @@ export class SearchBoxComponent implements OnInit {
       this.router.routeReuseStrategy.shouldReuseRoute = function () {
         return false;
       }
-      this.router.onSameUrlNavigation = 'reload';
+      
+      //This created an infinite loop error in search list
+      //this.router.onSameUrlNavigation = 'reload';
+
       this.router.navigate(['/search-list', searchString_cleaned]);
     }
   }
