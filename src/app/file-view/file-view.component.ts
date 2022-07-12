@@ -20,7 +20,10 @@ export class FileViewComponent implements OnInit {
   public metadataList: [];
   public fileURL: SafeResourceUrl;
   public resourceType: string;
-
+  fileExtensions = {
+    "video": ["mp4", "mov", "wmv", "avi", "mpg", "mpeg", "3gp", "3g2", "flv", "f4v", "webm"],
+    "audio": ["mp3", "wav", "ogg", "aac", "flac", "wma", "m4a"]
+  }
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
@@ -42,9 +45,9 @@ export class FileViewComponent implements OnInit {
 
     window.scroll(0, 0);
 
-    if (this.content.file_name.includes(".mp4")) {
+    if (this.fileExtensions["video"].some(ext => this.content.file_name.includes(ext))) {
       this.resourceType = "video";
-    } else if (this.content.file_name.includes(".mp3")) {
+    } else if (this.fileExtensions["audio"].some(ext => this.content.file_name.includes(ext))) {
       this.resourceType = "audio";
     } else if (this.content.file_name.includes(".pdf")) {
       this.resourceType = "pdf";
