@@ -41,4 +41,39 @@ export class FileViewComponent implements OnInit {
       this.router.navigate(['/search-list/keyword', name.toLowerCase()]);
     }
   }
+
+  //Called when download button is clicked
+  logDownloadAnalytics() {
+    //Initialize variables
+    var language = '';
+    var content_type = '';
+    var subject = '';
+
+    //Loop through metadata and set corresponding variables
+    this.metadataList.forEach(element => {
+      switch(element['name']) {
+        case 'Language':
+          language = element['value'];
+          break;
+
+        case 'Subject':
+          subject = element['value'];
+          break;
+
+        case 'Resource Type':
+          content_type = element['value'];
+          break;
+      }
+    });
+
+    //Log analytics with gathered metadata
+    this.dataService.logAnalytics({
+      title: this.content.file_name,
+      language: language,
+      content_type: content_type,
+      subject: subject,
+      parent_folder: this.parentFolder,
+      activity_type: 'download_file'
+    });
+  }
 }

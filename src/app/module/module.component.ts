@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Data } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-module',
@@ -11,9 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 export class ModuleComponent implements OnInit {
 
   //Configurable: Change this to be the path where the modules are located at. If on root directory, should be equal to '/'
-  modulePath = '/';
+  modulePath = 'http://www.solarcubed.org/east-africa/';
 
-  constructor(private location: Location, private sanitizer: DomSanitizer, private route: ActivatedRoute) {
+  constructor(
+    private location: Location,
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute,
+    ) {
   }
 
   ngOnInit(): void {
