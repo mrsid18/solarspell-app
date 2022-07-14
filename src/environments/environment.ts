@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost/backend/',
   contentUrl: 'http://www.solarcubed.org/dev-content-ea/',
+  moduleUrl: 'http://www.solarcubed.org/east-africa/',
 };
 
 /*
