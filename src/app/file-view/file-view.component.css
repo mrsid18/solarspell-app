@@ -8,8 +8,16 @@ iframe
     border: none; 
 }
 .file-col{
-    padding-left: 0px;
     min-height: 750px;
+}
+.row{
+    margin:0;
+}
+.col-md-9{
+    padding:0;
+}
+.col-md-3{
+    padding:0;
 }
 .meta-col {
     padding-top: 30px;
