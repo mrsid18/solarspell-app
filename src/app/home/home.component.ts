@@ -12,9 +12,7 @@ var math = Math;
 })
 export class HomeComponent implements OnInit {
   public folders: Array<Folder> = [];
-  public modules: Array<Folder> = [];
-  public ebp: Folder;
- 
+  public modules: Array<Folder> = []; 
 
 //this variable holds Math
 public  math = Math;
@@ -29,9 +27,7 @@ public  math = Math;
   getFolders() {
     this.dataService.getFolders()
     .subscribe( response  => {
-      let all_folders = response;
-      this.ebp = all_folders.find( ({ folder_name }) => folder_name === 'Evidence-Based Practice' );
-      this.folders = all_folders.filter(item => item.folder_name !== 'Evidence-Based Practice');
+      this.folders = response;
     });
   }
 
@@ -42,5 +38,9 @@ public  math = Math;
     });
   }
 
+  //Called when a link to a module is clicked
+  logModuleAnalytics(name) {
+    this.dataService.logAnalytics({ title: name, activity_type: 'open_module' });
+  }
 }
 

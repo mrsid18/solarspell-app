@@ -14,22 +14,22 @@
                 <input type="text" class="form-control" id="inputTitle" name="inputTitle" [(ngModel)]="searchData.title">
             </div>
             <div class="form-row" *ngFor="let rows of metadataList | slice:0:(math.ceil((metadataList?.length/2))); let i=index">
-                <div class="form-group col-md-6" *ngFor="let metadata of metadataList| slice:(2*i):(2*i+2)">
+                <div class="form-group col-md-6" *ngFor="let metadata of metadataList | slice:(2*i):(2*i+2); let j = index">
                     <label i18n class="lbl">{metadata.name, select, Language {Language} Subject {Subject} Resource Type {Resource Type}  Format {Format} Audience {Audience} Keywords {Keywords} Creator {Creator} Rights Holder {Rights Holder}}</label>
                     <ng-select
                         class="custom"
                         [items]="metadata.metadata"
                         [multiple]="true"
-                        [closeOnSelect]="false"
+                        [closeOnSelect]="true"
                         [clearSearchOnAdd] = "true"
                         [hideSelected]="true"
                         [clearable]	="false"
                         bindLabel = "meta_name"
                         bindValue = "id"
                         [appendTo]="'body'"
-                        (add) = "addMeta($event)"
                         [searchFn]="startsWithSearchFn"
-                        (remove) = "removeMeta($event)">
+                        [(ngModel)] = "metaTracker[i * 2 + j]"
+                        >
                     </ng-select>
                 </div>
             </div>
@@ -48,12 +48,12 @@
                     <label i18n="searchMax@@searchMax">Max</label>
                     <select class="form-control"[(ngModel)]="searchData.max_date">
                         <option [value]=""></option>
-                        <option *ngFor="let year of dropyears" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
+                        <option *ngFor="let year of dropyears.reverse()" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
                     </select>
                 </div>
                 <div class="col-sm-4">
                     <p style="height: 5px;"></p><!--made the search button more consistent-->
-                    <button i18n="searchSearchBtn@@searchSearchBtn" class="search-btn btn-block p-2 border-primary-light font-weight-normal bg-primary-light text-white shadow-none bg-hover-primary-dark rounded" type="button" (click)="searchAdvanced()">
+                    <button i18n="searchSearchBtn@@searchSearchBtn" class="search-btn btn-block p-2 border-primary-light font-weight-normal bg-primary-light text-white shadow-none bg-hover-primary-dark rounded" type="button" (click)="searchAdvanced();scrollToTable()">
                         Search
                     </button>
                 </div>
@@ -64,7 +64,7 @@
 </div>
 <div class="container">
     <div class="row">       
-        <div class="col-md-12 col-margin">
+        <div class="col-md-12 col-margin" id="contentList">
             <p><span i18n="searchSearchBtn@@searchSearchBtn" *ngIf="searchString.length" id="contentElement" >Displaying Results for: </span><span *ngIf="searchString.length">"{{searchString}}"</span></p>
             <p i18n="noitemsfoundmsg2@@noitemsfoundmsg2" *ngIf="!contentList.length" class="no-records-message">No Items Found</p>
             <app-content-list [contentList]="contentList"></app-content-list>
