@@ -89,7 +89,7 @@ export class FileViewComponent implements OnInit {
 
     //Log analytics with gathered metadata
     this.dataService.logAnalytics({
-      title: this.content.file_name,
+      title: this.content.title,
       language: language,
       content_type: content_type,
       subject: subject,

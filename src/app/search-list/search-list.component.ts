@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { SearchData } from '../models/search-data';
 import { Content } from '../models/content';
-import { ActiveService } from '../services/active.service';
 
 //*****************************************
 //Comment about 10 dropdown limitation
@@ -24,17 +23,10 @@ export class SearchListComponent implements OnInit {
   public  math = Math;
   public metaTracker : Array<any> = [];
   dropyears: Array<Date> = [];
-  years = ["1-1-1970","1-1-1971","1-1-1972","1-1-1973","1-1-1974","1-1-1975","1-1-1976","1-1-1977","1-1-1978","1-1-1979",
-    "1-1-1980","1-1-1981","1-1-1982","1-1-1983","1-1-1984","1-1-1985","1-1-1986","1-1-1987","1-1-1988","1-1-1989",
-    "1-1-1990","1-1-1991","1-1-1992","1-1-1993","1-1-1994","1-1-1995","1-1-1996","1-1-1997","1-1-1998","1-1-1999",
-    "1-1-2000","1-1-2001","1-1-2002","1-1-2003","1-1-2004","1-1-2005","1-1-2006","1-1-2007","1-1-2008","1-1-2009",
-    "1-1-2010","1-1-2011","1-1-2012","1-1-2013","1-1-2014","1-1-2015","1-1-2016","1-1-2017","1-1-2018","1-1-2019", "1-1-2020",
-  ]
 
   constructor(
     public route: ActivatedRoute,
     public dataService:DataService,
-    public activeData: ActiveService,
     public router: Router,
     public tableElement: ElementRef
     ) {
@@ -43,9 +35,6 @@ export class SearchListComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    //Changed
-    //window.scroll(0,0);
-
     //Get years to display in dropdown
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
@@ -56,8 +45,6 @@ export class SearchListComponent implements OnInit {
       if(data.searchResult){
         this.contentList = data.searchResult.contentList;
         this.searchString = data.searchResult.searchString;
-        //Changed
-        this.scrollToTable();
         this.expandAdvanced = false;
       }
       else {
@@ -219,26 +206,15 @@ export class SearchListComponent implements OnInit {
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
       this.contentList = response;
-      //Changed
-      this.scrollToTable();
     });
   }
 
   startsWithSearchFn(item, metadata) {
     return metadata.meta_name.toLowerCase().startsWith(item.toLowerCase());
   }
-  
-  scrollToTable() {
-    //Changed
-    
-    let el = this.tableElement.nativeElement;
-    el.scrollIntoView({behavior: 'smooth', block: 'center'});
-    
 
-    //Changed
-    /*
+  scrollToTable() {
     let el = document.getElementById('contentList');
     el.scrollIntoView({behavior: 'smooth', block: "start", inline: "nearest"});
-    */
   }
 }
