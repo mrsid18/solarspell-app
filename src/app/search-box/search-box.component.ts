@@ -26,6 +26,7 @@ export class SearchBoxComponent implements OnInit {
       .replace("?", " ")
       .replace(",", " ")
       .replace("!", " ");
+      //Changed
       this.router.routeReuseStrategy.shouldReuseRoute = function () {
         return false;
       }

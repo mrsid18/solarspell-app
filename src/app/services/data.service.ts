@@ -24,6 +24,7 @@ export class DataService {
    getModules(): Observable<any> {
     return this.http.get(this.apiUrl.concat('module_get_all.php',""));
   }
+
    getFolderTree(): Observable<any> {
     return this.http.get(this.apiUrl.concat('folder_get_tree.php',""));
   }
@@ -49,20 +50,37 @@ export class DataService {
     params = params.append('search_string',searchString);
     return this.http.get(this.apiUrl.concat('content_fts.php'), {params});
   }
+
   advancedSearch(searchData: SearchData): Observable<any> {
     return this.http.post(this.apiUrl.concat('content_advanced_search.php'),searchData);
   }
+
   keywordSearch(keyword: string): Observable<any> {
     let params = new HttpParams();
     params = params.append('keyword_name',keyword);
     return this.http.get(this.apiUrl.concat('content_keyword_search.php'),{params});
   }
+
   getFullPath(id, isFolder) {
     let params = new HttpParams();
     params = params.append('id', id);
     params = params.append('isFolder', isFolder ? '1' : '0');
     return this.http.get(this.apiUrl.concat('get_full_path.php'), {params});
-}
+  }
+
+  /*
+  Logs analytics in usage table
+  Takes parameter 'params'
+  'params' should be an object with format: { title: '<identifier>', activity_type: '<activity_type>' }
+  Other elements, like language, content_type, subject, and parent_folder can be included
+  if they are supported by log_analytics.php
+  */
+  logAnalytics(params) {
+    this.http.get(
+      this.apiUrl.concat('log_analytics.php',""),
+      { params: params }
+    ).subscribe();
+  }
 }
 
 @Injectable({

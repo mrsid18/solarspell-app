@@ -38,5 +38,9 @@ public  math = Math;
     });
   }
 
+  //Called when a link to a module is clicked
+  logModuleAnalytics(name) {
+    this.dataService.logAnalytics({ title: name, activity_type: 'open_module' });
+  }
 }
 

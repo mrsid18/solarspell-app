@@ -40,12 +40,15 @@
                 <span>{{content.file_size | fileSize }} </span>
                 <span i18n>{content.file_size | fileUnit , select, MB {MB} KB {KB}}</span>
             </p>
-        </div>
+        </div>   
         <div class="wrapper pb-3">
             <!--added download button with color class-->
-            <a [href]="fileURL" download><button i18n="download@@download" type="button"
-                    class="button bg-primary-dark bg-hover-primary-light w-100 rounded text-white p-2 shadow-none border-primary-dark">
-                    <i class="fa fa-download pr-2" aria-hidden="true"></i>Download</button></a>
+            <a [href]="fileURL" (click)="logDownloadAnalytics()" download>
+              <button i18n="download@@download" type="button"class="button bg-primary-dark bg-hover-primary-light w-100 rounded text-white p-2 shadow-none border-primary-dark">
+                <i class="fa fa-download pr-2" aria-hidden="true"></i>
+                Download
+              </button>
+            </a>
         </div>
     </div>
     <video class="col-md-9 ratio ratio-16x9" autoplay [src]="fileURL" controls *ngIf="resourceType=='video'"></video>

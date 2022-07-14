@@ -43,6 +43,9 @@ export class SearchListComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    //Changed
+    //window.scroll(0,0);
+
     //Get years to display in dropdown
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
@@ -53,6 +56,7 @@ export class SearchListComponent implements OnInit {
       if(data.searchResult){
         this.contentList = data.searchResult.contentList;
         this.searchString = data.searchResult.searchString;
+        //Changed
         this.scrollToTable();
         this.expandAdvanced = false;
       }
@@ -197,23 +201,44 @@ export class SearchListComponent implements OnInit {
       });
     }
     else {
+      var shouldReuseRoute = this.router.routeReuseStrategy.shouldReuseRoute;
+
+      this.router.routeReuseStrategy.shouldReuseRoute = function() {
+        return true;
+      };
+
       this.router.navigate(['/search-list'], {
         queryParams: paramData
       });
+
+      setTimeout(() => {
+        this.router.routeReuseStrategy.shouldReuseRoute = shouldReuseRoute;
+      }, 0);
     }
 
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
       this.contentList = response;
+      //Changed
       this.scrollToTable();
     });
   }
 
   startsWithSearchFn(item, metadata) {
     return metadata.meta_name.toLowerCase().startsWith(item.toLowerCase());
-}
-  scrollToTable(){
+  }
+  
+  scrollToTable() {
+    //Changed
+    
     let el = this.tableElement.nativeElement;
     el.scrollIntoView({behavior: 'smooth', block: 'center'});
+    
+
+    //Changed
+    /*
+    let el = document.getElementById('contentList');
+    el.scrollIntoView({behavior: 'smooth', block: "start", inline: "nearest"});
+    */
   }
 }
