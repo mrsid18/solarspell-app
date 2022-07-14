@@ -12,6 +12,7 @@
 body {
     background-color: #F2F2F2 !important;
     position: relative;
+    text-align: initial !important;
    }
  table {
    border-style: none;
@@ -473,7 +474,6 @@ body {
 .expand-tree div.angular-tree-component tree-node>div .node-content-wrapper:hover {
   background: rgba(255, 198, 39, 0.5);
 }
-
 
 .expand-tree div.angular-tree-component>tree-node>div::before {
   left: 14px

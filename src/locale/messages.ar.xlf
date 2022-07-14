@@ -2,6 +2,38 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="9dedce4250d69e65807c0f11558d28d0823edafd" datatype="html">
+        <source>text-align:left;</source>
+        <target>text-align:right;</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about/about.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about/about.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cb33b150a0b9e6b88a9aa5fa79f91888dd06784a" datatype="html">
+        <source>ltr</source>
+        <target>rtl</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="menuHome" datatype="html">
         <source>Home</source>
         <target>الصفحة الرئيسية</target>
@@ -279,7 +311,7 @@
       </trans-unit>
       <trans-unit id="vision2" datatype="html">
         <source>We envision a future in which all learners everywhere have:<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Access<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> to the information they need;<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Skills<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> to turn information into knowledge; and<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Agency<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> to transform knowledge into solutions. </source>
-        <target>:نتصور مستقبلًا يمتلك فيه جميع المتعلمين في كل مكان<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>الوصول<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> ;إلى المعلومات التي يحتاجون إليها<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>المهارات<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> اللازمة لتحويل المعلومات إلى معرفة ؛ و<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>القدرة<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> .على تحويل المعرفة إلى حلول </target>
+        <target>نتصور مستقبلًا يمتلك فيه جميع المتعلمين في كل مكان:<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>الوصول<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> ؛إلى المعلومات التي يحتاجون إليها<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>المهارات<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> اللازمة لتحويل المعلومات إلى معرفة ؛ و<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>القدرة<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>على تحويل المعرفة إلى حلول. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/about/about.component.html</context>
           <context context-type="linenumber">7</context>
@@ -320,11 +352,11 @@
                  <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Meaningful work:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> We are honored to meet people where they are and deliver products and services of value.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
                  <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Building bridges:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> We work across borders and disciplines – integrating diverse knowledge and perspectives to build a better future for all.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
         </source>      
-        <target><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>:المجتمع<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> .نحن نعطي الأولوية للعلاقات داخل مجتمعنا والمجتمعات العالمية التي نعمل فيه<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> 
-                <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>:التعلم<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> .نحن نطرح الأسئلة ونعمل باستمرار على تحسين جميع جوانب مبادرتنا<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
-                <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>:حلول مبتكرة على نطاق واسع<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>.نحن نقوم بالتصميم من أجل الاستدامة ونؤمن بجرأة أن فرص التنفيذ لا حدود لها<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
-                <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>:أفعال ذو معنى<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> .نحن نتشرف بمقابلة الأشخاص أينما كانوا وتقديم منتجات وخدمات ذات قيمة<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
-                <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>:بناء الجسور<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> .نحن نعمل عبر الحدود والتخصصات - ندمج المعرفة ووجهات النظر المتنوعة لبناء مستقبل أفضل للجميع<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+        <target><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>المجتمع:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>نحن نعطي الأولوية للعلاقات داخل مجتمعنا والمجتمعات العالمية التي نعمل فيه.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/> 
+                <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>التعلم:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> نحن نطرح الأسئلة ونعمل باستمرار على تحسين جميع جوانب مبادرتنا.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+                <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>حلول مبتكرة على نطاق واسع:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>نحن نقوم بالتصميم من أجل الاستدامة ونؤمن بجرأة أن فرص التنفيذ لا حدود لها.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+                <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>أفعال ذو معنى:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> نحن نتشرف بمقابلة الأشخاص أينما كانوا وتقديم منتجات وخدمات ذات قيمة.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
+                <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>بناء الجسور:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> نحن نعمل عبر الحدود والتخصصات - ندمج المعرفة ووجهات النظر المتنوعة لبناء مستقبل أفضل للجميع.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>
         </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/about/about.component.html</context>

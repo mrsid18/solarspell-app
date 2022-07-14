@@ -2,7 +2,12 @@
 body{
 margin:0;
 }
-
+.text-dir-right{
+    text-align: right;
+}
+.text-dir-left{
+    text-align: left;
+}
 .aboutus h1, .aboutus h2, .aboutus h3 {
 text-align: center;
 padding-bottom: 1%;

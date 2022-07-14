@@ -1,5 +1,6 @@
-<div class="navbar-style bg-primary-dark text-active-sunglow">
-    <div class="container">
+<div class="container" i18n-dir dir="ltr">
+ <div class="navbar-style bg-primary-dark text-active-sunglow">
+    <div class="container"  i18n-dir dir="ltr">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" [routerLink]="['/home']">
                 <img src="/assets/images/logos/logo_full.png" class="logo-responsive">
@@ -28,6 +29,7 @@
             </div>
         </nav>
     </div>
+ </div>
+ <router-outlet></router-outlet>
+ <app-footer></app-footer>
 </div>
-<router-outlet></router-outlet>
-<app-footer></app-footer>

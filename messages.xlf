@@ -6,7 +6,7 @@
         <source>Home</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <note priority="1" from="description">menuHome</note>
       </trans-unit>
@@ -14,7 +14,7 @@
         <source>Search</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">menuSearch</note>
       </trans-unit>
@@ -22,7 +22,7 @@
         <source>Index</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <note priority="1" from="description">menuIndex</note>
       </trans-unit>
@@ -30,9 +30,28 @@
         <source>About us</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">menuAboutus</note>
+      </trans-unit>
+      <trans-unit id="cb33b150a0b9e6b88a9aa5fa79f91888dd06784a" datatype="html">
+        <source>ltr</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about/about.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/about/about.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="generaleducation" datatype="html">
         <source>General Education Topics</source>
@@ -90,7 +109,7 @@
         <note priority="1" from="description">RightsStatement</note>
       </trans-unit>
       <trans-unit id="yearPublished" datatype="html">
-        <source>Yeat of Publication</source>
+        <source>Year of Publication</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/file-view/file-view.component.html</context>
           <context context-type="linenumber">27</context>
@@ -272,7 +291,7 @@
         <source>SolarSPELL is a Solar Powered Educational Learning Library. Our initiative works to build internet-ready skills and improve educational opportunities around the world.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/about/about.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <note priority="1" from="description">aboutus2</note>
       </trans-unit>
@@ -280,7 +299,7 @@
         <source>Our Values</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/about/about.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <note priority="1" from="description">values1</note>
       </trans-unit>
@@ -292,7 +311,7 @@
                 <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Building bridges:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> We work across borders and disciplines – integrating diverse knowledge and perspectives to build a better future for all.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/about/about.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">18</context>
         </context-group>
         <note priority="1" from="description">values2</note>
       </trans-unit>
@@ -300,7 +319,7 @@
         <source>Our Values</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/about/about.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <note priority="1" from="description">values3</note>
       </trans-unit>
@@ -312,7 +331,7 @@
                  <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Building bridges:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> We work across borders and disciplines – integrating diverse knowledge and perspectives to build a better future for all.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/about/about.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <note priority="1" from="description">values4</note>
       </trans-unit>
