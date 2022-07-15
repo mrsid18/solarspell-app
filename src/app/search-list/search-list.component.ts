@@ -114,7 +114,7 @@ export class SearchListComponent implements OnInit {
 
       //Call searchAdvanced() if user is not doing a basic search
       if(this.searchString == '') {
-        this.searchAdvanced();
+        this.searchAdvanced(false);
       }
     });
   }
@@ -138,7 +138,7 @@ export class SearchListComponent implements OnInit {
     });
   }
 
-  searchAdvanced() {
+  searchAdvanced(scroll: boolean) {
     //paramMeta = metadata pushed to url
     //this.searchData.metadata = metadata used for advanced search
     var paramMeta = [];
@@ -206,6 +206,10 @@ export class SearchListComponent implements OnInit {
     this.dataService.advancedSearch(this.searchData)
     .subscribe( response  => {
       this.contentList = response;
+
+      if(scroll) {
+        setTimeout(this.scrollToTable, 0);
+      }
     });
   }
 
