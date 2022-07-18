@@ -38,16 +38,20 @@ export class SearchListComponent implements OnInit {
     this.searchData.metadata = [];
   }
 
+  
+
   ngOnInit(): void {
-    if(this.route.snapshot.data.searchResult){
-      this.contentList = this.route.snapshot.data.searchResult.contentList;
-      this.searchString = this.route.snapshot.data.searchResult.searchString;
-      this.expandAdvanced = false;
-    }
-    else {
-      this.expandAdvanced = true;
-      this.searchString = "";
-    }
+    this.route.params.subscribe(() => {
+      if(this.route.snapshot.data.searchResult){
+        this.contentList = this.route.snapshot.data.searchResult.contentList;
+        this.searchString = this.route.snapshot.data.searchResult.searchString;
+        this.expandAdvanced = false;
+      }
+      else {
+        this.expandAdvanced = true;
+        this.searchString = "";
+      }
+    });
 
     var minDate: Date = new Date(this.route.snapshot.data.dates.min);
     var maxDate: Date = new Date(this.route.snapshot.data.dates.max);
