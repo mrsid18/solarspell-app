@@ -111,10 +111,8 @@ export class SearchListComponent implements OnInit {
           this.metaTracker[meta[0]] = [];
         }
 
-      //Call searchAdvanced() if user is not doing a basic search
         this.metaTracker[meta[0]].push(parseInt(meta.slice(1)));
       }
-  }
     }
 
     //Call searchAdvanced() if user is not doing a basic search
