@@ -3,10 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { SearchData } from '../models/search-data';
 import { Content } from '../models/content';
+import { Subscription } from 'rxjs';
 
-//*****************************************
-//Comment about 10 dropdown limitation
-//*****************************************
+//***************************************************************************************************
+// Currently the first digit of metadata is used to store which dropdown it corresponds with. Therefore,
+// only 10 dropdowns are currently allowed. If more are required, the code must be modified.
+//***************************************************************************************************
 
 @Component({
   selector: 'app-search-list',
@@ -22,123 +24,108 @@ export class SearchListComponent implements OnInit {
   public expandAdvanced: boolean;
   public  math = Math;
   public metaTracker : Array<any> = [];
-  dropyears: Array<Date> = [];
+  public dropyears: Array<number> = [];
+  public previousSearch: Subscription;
+  public loading: boolean = false;
 
   constructor(
     public route: ActivatedRoute,
     public dataService:DataService,
     public router: Router,
     public tableElement: ElementRef
-    ) {
-      this.searchData = new SearchData();
-      this.searchData.metadata = [];
-    }
+  ) {
+    this.searchData = new SearchData();
+    this.searchData.metadata = [];
+  }
 
   ngOnInit(): void {
-    //Get years to display in dropdown
-    this.dataService.advancedSearch(this.searchData)
-    .subscribe( response  => {
-      this.dropyears = Array.from(new Set(response.map(content => content.published_date))).map(year => new Date(year as string)).sort((a,b) => a.getFullYear()-b.getFullYear());
-    });
+    if(this.route.snapshot.data.searchResult){
+      this.contentList = this.route.snapshot.data.searchResult.contentList;
+      this.searchString = this.route.snapshot.data.searchResult.searchString;
+      this.expandAdvanced = false;
+    }
+    else {
+      this.expandAdvanced = true;
+      this.searchString = "";
+    }
+
+    var minDate: Date = new Date(this.route.snapshot.data.dates.min);
+    var maxDate: Date = new Date(this.route.snapshot.data.dates.max);
+
+    var minYear = minDate.getFullYear() + 1;
+    var maxYear = maxDate.getFullYear() + 2;
+
+    for(var j = maxYear; j >= minYear; j--) {
+      this.dropyears.push(j);
+    }
     
-    this.route.data.subscribe((data) => {
-      if(data.searchResult){
-        this.contentList = data.searchResult.contentList;
-        this.searchString = data.searchResult.searchString;
-        this.expandAdvanced = false;
+    //Get metadataList from resolver
+    this.metadataList = this.route.snapshot.data.metadataList;
+
+    //Get parameters from url
+    var params = this.route.snapshot.queryParams;
+
+    //Set this.searchData to url parameters unless url parameter is undefined
+    if(params['title'] != undefined) {
+      this.searchData.title = params['title'];
+    }
+    else {
+      this.searchData.title = '';
+    }
+
+    if(params['min_date'] != undefined) {
+      this.searchData.min_date = params['min_date'];
+    }
+    else {
+      this.searchData.min_date = '';
+    }
+
+    if(params['max_date'] != undefined) {
+      this.searchData.max_date = params['max_date'];
+    }
+    else {
+      this.searchData.max_date = '';
+    }
+
+    //Deselect all dropdown options and initialize their tracking variables to blank arrays
+    for(var i = 0; i < this.metaTracker.length; i++) {
+      this.metaTracker[i] = [];
+    }
+
+    //Set dropdown options if url parameter 'metadata' is defined
+    if(params['metadata'] != undefined) {
+      //Create variable to store raw metadata array
+      var metadata;
+
+      //Ensure metadata is stored in an array even if there is only a single metadata parameter
+      if(Array.isArray(params['metadata'])) {
+        metadata = params['metadata'];
       }
       else {
-        this.contentList = [];
-        this.expandAdvanced = true;
-        this.searchString = "";
-      }
-    });
-    
-    this.getMetadataList();
-
-    //Subscribe to url parameters
-    this.route.queryParams.subscribe(params => {
-      //Set this.searchData to url parameters unless url parameter is undefined
-      if(params['title'] != undefined) {
-        this.searchData.title = params['title'];
-      }
-      else {
-        this.searchData.title = '';
+        metadata = [params['metadata']];
       }
 
-      if(params['min_date'] != undefined) {
-        this.searchData.min_date = params['min_date'];
-      }
-      else {
-        this.searchData.min_date = '';
-      }
-
-      if(params['max_date'] != undefined) {
-        this.searchData.max_date = params['max_date'];
-      }
-      else {
-        this.searchData.max_date = '';
-      }
-
-      //Deselect all dropdown options and initialize their tracking variables to blank arrays
-      for(var i = 0; i < this.metaTracker.length; i++) {
-        this.metaTracker[i] = [];
-      }
-
-      //Set dropdown options if url parameter 'metadata; is defined
-      if(params['metadata'] != undefined) {
-        //Create variable to store raw metadata array
-        var metadata;
-
-        //Set store raw metadata from url parameters
-        //Ensure metadata is stored in an array even if there is only a single metadata parameter
-        if(Array.isArray(params['metadata'])) {
-          metadata = params['metadata'];
+      //Loop through metadata and store each element in the corresponding metaTracker (linked with a dropdown)
+      for(let meta of metadata) {
+        if(this.metaTracker[meta[0]] == undefined) {
+          this.metaTracker[meta[0]] = [];
         }
-        else {
-          metadata = [params['metadata']];
-        }
-
-        //Loop through metadata and store each element in the corresponding metaTracker (linked with a dropdown)
-        for(let meta of metadata) {
-          //First number of metadata corresponds with the dropdown it is associated with
-          //Initialize metaTracker that corresponds with current metadata
-          if(this.metaTracker[meta[0]] == undefined) {
-            this.metaTracker[meta[0]] = [];
-          }
-
-          //Add metadata to corresponding metaTracker
-          this.metaTracker[meta[0]].push(parseInt(meta.slice(1)));
-        }
-      }
 
       //Call searchAdvanced() if user is not doing a basic search
-      if(this.searchString == '') {
-        this.searchAdvanced();
+        this.metaTracker[meta[0]].push(parseInt(meta.slice(1)));
       }
-    });
   }
+    }
 
-  getFileExtension(fileName:string) : string {
-    let ext = fileName.substring(fileName.lastIndexOf('.')+1, fileName.length) || fileName;
-    switch (ext){
-      case 'mp4':
-        return '/assets/static/mp4.png';
-      case 'pdf':
-        return '/assets/static/file.png';
-      default:
-        return '/assets/static/file.png';
+    //Call searchAdvanced() if user is not doing a basic search
+    if(this.searchString == '') {
+      this.searchAdvanced(false);
     }
   }
 
-  getMetadataList() {
-    this.dataService.getMetadataList()
-    .subscribe( response  => {
-      this.metadataList = response;
-    });
-  }
+  searchAdvanced(scroll: boolean) {
+    this.loading = true;
 
-  searchAdvanced() {
     //paramMeta = metadata pushed to url
     //this.searchData.metadata = metadata used for advanced search
     var paramMeta = [];
@@ -180,33 +167,38 @@ export class SearchListComponent implements OnInit {
       paramData.metadata = paramMeta;
     }
 
-    //Push url parameters if current page is not a basic search. Otherwise, navigate to advanced search and push url parameters
+    //Push url parameters if current page is not a basic search. Otherwise, navigate to /search-list and push url parameters
     //(if statement prevents unnecessary reloading of the search-list component)
     if(this.searchString == '') {
+      //Push url parameters
       this.router.navigate([], {
-        queryParams: paramData
+        queryParams: paramData,
+        state: { scroll: scroll }
+      });
+
+      //Terminate previous search if not completed
+      if(this.previousSearch != undefined && !this.previousSearch.closed) {
+        this.previousSearch.unsubscribe();
+      }
+
+      //Perform advanced search
+      this.previousSearch = this.dataService.advancedSearch(this.searchData)
+      .subscribe( response  => {
+        this.contentList = response;
+        this.loading = false;
+
+        if(scroll || history.state.scroll) {
+          setTimeout(this.scrollToTable, 0);
+        }
       });
     }
     else {
-      var shouldReuseRoute = this.router.routeReuseStrategy.shouldReuseRoute;
-
-      this.router.routeReuseStrategy.shouldReuseRoute = function() {
-        return true;
-      };
-
+      //Navigate to /search-list and push url parameters
       this.router.navigate(['/search-list'], {
-        queryParams: paramData
+        queryParams: paramData,
+        state: { scroll: scroll }
       });
-
-      setTimeout(() => {
-        this.router.routeReuseStrategy.shouldReuseRoute = shouldReuseRoute;
-      }, 0);
     }
-
-    this.dataService.advancedSearch(this.searchData)
-    .subscribe( response  => {
-      this.contentList = response;
-    });
   }
 
   startsWithSearchFn(item, metadata) {

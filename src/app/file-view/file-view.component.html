@@ -43,7 +43,7 @@
         </div>   
         <div class="wrapper pb-3">
             <!--added download button with color class-->
-            <a [href]="fileURL" (click)="logDownloadAnalytics()" download>
+            <a [href]="fileURL" (click)="logAnalytics('download_file')" download>
               <button i18n="download@@download" type="button"class="button bg-primary-dark bg-hover-primary-light w-100 rounded text-white p-2 shadow-none border-primary-dark">
                 <i class="fa fa-download pr-2" aria-hidden="true"></i>
                 Download

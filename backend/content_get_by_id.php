@@ -35,9 +35,11 @@
         array_push($metadata_list, $meta_dict);
     }
     $result_object =  new \stdClass();
-    $result_object->parentFolder = getGrandParent($content->folder_id);
+    #$result_object->parentFolder = getGrandParent($content->folder_id);
+    $result_object->parentFolder = getParent($content->id);
     $result_object->content = $content;  
-    $result_object->metadata = array_values($metadata_list);  
+    $result_object->metadata = array_values($metadata_list);
+
     echo json_encode($result_object);
     
     function getGrandParent($parent_id){
@@ -48,5 +50,43 @@
         else {
             return getGrandParent($grandParentFolder->parent_id);
         }
+    }
+
+    function getLanguage($content_id){
+        $result = R::getCell('SELECT meta_name from metadata 
+        INNER JOIN metadata_type 
+        ON metadata.type_id = metadata_type.id INNER JOIN content_metadata 
+        ON metadata.id = content_metadata.metadata_id
+        WHERE content_metadata.content_id = '.$content_id .' 
+        AND metadata_type.type_name = "Language"');
+        return $result;
+    }
+
+    function getContentType($content_id){
+        $result = R::getCell('SELECT meta_name from metadata 
+        INNER JOIN metadata_type 
+        ON metadata.type_id = metadata_type.id INNER JOIN content_metadata 
+        ON metadata.id = content_metadata.metadata_id
+        WHERE content_metadata.content_id = '.$content_id .' 
+        AND metadata_type.type_name = "Resource Type"');
+        return $result; 
+    }
+
+    function getSubject($content_id){
+        $result = R::getCell('SELECT meta_name from metadata 
+        INNER JOIN metadata_type 
+        ON metadata.type_id = metadata_type.id INNER JOIN content_metadata 
+        ON metadata.id = content_metadata.metadata_id
+        WHERE content_metadata.content_id = '.$content_id .' 
+        AND metadata_type.type_name = "Subject"');
+        return $result; 
+    }
+
+    function getParent($content_id){
+        $result = R::getCell('SELECT folder_name from folder 
+        INNER JOIN content_folder 
+        ON folder.id = content_folder.folder_id 
+        WHERE content_folder.id = '.$content_id);
+        return $result;
     }
 ?>
