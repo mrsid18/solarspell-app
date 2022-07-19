@@ -20,6 +20,7 @@ export class FileViewComponent implements OnInit {
   public metadataList: [];
   public fileURL: SafeResourceUrl;
   public resourceType: string;
+  public pdfUrl: SafeResourceUrl;
   fileExtensions = {
     "video": ["mp4", "mov", "wmv", "avi", "mpg", "mpeg", "3gp", "3g2", "flv", "f4v", "webm"],
     "audio": ["mp3", "wav", "ogg", "aac", "flac", "wma", "m4a"]
@@ -53,7 +54,7 @@ export class FileViewComponent implements OnInit {
       this.resourceType = "audio";
     } else if (this.content.file_name.includes(".pdf")) {
       this.resourceType = "pdf";
-      this.fileURL = this.sanitizer.bypassSecurityTrustResourceUrl('/assets/pdf-js/web/viewer.html?file=' + environment.contentUrl.concat(this.content.file_name));
+      this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl('/assets/pdf-js/web/viewer.html?file=' + environment.contentUrl.concat(this.content.file_name));
     } else {
       this.resourceType = "undefined";
     }

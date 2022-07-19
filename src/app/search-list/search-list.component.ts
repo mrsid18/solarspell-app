@@ -124,7 +124,7 @@ export class SearchListComponent implements OnInit {
         if(this.metaTracker[meta[0]] == undefined) {
           this.metaTracker[meta[0]] = [];
         }
-
+        
         this.metaTracker[meta[0]].push(parseInt(meta.slice(1)));
       }
     }
