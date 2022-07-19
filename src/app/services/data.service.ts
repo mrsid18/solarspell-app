@@ -17,19 +17,19 @@ export class DataService {
     this.apiUrl = environment.apiUrl;
    }
 
-   getFolders(): Observable<any> {
+  getFolders(): Observable<any> {
      return this.http.get(this.apiUrl.concat('folder_get_all.php',""));
    }
 
-   getModules(): Observable<any> {
+  getModules(): Observable<any> {
     return this.http.get(this.apiUrl.concat('module_get_all.php',""));
   }
 
-   getFolderTree(): Observable<any> {
+  getFolderTree(): Observable<any> {
     return this.http.get(this.apiUrl.concat('folder_get_tree.php',""));
   }
 
-   getFolderData(parentId): Observable<any> {
+  getFolderData(parentId): Observable<any> {
     let params = new HttpParams();
     params = params.append('folder_id', parentId);
     return this.http.get(this.apiUrl.concat('folder_get_children.php'), {params});
@@ -81,12 +81,16 @@ export class DataService {
       { params: params }
     ).subscribe();
   }
+
+  getDates() {
+    return this.http.get(this.apiUrl.concat('content_get_dates.php'));
+  }
 }
 
 @Injectable({
   providedIn: 'root',
 })
-export class FolderDataResolveService implements Resolve<FolderData> {
+export class FolderDataResolver implements Resolve<FolderData> {
   constructor(private dataService: DataService) {}
   resolve(route: ActivatedRouteSnapshot): Observable<FolderData> {
     return this.dataService.getFolderData(route.paramMap.get('folder_id'));
@@ -96,7 +100,7 @@ export class FolderDataResolveService implements Resolve<FolderData> {
 @Injectable({
   providedIn: 'root',
 })
-export class FileDataResolveService implements Resolve<any> {
+export class FileDataResolver implements Resolve<any> {
   constructor(private dataService: DataService) {}
   resolve(route: ActivatedRouteSnapshot): Observable<FolderData> {
     return this.dataService
@@ -108,7 +112,7 @@ export class FileDataResolveService implements Resolve<any> {
 @Injectable({
   providedIn: 'root',
 })
-export class SearchDataResolveService implements Resolve<any> {
+export class SearchDataResolver implements Resolve<any> {
   constructor(private dataService: DataService) {}
   resolve(route: ActivatedRouteSnapshot): any {
     return this.dataService.singleSearch(route.paramMap.get('search_string'))
@@ -119,7 +123,7 @@ export class SearchDataResolveService implements Resolve<any> {
 @Injectable({
   providedIn: 'root',
 })
-export class SearchKeywordResolveService implements Resolve<any> {
+export class SearchKeywordResolver implements Resolve<any> {
   constructor(private dataService: DataService)  {}
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     return this.dataService.keywordSearch(route.paramMap.get('search_string'))

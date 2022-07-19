@@ -42,6 +42,8 @@ export class FileViewComponent implements OnInit {
       this.fileURL = this.sanitizer.bypassSecurityTrustResourceUrl(
         environment.contentUrl.concat(this.content.file_name)
       );
+
+      this.logAnalytics('access_content');
     });
 
     window.scroll(0, 0);
@@ -65,7 +67,7 @@ export class FileViewComponent implements OnInit {
   }
 
   //Called when download button is clicked
-  logDownloadAnalytics() {
+  logAnalytics(type: string) {
     //Initialize variables
     var language = '';
     var content_type = '';
@@ -95,7 +97,7 @@ export class FileViewComponent implements OnInit {
       content_type: content_type,
       subject: subject,
       parent_folder: this.parentFolder,
-      activity_type: 'download_file'
+      activity_type: type
     });
   }
 }

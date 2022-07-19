@@ -24,7 +24,7 @@ export class SearchBoxComponent implements OnInit {
       .replace("?", " ")
       .replace(",", " ")
       .replace("!", " ");
-
+      
       this.router.navigate(['/search-list', searchString_cleaned]);
     }
   }

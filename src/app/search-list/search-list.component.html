@@ -41,14 +41,14 @@
                     <label i18n="searchMin@@searchMin">Min</label>
                     <select class="form-control" [(ngModel)]="searchData.min_date">
                         <option [value]=""></option>
-                        <option *ngFor="let year of dropyears" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
+                        <option *ngFor="let year of dropyears" [value]="year">{{ year }}</option>
                     </select>
                 </div>
                 <div class="form-group col-sm-4">
                     <label i18n="searchMax@@searchMax">Max</label>
                     <select class="form-control"[(ngModel)]="searchData.max_date">
                         <option [value]=""></option>
-                        <option *ngFor="let year of dropyears.reverse()" [value]="year.getFullYear()">{{year | date:'yyyy'}}</option>
+                        <option *ngFor="let year of dropyears" [value]="year">{{ year }}</option>
                     </select>
                 </div>
                 <div class="col-sm-4">
@@ -66,7 +66,12 @@
     <div class="row">       
         <div class="col-md-12 col-margin" id="contentList">
             <p><span i18n="searchSearchBtn@@searchSearchBtn" *ngIf="searchString.length" id="contentElement" >Displaying Results for: </span><span *ngIf="searchString.length">"{{searchString}}"</span></p>
-            <p i18n="noitemsfoundmsg2@@noitemsfoundmsg2" *ngIf="!contentList.length" class="no-records-message">No Items Found</p>
+            <p i18n="noitemsfoundmsg2@@noitemsfoundmsg2" *ngIf="!loading && !contentList.length" class="no-records-message">No Items Found</p>
+            <div *ngIf="loading" class="text-center" style="padding-bottom: 30px">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
             <app-content-list [contentList]="contentList"></app-content-list>
         </div>
     </div>

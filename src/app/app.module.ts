@@ -28,6 +28,8 @@ import localeFr from '@angular/common/locales/fr';
 import localeES from '@angular/common/locales/es';
 import localeAr from '@angular/common/locales/ar';
 import { ModuleComponent } from './module/module.component';
+import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeFr, localeES);
 
@@ -47,7 +49,8 @@ registerLocaleData(localeFr, localeES);
     FooterComponent,
     IndexPageComponent,
     FileUnitPipe,
-    ModuleComponent
+    ModuleComponent,
+    LoadingIndicatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ registerLocaleData(localeFr, localeES);
     FormsModule,
     NgSelectModule,
     NgxPaginationModule,
-    TreeModule
+    TreeModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {

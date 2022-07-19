@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-index-page',
@@ -10,22 +11,17 @@ import { DataService } from '../services/data.service';
 export class IndexPageComponent implements OnInit {
   public tree = [];
   public options = {};
-  constructor(private dataService: DataService,
-    public router: Router) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.getFolders();
+    this.tree = this.route.snapshot.data.folderTree;
   }
 
   navigate($event) {
     console.log($event);
     this.router.navigate(['/content', $event.node.data.id]);
-  }
-
-  getFolders() {
-    this.dataService.getFolderTree()
-    .subscribe( response  => {
-      this.tree = response;
-    });
   }
 }

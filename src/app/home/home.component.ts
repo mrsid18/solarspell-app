@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Folder } from '../models/folder';
-
-var math = Math;
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,32 +9,22 @@ var math = Math;
   styleUrls: ['./home.component.css']
   
 })
+
 export class HomeComponent implements OnInit {
   public folders: Array<Folder> = [];
   public modules: Array<Folder> = []; 
 
-//this variable holds Math
-public  math = Math;
+  //Used in home.component.html
+  public  math = Math;
 
-  constructor(private dataService: DataService) { }
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.getFolders();
-    this.getModules();
-  }
-
-  getFolders() {
-    this.dataService.getFolders()
-    .subscribe( response  => {
-      this.folders = response;
-    });
-  }
-
-  getModules() {
-    this.dataService.getModules()
-    .subscribe( response  => {
-      this.modules = response;
-    });
+    this.folders = this.route.snapshot.data.folders;
+    this.modules = this.route.snapshot.data.modules;
   }
 
   //Called when a link to a module is clicked
