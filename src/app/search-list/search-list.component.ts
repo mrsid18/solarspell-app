@@ -1,9 +1,11 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { SearchData } from '../models/search-data';
 import { Content } from '../models/content';
 import { Subscription } from 'rxjs';
+import { ViewportScroller } from '@angular/common';
+import { Event } from '@angular/router';
 
 //***************************************************************************************************
 // Currently the first digit of metadata is used to store which dropdown it corresponds with. Therefore,
@@ -32,7 +34,8 @@ export class SearchListComponent implements OnInit {
     public route: ActivatedRoute,
     public dataService:DataService,
     public router: Router,
-    public tableElement: ElementRef
+    public tableElement: ElementRef,
+    public viewportScroller: ViewportScroller
   ) {
     this.searchData = new SearchData();
     this.searchData.metadata = [];
@@ -41,6 +44,13 @@ export class SearchListComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.router.events.subscribe((event: Event) => {
+      if(event instanceof NavigationEnd && history.state.scrollPosition != undefined) {
+        console.log('1');
+        this.viewportScroller.scrollToPosition(history.state.scrollPosition);
+      }
+    });
+
     this.route.params.subscribe(() => {
       if(this.route.snapshot.data.searchResult){
         this.contentList = this.route.snapshot.data.searchResult.contentList;
@@ -175,7 +185,7 @@ export class SearchListComponent implements OnInit {
       //Push url parameters
       this.router.navigate([], {
         queryParams: paramData,
-        state: { scroll: scroll }
+        state: { scroll: scroll, scrollPosition: this.viewportScroller.getScrollPosition() }
       });
 
       //Terminate previous search if not completed
@@ -198,7 +208,7 @@ export class SearchListComponent implements OnInit {
       //Navigate to /search-list and push url parameters
       this.router.navigate(['/search-list'], {
         queryParams: paramData,
-        state: { scroll: scroll }
+        state: { scroll: scroll, scrollPosition: this.viewportScroller.getScrollPosition() }
       });
     }
   }

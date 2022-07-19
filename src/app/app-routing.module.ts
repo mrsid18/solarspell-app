@@ -8,11 +8,11 @@ import { SearchListComponent } from './search-list/search-list.component';
 import { AboutComponent } from './about/about.component';
 import { IndexPageComponent } from './index-page/index-page.component';
 import { ModuleComponent } from './module/module.component';
-import { FoldersResolver } from './services/folders.resolver';
-import { ModulesResolver } from './services/modules.resolver';
-import { FolderTreeResolver } from './services/folder-tree.resolver';
-import { MetadataListResolver } from './services/metadata-list.resolver';
-import { DatesResolver } from './services/dates.resolver';
+import { FoldersResolver } from './resolvers/folders.resolver';
+import { ModulesResolver } from './resolvers/modules.resolver';
+import { FolderTreeResolver } from './resolvers/folder-tree.resolver';
+import { MetadataListResolver } from './resolvers/metadata-list.resolver';
+import { DatesResolver } from './resolvers/dates.resolver';
 
 
 const routes: Routes = [
