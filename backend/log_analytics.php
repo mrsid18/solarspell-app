@@ -1,6 +1,21 @@
 <?php
     #List of columns in usage table, add columns when they are added to table
-    $columns = ['title', 'activity_type', 'language', 'content_type', 'subject', 'parent_folder']; 
+    $columns = [
+        'title',
+        'activity_type',
+        'language',
+        'content_type',
+        'subject',
+        'parent_folder',
+        'keyword',
+        'creator',
+        'audience',
+        'format',
+        'rights_holder',
+        'min_date',
+        'max_date',
+        'referrer'
+    ]; 
     
     #Allow this file to be accessed from other ports/hosts
     header("Access-Control-Allow-Origin: *");
