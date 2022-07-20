@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition, state } from '@angular/animations';
 import { NavigationEnd, Router, NavigationStart } from '@angular/router';
-import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-loading-indicator',
@@ -29,29 +28,37 @@ export class LoadingIndicatorComponent implements OnInit {
   forcedLoading = false;
 
   constructor(
-    public router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.router.events.subscribe(event =>{
-      //if(!this.forcedLoading) {
-        if(event instanceof NavigationStart){
-          this.state = 'started';
-
-          setTimeout(() => {
-            if(this.state == 'started') {
-              this.state = 'loading';
-            }
-          }, 200);
-        }
-        else if(event instanceof NavigationEnd && this.state == 'loading') {
-          this.state = 'loaded';
-          setTimeout(() => { this.state = 'reset' }, 500);
-        }
-        else if(event instanceof NavigationEnd) {
-          this.state = 'reset';
-        }
-      //}
+      if(event instanceof NavigationStart){
+        this.startLoad();
+      }
+      else if(event instanceof NavigationEnd) {
+        this.endLoad();
+      }
    })
+  }
+
+  startLoad(): void {
+    this.state = 'started';
+
+    setTimeout(() => {
+      if(this.state == 'started') {
+        this.state = 'loading';
+      }
+    }, 200);
+  }
+
+  endLoad(): void {
+    if(this.state == 'loading') {
+      this.state = 'loaded';
+      setTimeout(() => { this.state = 'reset' }, 500);
+    }
+    else {
+      this.state = 'reset';
+    }
   }
 }

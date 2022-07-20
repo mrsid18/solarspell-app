@@ -30,6 +30,7 @@ import localeAr from '@angular/common/locales/ar';
 import { ModuleComponent } from './module/module.component';
 import { LoadingIndicatorComponent } from './loading-indicator/loading-indicator.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 registerLocaleData(localeFr, localeES);
 
@@ -51,6 +52,7 @@ registerLocaleData(localeFr, localeES);
     FileUnitPipe,
     ModuleComponent,
     LoadingIndicatorComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Breadcrumb } from './breadcrumb.component';
+import { Breadcrumb } from '../breadcrumb/breadcrumb.component';
 import { BehaviorSubject } from 'rxjs';
-import { DataService } from '../services/data.service';
+
 @Injectable({
     providedIn: 'root'
   })
 export class BreadcrumbService {
     breadcrumbArray: Array<Breadcrumb> = [];
     private breadcrumbList = new BehaviorSubject<Breadcrumb[]>(null);
-    constructor(private http: HttpClient, private dataService:DataService) {
+    constructor() {
     }
 
-    updateBreadcrumb(id, isFolder) {
+    updateBreadcrumb(response) {
         this.breadcrumbArray = [];
-        this.dataService.getFullPath(id, isFolder)
-        .subscribe( response  => {
-            this.retrievePath(response);
-          });
+        this.retrievePath(response);
     }
 
     retrievePath(nestedObject: any) {

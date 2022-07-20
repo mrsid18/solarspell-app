@@ -6,6 +6,8 @@ import { Content } from '../models/content';
 import { Subscription } from 'rxjs';
 import { ViewportScroller } from '@angular/common';
 import { Event } from '@angular/router';
+import { exit } from 'process';
+import { DefaultSelectionModelFactory } from '@ng-select/ng-select/lib/selection-model';
 
 //***************************************************************************************************
 // Currently the first digit of metadata is used to store which dropdown it corresponds with. Therefore,
@@ -46,7 +48,6 @@ export class SearchListComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((event: Event) => {
       if(event instanceof NavigationEnd && history.state.scrollPosition != undefined) {
-        console.log('1');
         this.viewportScroller.scrollToPosition(history.state.scrollPosition);
       }
     });
@@ -56,6 +57,14 @@ export class SearchListComponent implements OnInit {
         this.contentList = this.route.snapshot.data.searchResult.contentList;
         this.searchString = this.route.snapshot.data.searchResult.searchString;
         this.expandAdvanced = false;
+
+        var activity_type = 'search';
+
+        if(this.router.url.slice(0,21) == '/search-list/keyword/') {
+          activity_type = 'keyword_search';
+        }
+
+        this.dataService.logAnalytics({ title: this.searchString, activity_type: activity_type });
       }
       else {
         this.expandAdvanced = true;
@@ -201,6 +210,69 @@ export class SearchListComponent implements OnInit {
 
         if(scroll || history.state.scroll) {
           setTimeout(this.scrollToTable, 0);
+
+          var analytics = { activity_type: 'advanced_search' };
+
+          ['title', 'min_date', 'max_date'].forEach(column => {
+            if(this.searchData[column] != '') {
+              analytics[column] = this.searchData[column];
+            }
+          });
+
+          var metadataAnalytics = this.metaTracker.map((tracker, i) => {
+            return {
+              name: this.metadataList[i].name,
+              metadata: tracker.map(element => 
+                this.metadataList[i].metadata.find(reference =>
+                  reference.id == element).meta_name
+              )
+            }
+          });
+          
+          metadataAnalytics.forEach(element => {
+            if(element.metadata.length == 0) {
+              return;
+            }
+
+            var column;
+            
+            switch(element.name) {
+              case 'Language':
+                column = 'language';
+                break;
+              case 'Keywords':
+                column = 'keyword';
+                break;
+              case 'Creator':
+                column = 'creator';
+                break;
+              case 'Resource Type':
+                column = 'content_type';
+                break;
+              case 'Audience':
+                column = 'audience';
+                break;
+              case 'Subject':
+                column = 'subject';
+                break;
+              case 'Format':
+                column = 'format';
+                break;
+              case 'Rights Holder':
+                column = 'rights_holder';
+                break;
+            }
+
+            analytics[column] = '';
+            element.metadata.forEach((meta, i) => {
+              analytics[column] += meta;
+              if(i != element.metadata.length - 1) {
+                analytics[column] += ', ';
+              }
+            });
+          });
+
+          this.dataService.logAnalytics(analytics);
         }
       });
     }
@@ -213,12 +285,12 @@ export class SearchListComponent implements OnInit {
     }
   }
 
-  startsWithSearchFn(item, metadata) {
-    return metadata.meta_name.toLowerCase().startsWith(item.toLowerCase());
-  }
-
   scrollToTable() {
     let el = document.getElementById('contentList');
     el.scrollIntoView({behavior: 'smooth', block: "start", inline: "nearest"});
+  }
+
+  startsWithSearchFn(item, metadata) {
+    return metadata.meta_name.toLowerCase().startsWith(item.toLowerCase());
   }
 }

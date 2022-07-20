@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { HomeComponent } from './home/home.component';
 import { FolderViewComponent } from './folder-view/folder-view.component';
-import { FolderDataResolver, FileDataResolver, SearchDataResolver, SearchKeywordResolver } from './services/data.service';
 import { FileViewComponent } from './file-view/file-view.component';
 import { SearchListComponent } from './search-list/search-list.component';
 import { AboutComponent } from './about/about.component';
 import { IndexPageComponent } from './index-page/index-page.component';
 import { ModuleComponent } from './module/module.component';
+
 import { FoldersResolver } from './resolvers/folders.resolver';
 import { ModulesResolver } from './resolvers/modules.resolver';
 import { FolderTreeResolver } from './resolvers/folder-tree.resolver';
 import { MetadataListResolver } from './resolvers/metadata-list.resolver';
 import { DatesResolver } from './resolvers/dates.resolver';
+import { FolderDataResolver } from './resolvers/folder-data.resolver';
+import { FileDataResolver } from './resolvers/file-data.resolver';
+import { SearchDataResolver } from './resolvers/search-data.resolver';
+import { SearchKeywordResolver } from './resolvers/search-keyword.resolver';
+import { FullPathResolver } from './resolvers/full-path.resolver';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -37,17 +44,17 @@ const routes: Routes = [
   {
     path: 'content/:folder_id',
     component: FolderViewComponent,
-    resolve: { folderData: FolderDataResolver }
+    resolve: { folderData: FolderDataResolver, fullPath: FullPathResolver }
   },
   {
     path: 'content/:folder_id/:subfolder_id',
     component: FolderViewComponent,
-    resolve: { folderData: FolderDataResolver }
+    resolve: { folderData: FolderDataResolver, fullPath: FullPathResolver }
   },
   {
     path: 'file-view/:content_id',
     component: FileViewComponent,
-    resolve: { fileData: FileDataResolver }
+    resolve: { fileData: FileDataResolver, fullPath: FullPathResolver }
   },
   {
     path: 'search-list',
@@ -71,12 +78,10 @@ const routes: Routes = [
       component: ModuleComponent
     } ]
   },
-  /*404 page
   {
     path: '**',
-    component: HomeComponent
+    component: NotFoundComponent
   }
-  */
 ];
 
 @NgModule({

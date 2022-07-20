@@ -11,8 +11,9 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class DataService {
-
+  
   apiUrl: string;
+
   constructor(private http: HttpClient) {
     this.apiUrl = environment.apiUrl;
    }
@@ -84,48 +85,5 @@ export class DataService {
 
   getDates() {
     return this.http.get(this.apiUrl.concat('content_get_dates.php'));
-  }
-}
-
-@Injectable({
-  providedIn: 'root',
-})
-export class FolderDataResolver implements Resolve<FolderData> {
-  constructor(private dataService: DataService) {}
-  resolve(route: ActivatedRouteSnapshot): Observable<FolderData> {
-    return this.dataService.getFolderData(route.paramMap.get('folder_id'));
-  }
-}
-
-@Injectable({
-  providedIn: 'root',
-})
-export class FileDataResolver implements Resolve<any> {
-  constructor(private dataService: DataService) {}
-  resolve(route: ActivatedRouteSnapshot): Observable<FolderData> {
-    return this.dataService
-    .getFileData(route.paramMap.get('content_id'));
-  }
-}
-
-
-@Injectable({
-  providedIn: 'root',
-})
-export class SearchDataResolver implements Resolve<any> {
-  constructor(private dataService: DataService) {}
-  resolve(route: ActivatedRouteSnapshot): any {
-    return this.dataService.singleSearch(route.paramMap.get('search_string'))
-
-  }
-}
-
-@Injectable({
-  providedIn: 'root',
-})
-export class SearchKeywordResolver implements Resolve<any> {
-  constructor(private dataService: DataService)  {}
-  resolve(route: ActivatedRouteSnapshot): Observable<any> {
-    return this.dataService.keywordSearch(route.paramMap.get('search_string'))
   }
 }

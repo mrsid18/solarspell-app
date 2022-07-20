@@ -18,8 +18,9 @@
             </p>
             <p *ngIf="meta.name !== 'Keywords'" class="value">{{meta.value}}</p>
             <p *ngIf="meta.name == 'Keywords'">
-                <span class="value" *ngFor="let k of meta.value.split(', ')">
-                    <a class="keyword-link" (click)="meta.name == 'Keywords'?searchKeyword(k):null">{{k}} </a> |
+                <span class="value" *ngFor="let k of meta.value.split(', '); let isLast = last">
+                    <a class="keyword-link" (click)="meta.name == 'Keywords'?searchKeyword(k):null">{{k}}</a>
+                    <span *ngIf="!isLast"> | </span>
                 </span>
             </p>
         </div>
