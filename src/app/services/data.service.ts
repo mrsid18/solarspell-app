@@ -77,6 +77,7 @@ export class DataService {
   if they are supported by log_analytics.php
   */
   logAnalytics(params) {
+    params['activity_date'] = new Date();
     this.http.get(
       this.apiUrl.concat('log_analytics.php',""),
       { params: params }

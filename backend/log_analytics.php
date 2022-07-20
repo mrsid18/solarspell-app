@@ -14,7 +14,8 @@
         'rights_holder',
         'min_date',
         'max_date',
-        'referrer'
+        'referrer',
+        'activity_date'
     ]; 
     
     #Allow this file to be accessed from other ports/hosts
