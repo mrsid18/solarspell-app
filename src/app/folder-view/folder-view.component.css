@@ -45,14 +45,23 @@
     width: 32px;
     margin-top: -5px;
 }
-.btn-light:hover{
-    background-color:rgba(255, 198, 39, 0.5);
-    font-weight: 600;
-}
 .no-records-message {
     text-align: center;
     font-size: 18px;
     font-weight: 500;
+}
+.btn-light-adjusted {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+@media (hover: hover) {
+    .bg-hover-sunglow-50-adjusted:hover{
+        background-color:rgba(255, 198, 39, 0.5);
+    }
+    .btn-light-adjusted:hover {
+        background-color:rgba(255, 198, 39, 0.5);
+        font-weight: 600;
+    }
 }
 @media screen and (min-width:200px) and (max-width: 991px){
     .row{

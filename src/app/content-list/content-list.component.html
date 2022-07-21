@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 25, currentPage: page } let i=index" [routerLink]="['/file-view',content.id]" class="bg-hover-sunglow-50"> 
+      <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 25, currentPage: page } let i=index" [routerLink]="['/file-view',content.id]" class="bg-hover-sunglow-50-adjusted"> 
         <!--added index number to list-->
         <td>{{i+1+((page-1)*25)}}</td>
         <td><img src="{{getFileExtension(content.file_name)}}"></td>
