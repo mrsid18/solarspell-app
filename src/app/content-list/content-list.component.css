@@ -21,16 +21,16 @@
 .table-style tr > * {
     vertical-align: middle;
     text-align: left;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .table-style tr > *:first-child {
-    padding-left:20px;
+    padding-left:10px;
     text-align: center;
 }
 .table-style tr > *:last-child {
-    padding-right:20px;
+    padding-right:10px;
 }
 
 .table-style tr{
@@ -54,5 +54,11 @@
 @media (hover: hover) {
     .bg-hover-sunglow-50-adjusted:hover{
         background-color: #eeeeee;
+    }
+}
+
+@media screen and (min-width: 990px){
+    .table-wrapper{
+        padding: 0 15px;
     }
 }
