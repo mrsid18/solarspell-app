@@ -24,14 +24,15 @@ import { NavigationEnd, Router, NavigationStart } from '@angular/router';
   ]
 })
 export class LoadingIndicatorComponent implements OnInit {
+  //Initially the component state is 'reset'
   state = 'reset';
-  forcedLoading = false;
 
   constructor(
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+    //Call startLoad() when router starts loading and endLoad() when it ends loading
     this.router.events.subscribe(event =>{
       if(event instanceof NavigationStart){
         this.startLoad();
@@ -39,12 +40,14 @@ export class LoadingIndicatorComponent implements OnInit {
       else if(event instanceof NavigationEnd) {
         this.endLoad();
       }
-   })
+    })
   }
 
   startLoad(): void {
+    //Set the current state to started
     this.state = 'started';
 
+    //In 200 ms, if the state is still started, set the state to loading
     setTimeout(() => {
       if(this.state == 'started') {
         this.state = 'loading';
@@ -53,11 +56,12 @@ export class LoadingIndicatorComponent implements OnInit {
   }
 
   endLoad(): void {
+    //If the state is 'loading' play animation and reset the state
     if(this.state == 'loading') {
       this.state = 'loaded';
       setTimeout(() => { this.state = 'reset' }, 500);
     }
-    else {
+    else { //Otherwise, (if the state is 'started' and hasn't changed to 'loading' yet) reset the state
       this.state = 'reset';
     }
   }

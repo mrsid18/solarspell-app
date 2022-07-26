@@ -12,6 +12,7 @@ export class FullPathResolver implements Resolve<any> {
     var id: string;
     var isFolder: boolean;
 
+    //Determine whether the current route is a folder, then get folder id and set isFolder
     if(route.params['folder_id']) {
         id = route.params['folder_id'];
         isFolder = true;

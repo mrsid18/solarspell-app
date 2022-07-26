@@ -6,8 +6,6 @@ import { Content } from '../models/content';
 import { Subscription } from 'rxjs';
 import { ViewportScroller } from '@angular/common';
 import { Event } from '@angular/router';
-import { exit } from 'process';
-import { DefaultSelectionModelFactory } from '@ng-select/ng-select/lib/selection-model';
 
 //***************************************************************************************************
 // Currently the first digit of metadata is used to store which dropdown it corresponds with. Therefore,
@@ -46,18 +44,25 @@ export class SearchListComponent implements OnInit {
   
 
   ngOnInit(): void {
+    //When the router changes page, check if a scrollPosition is stored, if so, navigate to that position
+    //This is to prevent the page from jumping to the top when the user clicked "search advanced"
     this.router.events.subscribe((event: Event) => {
       if(event instanceof NavigationEnd && history.state.scrollPosition != undefined) {
         this.viewportScroller.scrollToPosition(history.state.scrollPosition);
       }
     });
 
+    //Executes everytime the route parameters change and when the component is initially loaded
     this.route.params.subscribe(() => {
+      //Check if the current search is a basic search of a keyword search
       if(this.route.snapshot.data.searchResult){
-        this.contentList = this.route.snapshot.data.searchResult.contentList;
-        this.searchString = this.route.snapshot.data.searchResult.searchString;
         this.expandAdvanced = false;
 
+        //Get component content from resolvers
+        this.searchString = this.route.snapshot.data.searchResult.searchString;
+        this.contentList = this.route.snapshot.data.searchResult.contentList;
+
+        //Initialize activity_type to 'search', then change to 'keyword_search' if url matches a keyword search
         var activity_type = 'search';
 
         if(this.router.url.slice(0,21) == '/search-list/keyword/') {
@@ -66,12 +71,13 @@ export class SearchListComponent implements OnInit {
 
         this.dataService.logAnalytics({ title: this.searchString, activity_type: activity_type });
       }
-      else {
+      else { //Current search is an advanced search
         this.expandAdvanced = true;
         this.searchString = "";
       }
     });
 
+    //Generate dropyears from dates resolver
     var minDate: Date = new Date(this.route.snapshot.data.dates.min);
     var maxDate: Date = new Date(this.route.snapshot.data.dates.max);
 
@@ -205,20 +211,24 @@ export class SearchListComponent implements OnInit {
       //Perform advanced search
       this.previousSearch = this.dataService.advancedSearch(this.searchData)
       .subscribe( response  => {
+        //Load content and disable loading indicator
         this.contentList = response;
         this.loading = false;
 
-        if(scroll || history.state.scroll) {
+        if(scroll || history.state.scroll) { //True if the user clicked 'advanced_search'
           setTimeout(this.scrollToTable, 0);
 
+          //Initialize variable to hold analytics
           var analytics = { activity_type: 'advanced_search' };
 
+          //Get analytics from searchData
           ['title', 'min_date', 'max_date'].forEach(column => {
             if(this.searchData[column] != '') {
               analytics[column] = this.searchData[column];
             }
           });
 
+          //Get a list of types of metadata and convert stored metadata from id to string
           var metadataAnalytics = this.metaTracker.map((tracker, i) => {
             return {
               name: this.metadataList[i].name,
@@ -229,13 +239,16 @@ export class SearchListComponent implements OnInit {
             }
           });
           
+          //Store each type of metadata in its corresponding analytics column
           metadataAnalytics.forEach(element => {
+            //Don't store if no metadata exists
             if(element.metadata.length == 0) {
               return;
             }
 
+            //Get column to store metadata in
             var column;
-            
+
             switch(element.name) {
               case 'Language':
                 column = 'language';
@@ -263,10 +276,13 @@ export class SearchListComponent implements OnInit {
                 break;
             }
 
+            //Initialize column
             analytics[column] = '';
+
+            //Add each metadata to the column
             element.metadata.forEach((meta, i) => {
               analytics[column] += meta;
-              if(i != element.metadata.length - 1) {
+              if(i != element.metadata.length - 1) { //Don't add a comma for the last element
                 analytics[column] += ', ';
               }
             });
@@ -287,7 +303,7 @@ export class SearchListComponent implements OnInit {
 
   scrollToTable() {
     let el = document.getElementById('contentList');
-    el.scrollIntoView({behavior: 'smooth', block: "start", inline: "nearest"});
+    window.scrollTo({ top: el.offsetTop - 15, behavior: 'smooth' });
   }
 
   startsWithSearchFn(item, metadata) {

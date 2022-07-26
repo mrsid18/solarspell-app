@@ -9,6 +9,7 @@ export class UrlService {
   private currentUrl: string;
 
   constructor(router: Router) {
+    //Save the previous url and cache the current url whenever the router changes the page
     router.events.subscribe(event => {
       if(event instanceof NavigationEnd) {
         this.previousUrl = this.currentUrl;

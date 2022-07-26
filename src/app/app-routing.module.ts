@@ -78,7 +78,7 @@ const routes: Routes = [
       component: ModuleComponent
     } ]
   },
-  {
+  { //404 page
     path: '**',
     component: NotFoundComponent
   }
@@ -86,8 +86,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'enabled',
-    initialNavigation: 'enabled'
+    scrollPositionRestoration: 'enabled', //Scroll to top on new page and restore previous scroll height on forward/back
+    initialNavigation: 'enabled' //Wait to load website until all resources for the requested page are loaded
   })],
   exports: [RouterModule]
 })

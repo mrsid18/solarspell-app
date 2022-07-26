@@ -1,17 +1,18 @@
 <app-search-box [hideLink]="true"></app-search-box>
 <div class="container search-background">
     <div class="row justify-content-center">
-        <div class="col-md-6 adv-search-toggle bg-primary-light"><!--background color class-->
-            <button i18n="advancedsearchbtn@@advancedsearchbtn" class="btn bg-primary-light bg-active-primary-light bg-focus-primary-light text-white btn-block" type="button" data-toggle="collapse" data-target="#collapsableBox" aria-expanded="false" aria-controls="collapsableBox">
-                Advanced Search
-            </button>
-        </div>
+        <button i18n="advancedsearchbtn@@advancedsearchbtn" class="spell-btn text-white btn adv-search-btn" type="button" data-toggle="collapse" data-target="#collapsableBox" aria-expanded="false" aria-controls="collapsableBox">
+            Advanced Search
+        </button>
     </div>
-    <div class="row">
-        <div class="col-md-6 adv-search-box collapse bg-white" [ngClass]="{'show':expandAdvanced}" id="collapsableBox">
-            <div class="form-group">
-                <label i18n="searchtitle@@searchtitle" for="inputTitle">Title</label>
-                <input type="text" class="form-control" id="inputTitle" name="inputTitle" [(ngModel)]="searchData.title">
+    <div class="row justify-content-center">
+        <div class="collapse col-md-7" [ngClass]="{'show':expandAdvanced}" id="collapsableBox">
+        <div class="col-md-12 adv-search-box bg-white">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label i18n="searchtitle@@searchtitle" for="inputTitle">Title</label>
+                    <input type="text" class="form-control" id="inputTitle" name="inputTitle" [(ngModel)]="searchData.title">
+                </div>
             </div>
             <div class="form-row" *ngFor="let rows of metadataList | slice:0:(math.ceil((metadataList?.length/2))); let i=index">
                 <div class="form-group col-md-6" *ngFor="let metadata of metadataList | slice:(2*i):(2*i+2); let j = index">
@@ -52,20 +53,19 @@
                     </select>
                 </div>
                 <div class="col-sm-4">
-                    <p style="height: 5px;"></p><!--made the search button more consistent-->
-                    <button i18n="searchSearchBtn@@searchSearchBtn" class="search-btn btn-block p-2 border-primary-light font-weight-normal bg-primary-light text-white shadow-none bg-hover-primary-dark rounded" type="button" (click)="searchAdvanced(true)">
+                    <p style="height: 13px;"></p><!--made the search button more consistent-->
+                    <button i18n="searchSearchBtn@@searchSearchBtn" class="spell-btn text-white btn" type="button" (click)="searchAdvanced(true)">
                         Search
                     </button>
                 </div>
-            </div>
+            </div></div>
         </div>
     </div>
-    <img src="/assets/images/banners/banner_search.jpg">
 </div>
 <div class="container">
     <div class="row">       
-        <div class="col-md-12 col-margin" id="contentList">
-            <p><span i18n="searchSearchBtn@@searchSearchBtn" *ngIf="searchString.length" id="contentElement" >Displaying Results for: </span><span *ngIf="searchString.length">"{{searchString}}"</span></p>
+        <div class="col-md-12" id="contentList">
+            <p *ngIf="searchString.length > 0" class="resultsFor"><span i18n="searchSearchBtn@@searchSearchBtn" id="contentElement" >Displaying Results for: </span><span>"{{searchString}}"</span></p>
             <p i18n="noitemsfoundmsg2@@noitemsfoundmsg2" *ngIf="!loading && !contentList.length" class="no-records-message">No Items Found</p>
             <div *ngIf="loading" class="text-center" style="padding-bottom: 30px">
                 <div class="spinner-border text-primary" role="status">

@@ -1,40 +1,40 @@
-<app-breadcrumb></app-breadcrumb>
 <app-search-box [hideLink]="false"></app-search-box>
+<app-breadcrumb></app-breadcrumb>
 <div class="row">
     <!--banner has been removed-->
-    <div class="col-md-3 meta-col bg-white order-last">
+    <div class="col-md-3 meta-col order-last">
         <!--background color class-->
-        <div *ngIf="content.title" class="wrapper text-grey">
+        <div *ngIf="content.title" class="wrapper">
             <p i18n="fileTilte@@fileTitle" class="lbl">Title</p>
             <p class="value">{{content.title}}</p>
         </div>
-        <div *ngIf="content.description" class="wrapper text-grey">
+        <div *ngIf="content.description" class="wrapper">
             <p i18n="fileDescription@@fileDescription" class="lbl">Description</p>
             <p class="value">{{content.description}}</p>
         </div>
-        <div class="wrapper text-grey" *ngFor="let meta of metadataList">
+        <div class="wrapper" *ngFor="let meta of metadataList">
             <p i18n class="lbl">{meta.name, select, Language {Language} Subject {Subject} Resource Type {Resource Type}
                 Format {Format} Audience {Audience} Keywords {Keywords} Creator {Creator} Rights Holder {Rights Holder}}
             </p>
             <p *ngIf="meta.name !== 'Keywords'" class="value">{{meta.value}}</p>
             <p *ngIf="meta.name == 'Keywords'">
                 <span class="value" *ngFor="let k of meta.value.split(', '); let isLast = last">
-                    <a class="keyword-link" (click)="meta.name == 'Keywords'?searchKeyword(k):null">{{k}}</a>
+                    <a class="keyword-link spell-link" (click)="meta.name == 'Keywords'?searchKeyword(k):null">{{k}}</a>
                     <span *ngIf="!isLast"> | </span>
                 </span>
             </p>
         </div>
-        <div *ngIf="content.rights_statement" class="wrapper text-grey">
+        <div *ngIf="content.rights_statement" class="wrapper">
             <!--text color class-->
             <p i18n="RightsStatement@@RightsStatement" class="lbl">Rights Statement</p>
             <p class="value">{{content.rights_statement}}</p>
         </div>
-        <div *ngIf="content.published_date" class="wrapper text-grey">
+        <div *ngIf="content.published_date" class="wrapper">
             <!--text color class-->
             <p i18n="yearPublished@@yearPublished" class="lbl">Year of Publication</p>
             <p class="value">{{content.published_date | date : "yyyy"}}</p>
         </div>
-        <div *ngIf="content.file_size" class="wrapper text-grey">
+        <div *ngIf="content.file_size" class="wrapper">
             <!--text color class-->
             <p i18n="fileSize@@fileSize" class="lbl">File Size</p>
             <p class="value">

@@ -4,11 +4,11 @@
     <div class="col-lg-2">
         <div class="d-none d-lg-block"><img class="folder-logo" src="/assets/{{logo}}"></div>
     </div><!--removed logo nav functionality-->
-    <div class="col-lg-9 col-style">
+    <div class="col-lg-10 col-style">
         <div class="row" *ngFor="let rows of folderList | slice:0:(math.ceil(folderList?.length/3)); let i=index"><!--added math ceiling function-->
             <div class="col-lg-4" *ngFor="let folder of folderList| slice:(3*i):(3*i+3)">
                 
-              <p class="btn btn-light-adjusted border-primary-dark bg-hover-sunglow-50-adjusted btn-block folder-btn" [routerLink]="['/content', folder.id]">
+              <p class="btn btn-block folder-btn" [routerLink]="['/content', folder.id]" [title]="folder.folder_name">
                 <!--removed parentFolder.id since mainFolders no longer in use-->
                 <span class="folder-icon"></span>
                 {{folder.folder_name.split(' | ')[1] == null ? folder.folder_name : folder.folder_name.split(' | ')[1]}}

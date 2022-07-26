@@ -2,7 +2,6 @@
 .navbar-style .active{/* replaced background and text color with class */
     font-weight: bold;
 }
-
 .navbar-style img{
     height: auto;
     width: auto;

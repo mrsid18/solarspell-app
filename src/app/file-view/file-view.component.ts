@@ -81,6 +81,7 @@ export class FileViewComponent implements OnInit {
       referrer: 'other'
     }
 
+    //Check if the previous url was stored, if so, check store the section of the website
     if(this.urlService.getPreviousUrl()) {
       var slicedUrl = this.urlService.getPreviousUrl().slice(0, 9);
 
@@ -90,6 +91,9 @@ export class FileViewComponent implements OnInit {
           break;
         case '/search-l':
           analytics.referrer = 'search';
+          break;
+        default:
+          analytics.referrer = 'other';
           break;
       }
     }

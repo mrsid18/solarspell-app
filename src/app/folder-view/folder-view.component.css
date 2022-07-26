@@ -16,27 +16,32 @@
 }
 
 .folder-logo{
-    display:block;
-    width: 95%;
-    margin-top: 2.8rem;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
+    margin: 20px 0 20px 15px;
+    display: block;
+    width: 100%;
 }
 .folders-btn{
     display:none;
 }
 .col-style{
-    margin-top: 3em;
+    margin-top: 20px;
+    margin-bottom:5px;
 }
 .folder-btn{
     height: 50px;
-    border-color: #0676D8;
-    border-radius: 25px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    border-radius: 5px;
+    border-width: 1px;
     padding-top: 12px;
+    margin-bottom: 20px;
     font-weight: 500;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    background-color: #fff;
+    color: #212529;
 }
 .folder-icon {
     background: url('/assets/static/folder.png');
@@ -50,17 +55,16 @@
     font-size: 18px;
     font-weight: 500;
 }
-.btn-light-adjusted {
-    background-color: #f8f9fa;
-    color: #212529;
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }
+
 @media (hover: hover) {
-    .bg-hover-sunglow-50-adjusted:hover{
-        background-color:rgba(255, 198, 39, 0.5);
-    }
-    .btn-light-adjusted:hover {
-        background-color:rgba(255, 198, 39, 0.5);
-        font-weight: 600;
+    .folder-btn:hover {
+        border-color:#d4d4d4;
+        background-color: #eeeeee;
     }
 }
 @media screen and (min-width:200px) and (max-width: 991px){

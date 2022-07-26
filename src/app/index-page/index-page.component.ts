@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../services/data.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -21,7 +20,6 @@ export class IndexPageComponent implements OnInit {
   }
 
   navigate($event) {
-    console.log($event);
     this.router.navigate(['/content', $event.node.data.id]);
   }
 }
