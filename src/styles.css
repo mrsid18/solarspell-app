@@ -331,8 +331,8 @@ tree-node-wrapper::before, .tree-children::after {
   position: absolute;
 }
 tree-node-wrapper::before {
-  border-bottom: 1px solid #353535;
-  border-left: 1px solid #353535;
+  border-bottom: 1px solid #666666;
+  border-left: 1px solid #666666;
   height: 10000px;
   top: -9978px;
   width: 30px;
@@ -345,7 +345,7 @@ tree-node-wrapper::before {
   width: 25px;
 }
 .tree-children::after {
-  border-left: 1px solid #353535;
+  border-left: 1px solid #666666;
   height: 100%;
   top: -15px;
   left: -15px;
