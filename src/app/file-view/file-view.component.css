@@ -37,3 +37,6 @@ iframe
 .keyword-link:hover {
     text-decoration: underline;
 }
+.pb-4 {
+    padding-bottom: 30px !important;
+}

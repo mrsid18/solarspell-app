@@ -44,8 +44,10 @@ export class ModuleComponent implements OnInit {
 
     const navbarSize = 66;
 
-    //Set iframe height based on window height - size of navbar
-    this.iframeHeight = window.innerHeight - navbarSize;
+    //Set iframe height based on window height - size of navbar (delayed to prevent occasional issue with address bar resizing hiding module content)
+    setTimeout(()=> {
+      this.iframeHeight = window.innerHeight - navbarSize;
+    }, 100);
     
     //Update iframe height when window is resized or window orientation changes
     window.addEventListener('resize', () => {

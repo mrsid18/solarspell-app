@@ -42,18 +42,18 @@
                 <span i18n>{content.file_size | fileUnit , select, MB {MB} KB {KB}}</span>
             </p>
         </div>   
-        <div class="wrapper pb-3">
+        <div class="wrapper pb-4">
             <!--added download button with color class-->
             <a [href]="fileURL" (click)="logAnalytics('download_file')" download>
-              <button i18n="download@@download" type="button"class="button bg-primary-dark bg-hover-primary-light w-100 rounded text-white p-2 shadow-none border-primary-dark">
+              <button i18n="download@@download" type="button"class="spell-btn btn">
                 <i class="fa fa-download pr-2" aria-hidden="true"></i>
                 Download
               </button>
             </a>
         </div>
     </div>
-    <video class="col-md-9 ratio ratio-16x9" [src]="fileURL" controls *ngIf="resourceType=='video'"></video>
-    <div class="col-md-9 m-auto"  *ngIf="resourceType=='audio'">
+    <video class="col-md-9 ratio ratio-16x9 bg-black" [src]="fileURL" controls *ngIf="resourceType=='video'" style="height: 100%"></video>
+    <div class="col-md-9 m-auto"  *ngIf="resourceType=='audio'" style="margin-top: 40px !important; margin-bottom: 0px !important;">
         <audio class="w-100 px-4" [src]="fileURL" controls></audio>
     </div>
     <iframe [src]="pdfUrl" class="col-md-9 file-col" *ngIf="resourceType=='pdf'" frameborder="0" allowfullscreen></iframe>

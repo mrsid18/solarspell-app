@@ -6,12 +6,14 @@
     box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
     margin-bottom: 20px;
 }
-.table-style th{
+
+.table-style th {
     border-top-width: 0px;
     padding-top: 8px;
     padding-bottom:8px;
 }
-.table-style tr td{
+
+.table-style tr td {
     vertical-align: middle;
     border-width: 0px;
     border-top-width: 1px;
@@ -26,11 +28,11 @@
 }
 
 .table-style tr > *:first-child {
-    padding-left:10px;
-    text-align: center;
+    padding-left: 20px;
 }
+
 .table-style tr > *:last-child {
-    padding-right:10px;
+    padding-right: 20px;
 }
 
 .table-style tr{

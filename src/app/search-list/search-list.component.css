@@ -32,22 +32,17 @@
     margin-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 17px;
+    padding-bottom: 7px;
 }
 
 .adv-search-btn {
     margin-top: 20px;
 }
+
 .spell-btn{ 
     z-index: 1000;
     border-radius: 5px;
-}
-.spell-btn, .spell-btn:active, .spell-btn:focus{
-    -webkit-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
-    -moz-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
-    box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
-    border: none;
 }
 
 .form-group{
@@ -66,4 +61,12 @@
 .resultsFor {
     margin-top: -10px;
     margin-bottom:10px;
+}
+
+.year-published, .year-published label {
+    margin-bottom: 2px;
+}
+
+.search-btn {
+    margin-top: 3px;
 }
