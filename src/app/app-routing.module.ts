@@ -59,17 +59,17 @@ const routes: Routes = [
   {
     path: 'search-list',
     component: SearchListComponent,
-    resolve: { metadataList: MetadataListResolver, dates: DatesResolver }
+    resolve: { metadataList: MetadataListResolver, /*Removed dates dropdown*//*dates: DatesResolver*/ }
   },
   {
     path: 'search-list/keyword/:search_string',
     component: SearchListComponent,
-    resolve: { searchResult: SearchKeywordResolver, metadataList: MetadataListResolver, dates: DatesResolver }
+    resolve: { searchResult: SearchKeywordResolver, metadataList: MetadataListResolver, /*Removed dates dropdown*//*dates: DatesResolver*/ }
   },
   {
     path: 'search-list/:search_string',
     component: SearchListComponent,
-    resolve: { searchResult: SearchDataResolver, metadataList: MetadataListResolver, dates: DatesResolver }
+    resolve: { searchResult: SearchDataResolver, metadataList: MetadataListResolver, /*Removed dates dropdown*//*dates: DatesResolver*/ }
   },
   {
     path: 'module/:id',

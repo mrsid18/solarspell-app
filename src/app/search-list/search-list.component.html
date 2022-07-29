@@ -34,11 +34,12 @@
                     </ng-select>
                 </div>
             </div>
+            <!-- Removed dates dropdown
             <div class="form-row">
-                <div class="form-group col-sm-12 year-published"><!--full column-->
+                <div class="form-group col-sm-12 year-published">
                     <label i18n="searchYearPublished@@searchYearPublished" >Year Published</label>
                 </div>
-                <div class="form-group col-sm-4"><!--under the published date label-->
+                <div class="form-group col-sm-4">
                     <label i18n="searchMin@@searchMin">Minimum Year</label>
                     <select class="form-control" [(ngModel)]="searchData.min_date">
                         <option [value]=""></option>
@@ -53,6 +54,7 @@
                     </select>
                 </div>
             </div>
+            -->
             <div class="form-row justify-content-center">
                 <div class="form-group">
                     <button i18n="searchSearchBtn@@searchSearchBtn" class="spell-btn text-white btn search-btn" type="button" (click)="searchAdvanced(true)">

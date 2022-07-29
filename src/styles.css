@@ -303,7 +303,7 @@ mark {
   -moz-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1) !important;
   box-shadow: 0px 0px 5px 0px rgba(212,212,212,1) !important;
   border: none !important;
-  background-color: #00A3E0 !important;
+  background-color: #0676D8 !important;
   color: #ffffff !important;
 }
 .spell-link  {
@@ -312,10 +312,8 @@ mark {
 
 @media (hover: hover) {
   .spell-btn:hover  {
-      background-color: #0676D8 !important;
+      background-color: #00A3E0 !important;
   }
-}
-@media (hover: hover) {
   .spell-link:hover  {
       color: #0059a7 !important;
   }
@@ -367,7 +365,7 @@ tree-node:last-child > .tree-node > .tree-children::after {
 .toggle-children-wrapper {
   width: 30px !important;
   height: 30px;
-  background-color: #00A3E0;
+  background-color: #0676D8;
   transition: background-color .15s ease;
   display: flex;
   justify-content: center;
@@ -423,7 +421,7 @@ tree-node-expander {
 
 @media (hover: hover) {
   .toggle-children-wrapper:hover {
-    background-color: #0676D8;
+    background-color: #00A3E0;
   }
   .node-content-wrapper:hover {
     background-color: #eeeeee !important;

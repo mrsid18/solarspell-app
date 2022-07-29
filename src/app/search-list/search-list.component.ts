@@ -26,7 +26,8 @@ export class SearchListComponent implements OnInit {
   public expandAdvanced: boolean;
   public  math = Math;
   public metaTracker : Array<any> = [];
-  public dropyears: Array<number> = [];
+  //Removed dates dropdown
+  //public dropyears: Array<number> = [];
   public previousSearch: Subscription;
   public loading: boolean = false;
 
@@ -78,6 +79,8 @@ export class SearchListComponent implements OnInit {
     });
 
     //Generate dropyears from dates resolver
+    //Removed dates dropdown
+    /*
     var minDate: Date = new Date(this.route.snapshot.data.dates.min);
     var maxDate: Date = new Date(this.route.snapshot.data.dates.max);
 
@@ -87,6 +90,7 @@ export class SearchListComponent implements OnInit {
     for(var j = maxYear; j >= minYear; j--) {
       this.dropyears.push(j);
     }
+    */
     
     //Get metadataList from resolver
     this.metadataList = this.route.snapshot.data.metadataList;
@@ -102,6 +106,8 @@ export class SearchListComponent implements OnInit {
       this.searchData.title = '';
     }
 
+    //Removed dates dropdown
+    /*
     if(params['min_date'] != undefined) {
       this.searchData.min_date = params['min_date'];
     }
@@ -115,6 +121,7 @@ export class SearchListComponent implements OnInit {
     else {
       this.searchData.max_date = '';
     }
+    */
 
     //Deselect all dropdown options and initialize their tracking variables to blank arrays
     for(var i = 0; i < this.metaTracker.length; i++) {
@@ -171,8 +178,11 @@ export class SearchListComponent implements OnInit {
     interface ParamData {
       title?: string;
       metadata?: any;
+      //Removed dates dropdown
+      /*
       min_date?: string;
       max_date?: string;
+      */
     }
 
     var paramData: ParamData = {};
@@ -182,6 +192,8 @@ export class SearchListComponent implements OnInit {
       paramData.title = this.searchData.title;
     }
 
+    //Removed dates dropdown
+    /*
     if(this.searchData.min_date != '') {
       paramData.min_date = this.searchData.min_date;
     }
@@ -189,6 +201,7 @@ export class SearchListComponent implements OnInit {
     if(this.searchData.max_date != '') {
       paramData.max_date = this.searchData.max_date;
     }
+    */
 
     if(paramMeta.length != 0) {
       paramData.metadata = paramMeta;
@@ -222,7 +235,7 @@ export class SearchListComponent implements OnInit {
           var analytics = { activity_type: 'advanced_search' };
 
           //Get analytics from searchData
-          ['title', 'min_date', 'max_date'].forEach(column => {
+          ['title', /*Removed dates dropdown*//*'min_date', 'max_date'*/].forEach(column => {
             if(this.searchData[column] != '') {
               analytics[column] = this.searchData[column];
             }
