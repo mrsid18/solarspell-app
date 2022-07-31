@@ -18,7 +18,7 @@ export class IndexPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //Scroll to top on page load because going forward of back via browser closes the tree
+    //Scroll to top on page load because going forward or back via browser closes the tree
     this.scroller.scrollToPosition([0,0]);
     this.tree = this.route.snapshot.data.folderTree;
   }

@@ -70,7 +70,6 @@ export class FileViewComponent implements OnInit {
 
   //Called when download button is clicked
   logAnalytics(type: string) {
-    //Initialize variables
     var analytics = {
       title: this.content.title,
       language: '',

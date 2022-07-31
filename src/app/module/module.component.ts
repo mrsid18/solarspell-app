@@ -31,6 +31,7 @@ export class ModuleComponent implements OnInit {
     //Remove "/module/" from path
     path = path.slice(('/module/').length, path.length);
 
+    //Add back '/' that angular removes when there are no additional url parameters
     if(path == id) {
       path += '/';
     }

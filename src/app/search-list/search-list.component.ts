@@ -45,8 +45,8 @@ export class SearchListComponent implements OnInit {
   
 
   ngOnInit(): void {
-    //When the router changes page, check if a scrollPosition is stored, if so, navigate to that position
-    //This is to prevent the page from jumping to the top when the user clicked "search advanced"
+    //Restore scroll position on page load
+    //Prevent scrolling to the top when "Search" button is clicked
     this.router.events.subscribe((event: Event) => {
       if(event instanceof NavigationEnd && history.state.scrollPosition != undefined) {
         this.viewportScroller.scrollToPosition(history.state.scrollPosition);
@@ -55,8 +55,7 @@ export class SearchListComponent implements OnInit {
 
     //Executes everytime the route parameters change and when the component is initially loaded
     this.route.params.subscribe(() => {
-      //Check if the current search is a basic search of a keyword search
-      if(this.route.snapshot.data.searchResult){
+      if(this.route.snapshot.data.searchResult){ //True if current search is a basic search
         this.expandAdvanced = false;
 
         //Get component content from resolvers
@@ -123,14 +122,13 @@ export class SearchListComponent implements OnInit {
     }
     */
 
-    //Deselect all dropdown options and initialize their tracking variables to blank arrays
+    //Deselect/initialize all dropdown options
     for(var i = 0; i < this.metaTracker.length; i++) {
       this.metaTracker[i] = [];
     }
 
     //Set dropdown options if url parameter 'metadata' is defined
     if(params['metadata'] != undefined) {
-      //Create variable to store raw metadata array
       var metadata;
 
       //Ensure metadata is stored in an array even if there is only a single metadata parameter
@@ -151,12 +149,19 @@ export class SearchListComponent implements OnInit {
       }
     }
 
-    //Call searchAdvanced() if user is not doing a basic search
-    if(this.searchString == '') {
+    if(this.searchString == '') { //True if user is not doing a basic search
       this.searchAdvanced(false);
     }
   }
 
+  /*
+  If scroll is true, the page will scroll to the table when completed. Scroll
+  should be true when the user clicks "Search" but false when they navigate to
+  the page.
+
+  searchAdvanced() takes the existing states of the advanced search form, performs
+  a search, and updates the content table
+  */
   searchAdvanced(scroll: boolean) {
     this.loading = true;
 
@@ -224,14 +229,12 @@ export class SearchListComponent implements OnInit {
       //Perform advanced search
       this.previousSearch = this.dataService.advancedSearch(this.searchData)
       .subscribe( response  => {
-        //Load content and disable loading indicator
         this.contentList = response;
         this.loading = false;
 
         if(scroll || history.state.scroll) { //True if the user clicked 'advanced_search'
           setTimeout(this.scrollToTable, 0);
 
-          //Initialize variable to hold analytics
           var analytics = { activity_type: 'advanced_search' };
 
           //Get analytics from searchData
@@ -241,7 +244,7 @@ export class SearchListComponent implements OnInit {
             }
           });
 
-          //Get a list of types of metadata and convert stored metadata from id to string
+          //Convert stored metadata from id to string
           var metadataAnalytics = this.metaTracker.map((tracker, i) => {
             return {
               name: this.metadataList[i].name,
@@ -259,7 +262,6 @@ export class SearchListComponent implements OnInit {
               return;
             }
 
-            //Get column to store metadata in
             var column;
 
             switch(element.name) {
@@ -289,7 +291,6 @@ export class SearchListComponent implements OnInit {
                 break;
             }
 
-            //Initialize column
             analytics[column] = '';
 
             //Add each metadata to the column

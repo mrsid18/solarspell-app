@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FolderData } from '../models/folder-data';
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { SearchData } from '../models/search-data';
 import { environment } from '../../environments/environment';
 
@@ -74,7 +72,8 @@ export class DataService {
   Takes parameter 'params'
   'params' should be an object with format: { title: '<identifier>', activity_type: '<activity_type>' }
   Other elements, like language, content_type, subject, and parent_folder can be included
-  if they are supported by log_analytics.php
+  if they are supported by log_analytics.php. To add new elements, include them in the array
+  at the start of log_analytics.php
   */
   logAnalytics(params) {
     this.http.get(

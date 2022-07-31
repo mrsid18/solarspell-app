@@ -13,7 +13,7 @@ import { FoldersResolver } from './resolvers/folders.resolver';
 import { ModulesResolver } from './resolvers/modules.resolver';
 import { FolderTreeResolver } from './resolvers/folder-tree.resolver';
 import { MetadataListResolver } from './resolvers/metadata-list.resolver';
-import { DatesResolver } from './resolvers/dates.resolver';
+/*Removed dates dropdown*//*import { DatesResolver } from './resolvers/dates.resolver';*/
 import { FolderDataResolver } from './resolvers/folder-data.resolver';
 import { FileDataResolver } from './resolvers/file-data.resolver';
 import { SearchDataResolver } from './resolvers/search-data.resolver';
