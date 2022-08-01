@@ -13,7 +13,7 @@ import { FoldersResolver } from './resolvers/folders.resolver';
 import { ModulesResolver } from './resolvers/modules.resolver';
 import { FolderTreeResolver } from './resolvers/folder-tree.resolver';
 import { MetadataListResolver } from './resolvers/metadata-list.resolver';
-import { DatesResolver } from './resolvers/dates.resolver';
+/*Removed dates dropdown*//*import { DatesResolver } from './resolvers/dates.resolver';*/
 import { FolderDataResolver } from './resolvers/folder-data.resolver';
 import { FileDataResolver } from './resolvers/file-data.resolver';
 import { SearchDataResolver } from './resolvers/search-data.resolver';
@@ -59,17 +59,17 @@ const routes: Routes = [
   {
     path: 'search-list',
     component: SearchListComponent,
-    resolve: { metadataList: MetadataListResolver, dates: DatesResolver }
+    resolve: { metadataList: MetadataListResolver, /*Removed dates dropdown*//*dates: DatesResolver*/ }
   },
   {
     path: 'search-list/keyword/:search_string',
     component: SearchListComponent,
-    resolve: { searchResult: SearchKeywordResolver, metadataList: MetadataListResolver, dates: DatesResolver }
+    resolve: { searchResult: SearchKeywordResolver, metadataList: MetadataListResolver, /*Removed dates dropdown*//*dates: DatesResolver*/ }
   },
   {
     path: 'search-list/:search_string',
     component: SearchListComponent,
-    resolve: { searchResult: SearchDataResolver, metadataList: MetadataListResolver, dates: DatesResolver }
+    resolve: { searchResult: SearchDataResolver, metadataList: MetadataListResolver, /*Removed dates dropdown*//*dates: DatesResolver*/ }
   },
   {
     path: 'module/:id',
@@ -78,7 +78,7 @@ const routes: Routes = [
       component: ModuleComponent
     } ]
   },
-  {
+  { //404 page
     path: '**',
     component: NotFoundComponent
   }
@@ -86,8 +86,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'enabled',
-    initialNavigation: 'enabled'
+    scrollPositionRestoration: 'enabled', //Scroll to top on new page and restore previous scroll height on forward/back
+    initialNavigation: 'enabled' //Wait to load website until all resources for the requested page are loaded
   })],
   exports: [RouterModule]
 })

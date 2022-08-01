@@ -6,8 +6,6 @@ import { Content } from '../models/content';
 import { Subscription } from 'rxjs';
 import { ViewportScroller } from '@angular/common';
 import { Event } from '@angular/router';
-import { exit } from 'process';
-import { DefaultSelectionModelFactory } from '@ng-select/ng-select/lib/selection-model';
 
 //***************************************************************************************************
 // Currently the first digit of metadata is used to store which dropdown it corresponds with. Therefore,
@@ -28,7 +26,8 @@ export class SearchListComponent implements OnInit {
   public expandAdvanced: boolean;
   public  math = Math;
   public metaTracker : Array<any> = [];
-  public dropyears: Array<number> = [];
+  //Removed dates dropdown
+  //public dropyears: Array<number> = [];
   public previousSearch: Subscription;
   public loading: boolean = false;
 
@@ -46,18 +45,24 @@ export class SearchListComponent implements OnInit {
   
 
   ngOnInit(): void {
+    //Restore scroll position on page load
+    //Prevent scrolling to the top when "Search" button is clicked
     this.router.events.subscribe((event: Event) => {
       if(event instanceof NavigationEnd && history.state.scrollPosition != undefined) {
         this.viewportScroller.scrollToPosition(history.state.scrollPosition);
       }
     });
 
+    //Executes everytime the route parameters change and when the component is initially loaded
     this.route.params.subscribe(() => {
-      if(this.route.snapshot.data.searchResult){
-        this.contentList = this.route.snapshot.data.searchResult.contentList;
-        this.searchString = this.route.snapshot.data.searchResult.searchString;
+      if(this.route.snapshot.data.searchResult){ //True if current search is a basic search
         this.expandAdvanced = false;
 
+        //Get component content from resolvers
+        this.searchString = this.route.snapshot.data.searchResult.searchString;
+        this.contentList = this.route.snapshot.data.searchResult.contentList;
+
+        //Initialize activity_type to 'search', then change to 'keyword_search' if url matches a keyword search
         var activity_type = 'search';
 
         if(this.router.url.slice(0,21) == '/search-list/keyword/') {
@@ -66,12 +71,15 @@ export class SearchListComponent implements OnInit {
 
         this.dataService.logAnalytics({ title: this.searchString, activity_type: activity_type });
       }
-      else {
+      else { //Current search is an advanced search
         this.expandAdvanced = true;
         this.searchString = "";
       }
     });
 
+    //Generate dropyears from dates resolver
+    //Removed dates dropdown
+    /*
     var minDate: Date = new Date(this.route.snapshot.data.dates.min);
     var maxDate: Date = new Date(this.route.snapshot.data.dates.max);
 
@@ -81,6 +89,7 @@ export class SearchListComponent implements OnInit {
     for(var j = maxYear; j >= minYear; j--) {
       this.dropyears.push(j);
     }
+    */
     
     //Get metadataList from resolver
     this.metadataList = this.route.snapshot.data.metadataList;
@@ -96,6 +105,8 @@ export class SearchListComponent implements OnInit {
       this.searchData.title = '';
     }
 
+    //Removed dates dropdown
+    /*
     if(params['min_date'] != undefined) {
       this.searchData.min_date = params['min_date'];
     }
@@ -109,15 +120,15 @@ export class SearchListComponent implements OnInit {
     else {
       this.searchData.max_date = '';
     }
+    */
 
-    //Deselect all dropdown options and initialize their tracking variables to blank arrays
+    //Deselect/initialize all dropdown options
     for(var i = 0; i < this.metaTracker.length; i++) {
       this.metaTracker[i] = [];
     }
 
     //Set dropdown options if url parameter 'metadata' is defined
     if(params['metadata'] != undefined) {
-      //Create variable to store raw metadata array
       var metadata;
 
       //Ensure metadata is stored in an array even if there is only a single metadata parameter
@@ -138,12 +149,19 @@ export class SearchListComponent implements OnInit {
       }
     }
 
-    //Call searchAdvanced() if user is not doing a basic search
-    if(this.searchString == '') {
+    if(this.searchString == '') { //True if user is not doing a basic search
       this.searchAdvanced(false);
     }
   }
 
+  /*
+  If scroll is true, the page will scroll to the table when completed. Scroll
+  should be true when the user clicks "Search" but false when they navigate to
+  the page.
+
+  searchAdvanced() takes the existing states of the advanced search form, performs
+  a search, and updates the content table
+  */
   searchAdvanced(scroll: boolean) {
     this.loading = true;
 
@@ -165,8 +183,11 @@ export class SearchListComponent implements OnInit {
     interface ParamData {
       title?: string;
       metadata?: any;
+      //Removed dates dropdown
+      /*
       min_date?: string;
       max_date?: string;
+      */
     }
 
     var paramData: ParamData = {};
@@ -176,6 +197,8 @@ export class SearchListComponent implements OnInit {
       paramData.title = this.searchData.title;
     }
 
+    //Removed dates dropdown
+    /*
     if(this.searchData.min_date != '') {
       paramData.min_date = this.searchData.min_date;
     }
@@ -183,6 +206,7 @@ export class SearchListComponent implements OnInit {
     if(this.searchData.max_date != '') {
       paramData.max_date = this.searchData.max_date;
     }
+    */
 
     if(paramMeta.length != 0) {
       paramData.metadata = paramMeta;
@@ -208,17 +232,19 @@ export class SearchListComponent implements OnInit {
         this.contentList = response;
         this.loading = false;
 
-        if(scroll || history.state.scroll) {
+        if(scroll || history.state.scroll) { //True if the user clicked 'advanced_search'
           setTimeout(this.scrollToTable, 0);
 
           var analytics = { activity_type: 'advanced_search' };
 
-          ['title', 'min_date', 'max_date'].forEach(column => {
+          //Get analytics from searchData
+          ['title', /*Removed dates dropdown*//*'min_date', 'max_date'*/].forEach(column => {
             if(this.searchData[column] != '') {
               analytics[column] = this.searchData[column];
             }
           });
 
+          //Convert stored metadata from id to string
           var metadataAnalytics = this.metaTracker.map((tracker, i) => {
             return {
               name: this.metadataList[i].name,
@@ -229,13 +255,15 @@ export class SearchListComponent implements OnInit {
             }
           });
           
+          //Store each type of metadata in its corresponding analytics column
           metadataAnalytics.forEach(element => {
+            //Don't store if no metadata exists
             if(element.metadata.length == 0) {
               return;
             }
 
             var column;
-            
+
             switch(element.name) {
               case 'Language':
                 column = 'language';
@@ -264,9 +292,11 @@ export class SearchListComponent implements OnInit {
             }
 
             analytics[column] = '';
+
+            //Add each metadata to the column
             element.metadata.forEach((meta, i) => {
               analytics[column] += meta;
-              if(i != element.metadata.length - 1) {
+              if(i != element.metadata.length - 1) { //Don't add a comma for the last element
                 analytics[column] += ', ';
               }
             });
@@ -287,7 +317,7 @@ export class SearchListComponent implements OnInit {
 
   scrollToTable() {
     let el = document.getElementById('contentList');
-    el.scrollIntoView({behavior: 'smooth', block: "start", inline: "nearest"});
+    window.scrollTo({ top: el.offsetTop - 15, behavior: 'smooth' });
   }
 
   startsWithSearchFn(item, metadata) {

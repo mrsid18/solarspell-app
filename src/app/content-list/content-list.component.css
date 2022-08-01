@@ -1,17 +1,66 @@
-
 /* replaced background color with class */
-.table-style td{
-    vertical-align: middle;
+.table-style {
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    margin-bottom: 20px;
 }
+
+.table-style th {
+    border-top-width: 0px;
+    padding-top: 8px;
+    padding-bottom:8px;
+}
+
+.table-style tr td {
+    vertical-align: middle;
+    border-width: 0px;
+    border-top-width: 1px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table-style tr > * {
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.table-style tr > *:first-child {
+    padding-left: 20px;
+}
+
+.table-style tr > *:last-child {
+    padding-right: 20px;
+}
+
 .table-style tr{
     cursor: pointer;
-}
-.table-style tr:hover{
-    font-weight: 600;
 }
 .table-style img{
     height: 1.75rem;
 }
 .col-style{
     margin: 3em;
+}
+
+.spell-pagination {
+    padding: 0;
+    padding-top: 20px;
+    padding-bottom: calc(20px - 1rem); /* pagination module automatically adds 1rem of padding to the bottom */
+    margin-inline-start: -40px; /* pagination module automatically adds 40px of padding to inline-start */
+}
+
+
+@media (hover: hover) {
+    .bg-hover-sunglow-50-adjusted:hover{
+        background-color: #eeeeee;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .table-wrapper{
+        padding: 0 15px;
+    }
 }

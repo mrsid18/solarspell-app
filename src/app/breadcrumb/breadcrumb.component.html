@@ -1,12 +1,24 @@
 <div class="bc-div bg-white">
-    <ul class="breadcrumb bg-white">
+    <ul class="breadcrumb bg-white desktop-breadcrumb">
         <li>
-            <img class="home-icon" routerLink ="/home" src="/assets/static/home.png">
+            <a class="spell-link" [routerLink] ="['/']">Home</a>
         </li>
         <li *ngFor="let bc of breadcrumbList; let i=index">
-            <!--make last time unclickable--><!--text color class-->
-            <a class="text-black text-hover-primary-dark" *ngIf="i != breadcrumbList.length -1" [routerLink] ="i == 0 ?['/content',bc.id] : ['/content',bc.id]">{{bc.name.split(' | ')[1] == null ? bc.name : bc.name.split(' | ')[1] }}</a><!--removed breadcrumbList[0].id since it was for the mainFolders id which is no longer in use-->
+            <a class="spell-link" *ngIf="i != breadcrumbList.length -1" [routerLink] ="i == 0 ?['/content',bc.id] : ['/content',bc.id]">{{bc.name.split(' | ')[1] == null ? bc.name : bc.name.split(' | ')[1] }}</a><!--removed breadcrumbList[0].id since it was for the mainFolders id which is no longer in use-->
             <span class="text-black" *ngIf="i == breadcrumbList.length -1" class="unclickable">{{bc.name.split(' | ')[1] == null ? bc.name : bc.name.split(' | ')[1]}}</span> 
         </li>
-      </ul>
+    </ul>
+    <ul class="breadcrumb bg-white mobile-breadcrumb">
+        <li *ngIf="breadcrumbList.length == 1">
+            <a class="spell-link" [routerLink] ="['/']" title="Home">< Home</a>
+        </li>
+        <li *ngIf="breadcrumbList.length > 1">
+            <div>
+                <a class="spell-link"[routerLink] ="breadcrumbList.length - 2 == 0 ?['/content',breadcrumbList[breadcrumbList.length - 2].id] : ['/content',breadcrumbList[breadcrumbList.length - 2].id]" [title]="breadcrumbList[breadcrumbList.length - 2].name.split(' | ')[1] == null ? breadcrumbList[breadcrumbList.length - 2].name : breadcrumbList[breadcrumbList.length - 2].name.split(' | ')[1] ">< {{breadcrumbList[breadcrumbList.length - 2].name.split(' | ')[1] == null ? breadcrumbList[breadcrumbList.length - 2].name : breadcrumbList[breadcrumbList.length - 2].name.split(' | ')[1] }}</a>
+            </div>
+        </li>
+        <li [title]="breadcrumbList[breadcrumbList.length - 1].name.split(' | ')[1] == null ? breadcrumbList[breadcrumbList.length - 1].name : breadcrumbList[breadcrumbList.length - 1].name.split(' | ')[1]">
+            {{breadcrumbList[breadcrumbList.length - 1].name.split(' | ')[1] == null ? breadcrumbList[breadcrumbList.length - 1].name : breadcrumbList[breadcrumbList.length - 1].name.split(' | ')[1] }}
+        </li>
+    </ul>
 </div>

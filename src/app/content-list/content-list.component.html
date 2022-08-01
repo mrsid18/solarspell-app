@@ -1,29 +1,37 @@
-<table *ngIf="contentList.length" class="table table-style table-sm bg-white"><!--background color class-->
-    <thead>
-      <tr>
-        <!--added index title to list-->
-        <th scope="col">#</th>
-        <th i18n="tableType@@tableType" scope="col">Type</th>
-        <th i18n="tableTitle@@tableTitle" scope="col" sortable="title" (sort)="onSort($event)">Title</th>
-        <th i18n="tableSize@@tableSize" scope="col" sortable="file_size" (sort)="onSort($event)">Size</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 25, currentPage: page } let i=index" [routerLink]="['/file-view',content.id]" class="bg-hover-sunglow-50"> 
-        <!--added index number to list-->
-        <td>{{i+1+((page-1)*25)}}</td>
-        <td><img src="{{getFileExtension(content.file_name)}}"></td>
-        <td> <div innerHTML="{{content.title}}"></div></td>
-        <td>
-          <span>{{content.file_size | fileSize }} </span>
-          <span i18n>{content.file_size | fileUnit , select, MB {MB} KB {KB}}</span>
-        </td>
-      </tr>
-    </tbody>
-</table>
-<div *ngIf="contentList.length" class="has-text-centered">
-  <pagination-controls 
-  (pageChange)="page = $event"
-  previousLabel="Previous"
-  nextLabel="Next"></pagination-controls>
+<div class="table-wrapper">
+  <div class="table table-style table-sm bg-white" *ngIf="contentList.length">
+    <table><!--background color class-->
+        <thead>
+          <tr>
+            <!--added index title to list-->
+            <th i18n="tableType@@tableType" scope="col">#</th>
+            <th i18n="tableType@@tableType" scope="col">Type</th>
+            <th i18n="tableTitle@@tableTitle" scope="col" sortable="title" (sort)="onSort($event)">Title</th>
+            <th i18n="tableSize@@tableSize" scope="col" sortable="file_size" (sort)="onSort($event)">Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let content of contentList  | paginate: { itemsPerPage: 25, currentPage: page } let i=index" [routerLink]="['/file-view',content.id]" class="bg-hover-sunglow-50-adjusted"> 
+            <!--added index number to list-->
+            <td>{{i+1+((page-1)*25)}}</td>
+            <td><img src="{{getFileExtension(content.file_name)}}"></td>
+            <td> <div innerHTML="{{content.title}}"></div></td>
+            <td>
+              <span>{{content.file_size | fileSize }} </span>
+              <span i18n>{content.file_size | fileUnit , select, MB {MB} KB {KB}}</span>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="text-center spell-pagination">
+      <pagination-controls 
+      (pageChange)="page = $event"
+      previousLabel="Previous"
+      nextLabel="Next"
+      responsive="true"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page"></pagination-controls>
+    </div>
+  </div>
 </div>

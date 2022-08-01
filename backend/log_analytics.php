@@ -12,8 +12,9 @@
         'audience',
         'format',
         'rights_holder',
-        'min_date',
-        'max_date',
+        #Removed dates dropdown
+        #'min_date',
+        #'max_date',
         'referrer',
         'activity_date'
     ]; 

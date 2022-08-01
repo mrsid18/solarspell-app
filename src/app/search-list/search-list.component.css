@@ -1,16 +1,13 @@
 .search-background {
     position: relative;
     overflow: hidden;
-}
-.search-background  img {
-    position: absolute;
-    left: 0;
-    top: 0;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
-    height: auto;
-    opacity: 0.4;
-    z-index: -1;
+    overflow: visible;
 }
+
 /* replaced background with class */
 .table-style td{
     vertical-align: middle;
@@ -21,37 +18,56 @@
 .table-style img{
     height: 2rem;
 }
+
 .col-margin {
     margin-top: 20px;
 }
+
 .adv-search-box {
     margin: auto;
-    padding: 15px;
-}
-.adv-search-toggle{
-    z-index: 1000;
-}
-.adv-search-toggle button, .adv-search-toggle button:active, .adv-search-toggle button:focus{
-    border: none;
-    box-shadow:none;
-    font-weight: 500;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    border-radius: 5px;
+    margin-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 17px;
+    padding-bottom: 7px;
 }
 
-.form-group label{
-    margin-bottom: 0px;
+.adv-search-btn {
+    margin-top: 20px;
 }
+
+.spell-btn{ 
+    z-index: 1000;
+    border-radius: 5px;
+}
+
 .form-group{
     font-size: 16px;
-    font-weight: 500;
 }
-.adv-search-btn{
-    font-weight: 500;
-}
+
 .search-btn:focus{
     outline: none;
 }
+
 .no-records-message {
     text-align: center;
     font-size: 18px;
-    font-weight: 500;
+}
+
+.resultsFor {
+    margin-top: -10px;
+    margin-bottom:10px;
+}
+
+.year-published, .year-published label {
+    margin-bottom: 2px;
+}
+
+.search-btn {
+    margin-top: 2px;
+    margin-bottom: -5px;
 }

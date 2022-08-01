@@ -1,6 +1,9 @@
 .bc-div{
     width:100%;/* replaced background color with class */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212,212,212,1);
+    box-shadow: 0px 5px 5px -5px rgba(212,212,212,1);
+    overflow:hidden;
     z-index: 1;
     position: relative;
 }
@@ -9,38 +12,96 @@ ul.breadcrumb {
     width: fit-content;
     margin:0 auto;
   }
-  
-  /* Display list items side by side */
-  ul.breadcrumb li {
-    display: inline;
-    font-size: 1em;
-    font-weight: bold;
-  }
-  
-  /* Add a slash symbol (/) before/behind each list item */
-  ul.breadcrumb li+li:before {
-    padding: 8px;
-    content: ">";
-  }
-  
-  /* Add a color to all links inside the list */
-  ul.breadcrumb li a, ul.breadcrumb li span {
-    text-decoration: none;
-  }
-  
-  /* Add a color on mouse-over */
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  font-size: 1em;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.desktop-breadcrumb li+li:before {
+  padding: 8px;
+  content: ">";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a, ul.breadcrumb li span {
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+@media (hover: hover) {
   ul.breadcrumb li a:hover {
     text-decoration: underline;
     cursor: pointer;
   }
-  .home-icon {
-    height: 18px;
-    width: 18px;
-    margin-bottom: 3px;
-    cursor: pointer;
+}
+
+.clickable{
+  cursor: pointer;
+  margin: 0px;
+  text-decoration: none
+}
+
+.mobile-breadcrumb {
+  display: none;
+  margin: 0 !important;
+  height: 48px;
+}
+
+ul.mobile-breadcrumb {
+  width: 100% !important;
+  padding: 0 !important;
+  align-items: center;
+}
+
+.mobile-breadcrumb a {
+  display: block;
+  background-color: #e6e6e6;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: fit-content;
+  max-width: 100%;
+  transition: 0.15s background-color ease;
+}
+
+.mobile-breadcrumb li {
+  display: flex;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.mobile-breadcrumb li:first-child {
+  width: 25%;
+  margin-left: 2.5%;
+}
+
+.mobile-breadcrumb li:last-child {
+  min-width: 40%;
+  max-width: 67.5%;
+  margin-left: 30%;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .mobile-breadcrumb {
+    display: flex;
   }
-  .clickable{
-    cursor: pointer;
-    margin: 0px;
-    text-decoration: none
+  .desktop-breadcrumb {
+    display: none;
+  }
+}
+
+@media (hover: hover) {
+  .mobile-breadcrumb a:hover {
+    background-color: #d3d3d3;
+  }
 }
