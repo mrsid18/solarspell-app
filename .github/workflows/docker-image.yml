@@ -13,6 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker-compose build
+    - name: Upload repo
+      uses: actions/checkout@v3
+      with: 
+        path: solarspell
+    - name: Upload repo to remote server
+      env:
+           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+         ssh-add - <<< "${{ secrets.SSHKEY }}"
+         scp -o StrictHostKeyChecking=no -r -P 59666 solarpspell root@161.35.106.238:/solarspell/
+         cd /solarspell/
+         docker-compose up -d
