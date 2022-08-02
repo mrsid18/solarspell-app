@@ -23,6 +23,6 @@ jobs:
       run: |
          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
          ssh-add - <<< "${{ secrets.SSHKEY }}"
-         scp -o StrictHostKeyChecking=no -r -P 59666 solarpspell root@161.35.106.238:/solarspell/
+         scp -o StrictHostKeyChecking=no -r -P 22 solarspell root@161.35.106.238:/solarspell/
          cd /solarspell/
          docker-compose up -d
